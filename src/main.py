@@ -1,0 +1,1 @@
+print("Begontech sistemi başlatılıyor...")
