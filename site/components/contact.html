@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BegonTech - İletişim" />
+  <title>BegonTech - İletişim</title>
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
+  </script>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Shared Header Placeholder -->
+  <div id="__header"></div>
+
+  <main class="py-16">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold text-brand-dark mb-4">İletişim</h1>
+      <p class="text-gray-600 mb-6">Hızlıca temasa geçmek için formu kullanabilirsiniz (şimdilik placeholder).</p>
+      <form class="max-w-xl space-y-4">
+        <input type="text" placeholder="Ad Soyad" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
+        <input type="email" placeholder="E-posta" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
+        <textarea placeholder="Mesajınız" rows="5" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
+        <button type="button" class="btn-primary text-white px-6 py-3 rounded-lg">Gönder</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Shared Footer Placeholder -->
+  <div id="__footer"></div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/includes.js"></script>
+</body>
+</html>

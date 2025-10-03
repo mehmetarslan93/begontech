@@ -1,0 +1,43 @@
+<!-- Shared Header Partial -->
+<header class="bg-white shadow-lg sticky top-0 z-50" data-partial="header">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <a href="/site/index.html" class="flex items-center space-x-2" aria-label="BegonTech Ana Sayfa">
+          <img src="/site/assets/images/logo.png" alt="BegonTech Logo" class="h-12 w-auto" />
+          <span class="text-xl font-bold text-brand-primary">BegonTech</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8">
+        <a data-nav="home" href="/site/index.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Ana Sayfa</a>
+        <a data-nav="solutions" href="/site/components/solutions.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Çözümler</a>
+        <a data-nav="products" href="/site/components/products.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Ürünler</a>
+        <a data-nav="blog" href="/site/components/blog.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Blog</a>
+        <a data-nav="about" href="/site/components/about.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Hakkımızda</a>
+        <a data-nav="contact" href="/site/components/contact.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">İletişim</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary" data-menu-btn aria-label="Menüyü aç/kapat">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden mt-4 hidden" data-menu>
+      <div class="flex flex-col space-y-2">
+        <a data-nav="home" href="/site/index.html" class="text-gray-700 hover:text-white hover:bg-brand-primary font-medium py-2 px-4 rounded transition-colors">Ana Sayfa</a>
+        <a data-nav="solutions" href="/site/components/solutions.html" class="text-gray-700 hover:text-white hover:bg-brand-primary font-medium py-2 px-4 rounded transition-colors">Çözümler</a>
+        <a data-nav="products" href="/site/components/products.html" class="text-gray-700 hover:text-white hover:bg-brand-primary font-medium py-2 px-4 rounded transition-colors">Ürünler</a>
+        <a data-nav="blog" href="/site/components/blog.html" class="text-gray-700 hover:text-white hover:bg-brand-primary font-medium py-2 px-4 rounded transition-colors">Blog</a>
+        <a data-nav="about" href="/site/components/about.html" class="text-gray-700 hover:text-white hover:bg-brand-primary font-medium py-2 px-4 rounded transition-colors">Hakkımızda</a>
+        <a data-nav="contact" href="/site/components/contact.html" class="text-gray-700 hover:text-white hover:bg-brand-primary font-medium py-2 px-4 rounded transition-colors">İletişim</a>
+      </div>
+    </div>
+  </nav>
+</header>
