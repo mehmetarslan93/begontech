@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Home Simulator</title>
+  <meta name="description" content="Akıllı Ev Simülasyonu: Lamba, Perde, Hoparlör ve Termostatı etkileşimli olarak kontrol edin." />
+  <style>
+    /* ====== Tema ve Temel Ayarlar ====== */
+    :root{
+      --bg:#f6f7fb; --wall:#eef2f7; --floor:#d7dde5; --text:#1e293b; --muted:#64748b;
+      --primary:#1e40af; --accent:#0891b2; --success:#16a34a; --lamp-off:#9ca3af; --lamp-on:#facc15;
+      --shadow:0 10px 30px rgba(30,64,175,.15);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Cantarell,Arial,sans-serif}
+    .wrap{min-height:100vh;display:flex;flex-direction:column;gap:12px;align-items:center;padding:16px}
+    header, .controls{width:100%;max-width:1100px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:12px 14px}
+    header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    header h1{margin:0;font-size:clamp(18px,2.2vw,22px)}
+    header .hint{color:var(--muted);font-size:13px}
+
+    /* ====== Oda Sahnesi ====== */
+    .scene{width:min(100%,1100px);aspect-ratio:16/9;background:#fff;border-radius:16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .room{position:absolute;inset:0;background:linear-gradient(#e5ecf5 0 10%,var(--wall) 10% 62%,transparent 62%),linear-gradient(180deg,#eaf0f7, var(--floor) 62%)}
+
+    /* Pencere ve Perdeler */
+    .window{position:absolute;left:8%;top:10%;width:32%;height:36%;border-radius:12px;background:#cfd8e3;border:6px solid #c1ccdc;overflow:hidden;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+    .outside{width:100%;height:100%;background:linear-gradient(#bfe8ff 0%,#e8f7ff 65%);position:relative}
+    .sun{position:absolute;width:90px;height:90px;right:10%;top:10%;background:radial-gradient(circle at 35% 35%,#fff 0 25%,#ffd95a 26% 60%,rgba(255,217,90,.55) 61% 100%);border-radius:50%;box-shadow:0 0 50px 10px rgba(255,217,90,.35)}
+    .curtain{position:absolute;top:0;height:100%;width:50%;background:linear-gradient(90deg,#e9eff7 0 14%,#dfe7f1 14% 28%,#e9eff7 28% 42%,#dfe7f1 42% 56%,#e9eff7 56% 70%,#dfe7f1 70% 84%,#e9eff7 84% 100%);box-shadow:inset 0 0 20px rgba(0,0,0,.05);transition:transform .6s ease}
+    .curtain.left{left:0;transform:translateX(0%);border-right:2px solid rgba(0,0,0,.05)}
+    .curtain.right{right:0;transform:translateX(0%);border-left:2px solid rgba(0,0,0,.05)}
+    .curtains-open .curtain.left{transform:translateX(-100%)}
+    .curtains-open .curtain.right{transform:translateX(100%)}
+
+    /* Sehpa ve Lamba */
+    .table{position:absolute;left:52%;top:49%;width:16%;height:8%;background:linear-gradient(#d9dee6,#cfd6de);border:4px solid #c1c9d3;border-radius:12px;box-shadow:0 10px 15px rgba(0,0,0,.1)}
+    .lamp{position:absolute;left:58%;top:34%;width:4.5%;height:22%;display:flex;align-items:flex-end;justify-content:center;cursor:pointer;outline:none}
+    .lamp .stand{width:10px;height:70%;background:#cfd7e1;border-radius:6px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.08)}
+    .lamp .shade{position:absolute;bottom:56%;width:84px;height:46px;border-radius:46px 46px 12px 12px;background:#e5eaf2;border:4px solid #cdd6e2;box-shadow:0 6px 12px rgba(0,0,0,.08)}
+    .lamp .bulb{position:absolute;bottom:68%;width:48px;height:48px;border-radius:50%;background:var(--lamp-off);transition:all .35s ease}
+    .lamp.on .bulb{background:var(--lamp-on);box-shadow:0 0 18px rgba(250,204,21,.8),0 0 48px rgba(250,204,21,.35)}
+    .lamp.on::after{content:'';position:absolute;bottom:2%;left:50%;transform:translateX(-50%);width:26vw;max-width:360px;height:16vh;max-height:220px;background:radial-gradient(ellipse at center,rgba(250,204,21,.45) 0%,rgba(250,204,21,.22) 50%,rgba(250,204,21,0) 70%)}
+
+    /* Hoparlör */
+    .speaker{position:absolute;left:76%;top:46%;width:6%;height:16%;background:linear-gradient(#e7ecf4,#d7dde7);border:4px solid #c8d0dc;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;outline:none;overflow:hidden}
+    .speaker .bar{width:6px;border-radius:6px;background:#9aa6b6;height:20%;transition:height .25s ease}
+    .speaker.playing .bar:nth-child(1){height:55%;background:#5b6b80}
+    .speaker.playing .bar:nth-child(2){height:80%;background:#415269}
+    .speaker.playing .bar:nth-child(3){height:65%;background:#5b6b80}
+
+    /* Termostat */
+    .thermostat{position:absolute;left:6%;top:55%;width:8%;aspect-ratio:1/1;min-width:50px;background:conic-gradient(from var(--rot,0deg),#1e40af 0 40%,#93c5fd 40% 60%,#f59e0b 60% 80%,#ef4444 80% 100%);border-radius:50%;border:5px solid #c8d0dc;box-shadow:inset 0 0 12px rgba(0,0,0,.12);display:grid;place-items:center;color:#fff;font-weight:700;user-select:none;cursor:pointer;outline:none}
+    .thermostat .dial{width:64%;height:64%;border-radius:50%;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.65);display:grid;place-items:center;font-size:clamp(12px,2.4vw,16px)}
+
+    /* Kontrol Butonları */
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:#f1f5f9;color:var(--text);border:1px solid #e2e8f0;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:600;transition:all .2s ease}
+    .btn:hover{background:#e9eef6;transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .status{width:10px;height:10px;border-radius:50%;background:#cbd5e1;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+    .status.on{background:var(--success)}
+    .status.off{background:#94a3b8}
+    .status.warn{background:#f59e0b}
+
+    /* Tooltip */
+    [data-tip]{position:relative}
+    [data-tip]:hover::after{content:attr(data-tip);position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;font-size:12px;padding:4px 8px;border-radius:8px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+
+    /* Focus görünürlüğü */
+    .lamp:focus-visible,.speaker:focus-visible,.thermostat:focus-visible{outline:3px solid #60a5fa;outline-offset:2px}
+
+    /* Responsive */
+    @media (max-width:900px){.scene{aspect-ratio:4/3}.lamp.on::after{width:56vw;height:18vh}}
+    @media (max-width:640px){.window{left:6%;width:40%}.table{left:50%;width:22%}.lamp{left:60%}.speaker{left:74%}}
+
+    @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header aria-label="Başlık">
+      <h1>Smart Home Simulator</h1>
+      <div class="hint">Lamba, perde, hoparlör ve termostatı tıklayın veya alttan kontrol edin</div>
+    </header>
+
+    <!-- Oda Sahnesi -->
+    <section class="scene" aria-label="Oda Simülasyonu">
+      <div id="room" class="room">
+        <!-- Pencere ve Perdeler -->
+        <div class="window" role="img" aria-label="Pencere ve Perdeler" data-tip="Pencere">
+          <div class="outside" aria-hidden="true"><div class="sun" aria-hidden="true"></div></div>
+          <div id="curtainLeft" class="curtain left" aria-hidden="true"></div>
+          <div id="curtainRight" class="curtain right" aria-hidden="true"></div>
+        </div>
+
+        <!-- Sehpa ve Lamba -->
+        <div class="table" aria-hidden="true"></div>
+        <div id="lamp" class="lamp" role="button" tabindex="0" title="Akıllı Lamba" aria-label="Akıllı Lamba - Kapalı" aria-pressed="false" data-tip="Lamba">
+          <div class="stand" aria-hidden="true"></div>
+          <div class="shade" aria-hidden="true"></div>
+          <div class="bulb" aria-hidden="true"></div>
+        </div>
+
+        <!-- Hoparlör -->
+        <div id="speaker" class="speaker" role="button" tabindex="0" title="Akıllı Hoparlör" aria-label="Akıllı Hoparlör - Kapalı" aria-pressed="false" data-tip="Hoparlör">
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+
+        <!-- Termostat -->
+        <div id="thermostat" class="thermostat" role="button" tabindex="0" title="Akıllı Termostat" aria-label="Akıllı Termostat - 22°C" data-tip="Termostat">
+          <div class="dial" id="tempText">22°C</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontrol Butonları -->
+    <section class="controls" aria-label="Cihaz Kontrolleri">
+      <button id="btnLamp" class="btn" aria-pressed="false" aria-controls="lamp"><span id="dotLamp" class="status off" aria-hidden="true"></span><span id="txtLamp">Lambayı Aç</span></button>
+      <button id="btnCurtain" class="btn" aria-pressed="false" aria-controls="curtainLeft curtainRight"><span id="dotCurtain" class="status off" aria-hidden="true"></span><span id="txtCurtain">Perdeyi Aç</span></button>
+      <button id="btnSpeaker" class="btn" aria-pressed="false" aria-controls="speaker"><span id="dotSpeaker" class="status off" aria-hidden="true"></span><span id="txtSpeaker">Müziği Çal</span></button>
+      <button id="btnTemp" class="btn" aria-controls="thermostat"><span id="dotTemp" class="status warn" aria-hidden="true"></span><span id="txtTemp">Sıcaklık: 22°C</span></button>
+    </section>
+
+    <footer>Built with ❤️ for BegonTech</footer>
+  </div>
+
+  <script>
+    // Basit state
+    const state = { lamp:false, curtains:false, speaker:false, temp:22 };
+
+    // Eleman referansları
+    const roomEl = document.getElementById('room');
+    const lampEl = document.getElementById('lamp');
+    const speakerEl = document.getElementById('speaker');
+    const thermoEl = document.getElementById('thermostat');
+    const tempTextEl = document.getElementById('tempText');
+
+    const btnLamp = document.getElementById('btnLamp');
+    const btnCurtain = document.getElementById('btnCurtain');
+    const btnSpeaker = document.getElementById('btnSpeaker');
+    const btnTemp = document.getElementById('btnTemp');
+
+    const dotLamp = document.getElementById('dotLamp');
+    const dotCurtain = document.getElementById('dotCurtain');
+    const dotSpeaker = document.getElementById('dotSpeaker');
+    const dotTemp = document.getElementById('dotTemp');
+
+    const txtLamp = document.getElementById('txtLamp');
+    const txtCurtain = document.getElementById('txtCurtain');
+    const txtSpeaker = document.getElementById('txtSpeaker');
+    const txtTemp = document.getElementById('txtTemp');
+
+    function render(){
+      // Lamba
+      lampEl.classList.toggle('on', state.lamp);
+      lampEl.setAttribute('aria-pressed', String(state.lamp));
+      lampEl.setAttribute('aria-label', 'Akıllı Lamba - ' + (state.lamp ? 'Açık' : 'Kapalı'));
+      dotLamp.className = 'status ' + (state.lamp ? 'on' : 'off');
+      txtLamp.textContent = state.lamp ? 'Lambayı Kapat' : 'Lambayı Aç';
+      btnLamp.setAttribute('aria-pressed', String(state.lamp));
+
+      // Perdeler
+      roomEl.classList.toggle('curtains-open', state.curtains);
+      dotCurtain.className = 'status ' + (state.curtains ? 'on' : 'off');
+      txtCurtain.textContent = state.curtains ? 'Perdeyi Kapat' : 'Perdeyi Aç';
+      btnCurtain.setAttribute('aria-pressed', String(state.curtains));
+
+      // Hoparlör
+      speakerEl.classList.toggle('playing', state.speaker);
+      speakerEl.setAttribute('aria-pressed', String(state.speaker));
+      speakerEl.setAttribute('aria-label', 'Akıllı Hoparlör - ' + (state.speaker ? 'Açık' : 'Kapalı'));
+      dotSpeaker.className = 'status ' + (state.speaker ? 'on' : 'off');
+      txtSpeaker.textContent = state.speaker ? 'Müziği Durdur' : 'Müziği Çal';
+
+      // Termostat
+      tempTextEl.textContent = state.temp + '°C';
+      thermoEl.style.setProperty('--rot', (state.temp - 18) * 18 + 'deg');
+      thermoEl.setAttribute('aria-label', 'Akıllı Termostat - ' + state.temp + '°C');
+      txtTemp.textContent = 'Sıcaklık: ' + state.temp + '°C';
+    }
+
+    // Toggle işlevleri
+    const toggleLamp = () => { state.lamp = !state.lamp; render(); };
+    const toggleCurtains = () => { state.curtains = !state.curtains; render(); };
+    const toggleSpeaker = () => { state.speaker = !state.speaker; render(); };
+    const stepTemp = () => { state.temp = state.temp >= 28 ? 18 : state.temp + 1; render(); };
+
+    // Etkileşim — cihazlar
+    lampEl.addEventListener('click', toggleLamp);
+    lampEl.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleLamp(); } });
+
+    speakerEl.addEventListener('click', toggleSpeaker);
+    speakerEl.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleSpeaker(); } });
+
+    thermoEl.addEventListener('click', stepTemp);
+    thermoEl.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); stepTemp(); } });
+
+    // Etkileşim — butonlar
+    btnLamp.addEventListener('click', toggleLamp);
+    btnCurtain.addEventListener('click', toggleCurtains);
+    btnSpeaker.addEventListener('click', toggleSpeaker);
+    btnTemp.addEventListener('click', stepTemp);
+
+    // İlk render
+    render();
+  </script>
+</body>
+</html>
