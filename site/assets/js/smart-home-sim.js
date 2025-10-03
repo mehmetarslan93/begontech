@@ -102,28 +102,23 @@ class SmartHomeSim {
                     <!-- Ev Maketi -->
                     <div class="relative max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
                         <!-- Ev görseli container -->
-                        <div class="relative w-full h-96 md:h-[500px] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center" id="houseContainer">
-                            <!-- Placeholder ev ikonu -->
-                            <div class="text-gray-500 text-center">
-                                <div class="text-6xl mb-4">🏠</div>
-                                <p>Akıllı Ev Planı</p>
-                                <p class="text-sm mt-2">Mavi noktalara tıklayın</p>
-                            </div>
-                            
-                            <!-- Hotspotlar -->
-                            <div class="hotspot" data-room="livingRoom" data-label="Oturma Odası" style="left: 25%; top: 40%;">
+                        <div class="relative w-full h-96 md:h-[540px] bg-gradient-to-br from-gray-100 to-gray-200" id="houseContainer">
+                            <img src="assets/images/smart-home/house-sim.png" alt="Akıllı Ev Planı" class="absolute inset-0 w-full h-full object-cover select-none" draggable="false" onerror="this.style.display='none'" />
+
+                            <!-- Hotspotlar (örnek görsele hizalı) -->
+                            <div class="hotspot" data-room="livingRoom" data-label="Oturma Odası" style="left: 62%; top: 54%;">
                                 <div class="hotspot-pulse"></div>
                             </div>
-                            <div class="hotspot" data-room="kitchen" data-label="Mutfak" style="left: 60%; top: 30%;">
+                            <div class="hotspot" data-room="kitchen" data-label="Mutfak" style="left: 52%; top: 22%;">
                                 <div class="hotspot-pulse"></div>
                             </div>
-                            <div class="hotspot" data-room="bedroom" data-label="Yatak Odası" style="left: 75%; top: 60%;">
+                            <div class="hotspot" data-room="bedroom" data-label="Yatak Odası" style="left: 82%; top: 48%;">
                                 <div class="hotspot-pulse"></div>
                             </div>
-                            <div class="hotspot" data-room="entrance" data-label="Giriş" style="left: 45%; top: 20%;">
+                            <div class="hotspot" data-room="entrance" data-label="Giriş / Koridor" style="left: 40%; top: 48%;">
                                 <div class="hotspot-pulse"></div>
                             </div>
-                            <div class="hotspot" data-room="balcony" data-label="Balkon" style="left: 80%; top: 35%;">
+                            <div class="hotspot" data-room="balcony" data-label="Balkon" style="left: 50%; top: 82%;">
                                 <div class="hotspot-pulse"></div>
                             </div>
                         </div>

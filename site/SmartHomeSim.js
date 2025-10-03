@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Akıllı Ev Simülasyonu - BeğonTech
+// Akıllı Ev Simülasyonu - BegonTech
 const SmartHomeSim = () => {
   // Cihaz durumları için state
   const [devices, setDevices] = useState({
@@ -221,47 +221,44 @@ const SmartHomeSim = () => {
 
         {/* Ev Maketi */}
         <div className="relative max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Ev görseli placeholder */}
-          <div className="relative w-full h-96 md:h-[500px] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-            {/* Görsel yüklenene kadar placeholder */}
-            <img 
-              src="/public/assets/house-sim.png" 
+          {/* Ev görseli */}
+          <div className="relative w-full h-96 md:h-[540px] bg-gradient-to-br from-gray-100 to-gray-200">
+            <img
+              src="assets/images/smart-home/house-sim.png"
               alt="Akıllı Ev Planı"
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover select-none"
               onError={(e) => {
-                // Görsel yüklenemezse placeholder göster
-                e.target.style.display = 'none';
-                e.target.parentElement.innerHTML = '<div class="text-gray-500 text-center"><div class="text-6xl mb-4">🏠</div><p>Ev planı yükleniyor...</p></div>';
+                e.currentTarget.style.display = 'none';
               }}
+              draggable={false}
             />
-            
-            {/* Hotspotlar - Pozisyonlar ev planına göre ayarlanacak */}
+            {/* Hotspotlar - Yeni pozisyonlar örnek görsele göre */}
             <Hotspot
-              position={{ x: '25%', y: '40%' }}
+              position={{ x: '62%', y: '54%' }}
               room="livingRoom"
               label="Oturma Odası"
               onClick={setActivePanel}
             />
             <Hotspot
-              position={{ x: '60%', y: '30%' }}
+              position={{ x: '52%', y: '22%' }}
               room="kitchen"
               label="Mutfak"
               onClick={setActivePanel}
             />
             <Hotspot
-              position={{ x: '75%', y: '60%' }}
+              position={{ x: '82%', y: '48%' }}
               room="bedroom"
               label="Yatak Odası"
               onClick={setActivePanel}
             />
             <Hotspot
-              position={{ x: '45%', y: '20%' }}
+              position={{ x: '40%', y: '48%' }}
               room="entrance"
-              label="Giriş"
+              label="Giriş / Koridor"
               onClick={setActivePanel}
             />
             <Hotspot
-              position={{ x: '80%', y: '35%' }}
+              position={{ x: '50%', y: '82%' }}
               room="balcony"
               label="Balkon"
               onClick={setActivePanel}
