@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Header Demo - BegonTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../../assets/css/styles.css" />
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Header Templates Demo</h1>
+    <p class="text-gray-600 mb-6">Aşağıdaki butonlarla farklı header şablonlarını karşılaştırabilirsiniz.</p>
+
+    <div class="flex gap-2 mb-6">
+      <button class="px-3 py-2 rounded bg-gray-800 text-white" data-load="base">Base</button>
+      <button class="px-3 py-2 rounded bg-gray-800 text-white" data-load="compact">Compact</button>
+      <button class="px-3 py-2 rounded bg-gray-800 text-white" data-load="centered">Centered</button>
+      <button class="px-3 py-2 rounded bg-gray-800 text-white" data-load="minimal">Minimal</button>
+    </div>
+
+    <div id="mount" class="border rounded-xl overflow-hidden shadow bg-white"></div>
+  </div>
+
+  <script>
+    const mount = document.getElementById('mount');
+    const map = {
+      base:      '../header-base.html',
+      compact:   '../header-compact.html',
+      centered:  '../header-centered.html',
+      minimal:   '../header-minimal.html'
+    };
+    async function load(which){
+      const url = map[which];
+      const res = await fetch(url);
+      const html = await res.text();
+      mount.innerHTML = html + '\n<script src="../header.js"><\/script>';
+      // Note: header.js auto-inits on DOMContentLoaded; for dynamic load, it exposes BegonHeader
+      if(window.BegonHeader){
+        const el = mount.querySelector('header[data-header]');
+        window.BegonHeader.init(el);
+      }
+    }
+    document.querySelectorAll('[data-load]').forEach(btn=>{
+      btn.addEventListener('click', ()=> load(btn.dataset.load));
+    });
+    load('base');
+  </script>
+</body>
+</html>
