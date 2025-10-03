@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BegonTech - Blog" />
+  <title>BegonTech - Blog</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
+  </script>
+</head>
+<body class="bg-white text-gray-800">
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="container mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3 logo-container">
+          <img src="assets/images/logo.png" alt="BegonTech Logo" class="h-12 w-auto" />
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Ana Sayfa</a>
+          <a href="solutions.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Çözümler</a>
+          <a href="products.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Ürünler</a>
+          <a href="blog.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors border-b-2 border-brand-primary" aria-current="page">Blog</a>
+          <a href="about.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">Hakkımızda</a>
+          <a href="contact.html" class="text-brand-dark hover:text-brand-primary font-medium transition-colors">İletişim</a>
+        </div>
+        <button class="md:hidden text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary" id="mobileMenuBtn" aria-label="Menüyü aç/kapat">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+      <div class="md:hidden mt-4 hidden" id="mobileMenu">
+        <div class="flex flex-col space-y-2">
+          <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded transition-colors">Ana Sayfa</a>
+          <a href="solutions.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded transition-colors">Çözümler</a>
+          <a href="products.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded transition-colors">Ürünler</a>
+          <a href="blog.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded transition-colors" aria-current="page">Blog</a>
+          <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded transition-colors">Hakkımızda</a>
+          <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded transition-colors">İletişim</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-16">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold text-brand-dark mb-4">Blog</h1>
+      <p class="text-gray-600">İskelet sayfa. İçerik daha sonra eklenecek.</p>
+    </div>
+  </main>
+
+  <footer class="bg-brand-dark text-white py-10 mt-16">
+    <div class="container mx-auto px-4 text-center text-gray-300">© 2025 BegonTech</div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
