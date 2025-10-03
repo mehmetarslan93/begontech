@@ -1,1 +1,0 @@
-print("Begontech sistemi başlatılıyor...")
