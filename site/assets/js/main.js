@@ -1,6 +1,14 @@
 // BeğonTech - Main JavaScript File
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Hide page loader when DOM is ready
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+        window.addEventListener('load', () => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        });
+    }
     
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');

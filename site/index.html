@@ -16,7 +16,9 @@
     <title>BegonTech - Ana Sayfa</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="assets/images/begontechlight.png">
+    <link rel="apple-touch-icon" href="assets/images/begontechlight.png">
+    <link rel="shortcut icon" href="assets/images/begontechlight.png">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -42,6 +44,10 @@
     </script>
 </head>
 <body class="bg-white text-gray-800">
+    <!-- Page Loading Overlay -->
+    <div id="pageLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white bg-opacity-90 transition-opacity duration-500">
+        <img src="assets/images/begontechgif.gif" alt="Yükleniyor..." class="w-32 h-32 animate-spin-slow" />
+    </div>
     <!-- Shared Header Placeholder: loaded via JS -->
     <div id="__header"></div>
 
