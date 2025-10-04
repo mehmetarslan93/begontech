@@ -68,11 +68,19 @@
   }
 
   function wireHeaderMenu(){
-    const header = document.querySelector('[data-partial="header"]');
-    if(!header) return;
-    const btn = header.querySelector('[data-menu-btn]');
-    const menu = header.querySelector('[data-menu]');
-    if(btn && menu){ btn.addEventListener('click', ()=> menu.classList.toggle('hidden')); }
+    // Use event delegation for robustness
+    document.body.addEventListener('click', function(e){
+      const btn = e.target.closest('[data-menu-btn]');
+      if(btn){
+        const header = btn.closest('[data-partial="header"]');
+        if(header){
+          const menu = header.querySelector('[data-menu]');
+          if(menu){
+            menu.classList.toggle('hidden');
+          }
+        }
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', async ()=>{

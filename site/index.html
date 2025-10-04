@@ -54,9 +54,18 @@
     <!-- Hero Section: Main banner with headline and call-to-action buttons -->
     <section class="hero-gradient py-20">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-brand-dark mb-6">
+            <h1 class="text-2xl md:text-4xl font-bold text-brand-dark mb-6">
                 Evinizi ve Ofisinizi <span class="text-brand-primary">Telefondan</span> Yönetin
             </h1>
+            <div class="relative mx-auto w-full max-w-3xl mb-8" style="background:none;">
+                <img src="assets/images/smart-home/homeplan.png" alt="Akıllı Ev Planı" class="w-full rounded-xl shadow-none" style="background:none;" />
+                <!-- Smart device dots (hotspots) -->
+                <div class="hotspot" style="top: 30%; left: 25%;" data-device="Akıllı Termostat" data-detail="Ev sıcaklığını ve iklimlendirmeyi kontrol edin."></div>
+                <div class="hotspot" style="top: 60%; left: 50%;" data-device="Akıllı Ampul" data-detail="Enerji tasarruflu aydınlatma ve uzaktan kontrol."></div>
+                <div class="hotspot" style="top: 40%; left: 75%;" data-device="Güvenlik Kamerası" data-detail="Ev güvenliğini anlık izleyin."></div>
+                <div class="hotspot" style="top: 75%; left: 35%;" data-device="Akıllı Priz" data-detail="Elektrikli cihazları uzaktan aç/kapat."></div>
+                <div class="hotspot" style="top: 20%; left: 60%;" data-device="Akıllı Kilit" data-detail="Kapı kilidini mobil uygulama ile yönetin."></div>
+            </div>
             <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                 <!-- Brief description -->
                 İnovatif çözümlerimiz ve kaliteli ürünlerimizle ev veya ofisinizin dijital dönüşümünde yanınızdayız.
@@ -72,15 +81,6 @@
                 </a>
             </div>
             <!-- Smart Home Plan Section -->
-            <div class="relative mx-auto" style="max-width:700px;">
-                <img src="assets/images/smart-home/homeplan.png" alt="Akıllı Ev Planı" class="w-full rounded-xl shadow-lg">
-                <!-- Smart device dots -->
-                <div class="hotspot" style="top: 30%; left: 25%;" data-device="Akıllı Termostat" data-detail="Ev sıcaklığını ve iklimlendirmeyi kontrol edin."></div>
-                <div class="hotspot" style="top: 60%; left: 50%;" data-device="Akıllı Ampul" data-detail="Enerji tasarruflu aydınlatma ve uzaktan kontrol."></div>
-                <div class="hotspot" style="top: 40%; left: 75%;" data-device="Güvenlik Kamerası" data-detail="Ev güvenliğini anlık izleyin."></div>
-                <div class="hotspot" style="top: 75%; left: 35%;" data-device="Akıllı Priz" data-detail="Elektrikli cihazları uzaktan aç/kapat."></div>
-                <div class="hotspot" style="top: 20%; left: 60%;" data-device="Akıllı Kilit" data-detail="Kapı kilidini mobil uygulama ile yönetin."></div>
-            </div>
             <!-- Popup for device details -->
             <div id="devicePopup" class="fixed z-50 hidden bg-white border border-brand-primary rounded-lg shadow-lg p-4" style="min-width:220px; max-width:300px;"></div>
         </div>
@@ -89,7 +89,9 @@
     <!-- Services Preview: Three main service cards -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12">Çözümlerimiz</h2>
+            <div class="flex justify-center mb-12">
+                <h2 class="solutions-title text-3xl font-bold text-brand-dark transition-all duration-500">Çözümlerimiz</h2>
+            </div>
             <div class="grid md:grid-cols-3 gap-8">
                     <!-- Müstakil Evler Card -->
                     <div class="text-center p-6 rounded-xl shadow-md service-card bg-white service-card-hover" style="position:relative;overflow:hidden;">
