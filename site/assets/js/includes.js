@@ -44,13 +44,13 @@
                   setTimeout(()=>{ loader.style.display = 'none'; }, 500);
                 }
                 newEl.classList.remove('fade-out');
-              }, 300); // Increased duration for loader visibility
+              }, 500); // Increased duration for loader visibility
             }
           }catch(err){
             if(loader){ loader.style.display = 'none'; }
             console.warn('Partial load failed:', url, err);
           }
-        }, 300); // Increased initial delay for fade-out
+        }, 500); // Increased initial delay for fade-out
   }
 
   function activateNav(){
@@ -78,12 +78,14 @@
   document.addEventListener('DOMContentLoaded', async ()=>{
       const base = getSiteBase();
       const loader = document.getElementById('pageLoader');
+      const minLoaderTime = 1700; // Minimum loader display time in ms
       // Hide main content initially
       const mainContent = document.querySelector('main, .main-content, .container');
       if(mainContent){
         mainContent.style.opacity = '0';
         mainContent.style.pointerEvents = 'none';
       }
+      let loaderShownAt = Date.now();
       if(loader){
         loader.style.display = 'flex';
         loader.style.opacity = '1';
@@ -95,16 +97,18 @@
       ]);
       wireHeaderMenu();
       activateNav();
-      // Hide loader and show main content
-      if(loader){
-        loader.style.opacity = '0';
-        setTimeout(()=>{ loader.style.display = 'none'; }, 500);
-      }
-      if(mainContent){
-        setTimeout(()=>{
+      // Ensure loader stays visible for at least minLoaderTime
+      const elapsed = Date.now() - loaderShownAt;
+      const remaining = Math.max(0, minLoaderTime - elapsed);
+      setTimeout(() => {
+        if(loader){
+          loader.style.opacity = '0';
+          setTimeout(()=>{ loader.style.display = 'none'; }, 500);
+        }
+        if(mainContent){
           mainContent.style.opacity = '1';
           mainContent.style.pointerEvents = '';
-        }, 700);
-      }
+        }
+      }, remaining);
   });
 })();
