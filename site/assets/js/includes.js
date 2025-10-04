@@ -13,15 +13,44 @@
   }
 
   async function loadPartial(selector, url){
-    const el = document.querySelector(selector);
-    if(!el) return;
-    try{
-      const res = await fetch(url, { cache: 'no-cache' });
-      const html = await res.text();
-      el.outerHTML = html; // replace placeholder with partial root
-    }catch(err){
-      console.warn('Partial load failed:', url, err);
-    }
+        const el = document.querySelector(selector);
+        if(!el) return;
+        const loader = document.getElementById('pageLoader');
+        // Fade out current content
+        el.classList.add('fade-transition');
+        el.classList.remove('fade-out');
+        el.offsetWidth;
+        el.classList.add('fade-out');
+        setTimeout(async () => {
+          // Show loader overlay
+          if(loader){
+            loader.style.display = 'flex';
+            loader.style.opacity = '1';
+          }
+          try{
+            const res = await fetch(url, { cache: 'no-cache' });
+            const html = await res.text();
+            // Create a temp element to hold new content
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
+            const newEl = temp.firstElementChild;
+            if(newEl){
+              newEl.classList.add('fade-transition','fade-out');
+              el.replaceWith(newEl);
+              setTimeout(() => {
+                // Hide loader and fade in new content
+                if(loader){
+                  loader.style.opacity = '0';
+                  setTimeout(()=>{ loader.style.display = 'none'; }, 500);
+                }
+                newEl.classList.remove('fade-out');
+              }, 300); // Increased duration for loader visibility
+            }
+          }catch(err){
+            if(loader){ loader.style.display = 'none'; }
+            console.warn('Partial load failed:', url, err);
+          }
+        }, 300); // Increased initial delay for fade-out
   }
 
   function activateNav(){
@@ -47,10 +76,35 @@
   }
 
   document.addEventListener('DOMContentLoaded', async ()=>{
-    const base = getSiteBase();
-    await loadPartial('#__header', base + 'partials/header.html');
-    await loadPartial('#__footer', base + 'partials/footer.html');
-    wireHeaderMenu();
-    activateNav();
+      const base = getSiteBase();
+      const loader = document.getElementById('pageLoader');
+      // Hide main content initially
+      const mainContent = document.querySelector('main, .main-content, .container');
+      if(mainContent){
+        mainContent.style.opacity = '0';
+        mainContent.style.pointerEvents = 'none';
+      }
+      if(loader){
+        loader.style.display = 'flex';
+        loader.style.opacity = '1';
+      }
+      // Load header and footer in parallel
+      await Promise.all([
+        loadPartial('#__header', base + 'partials/header.html'),
+        loadPartial('#__footer', base + 'partials/footer.html')
+      ]);
+      wireHeaderMenu();
+      activateNav();
+      // Hide loader and show main content
+      if(loader){
+        loader.style.opacity = '0';
+        setTimeout(()=>{ loader.style.display = 'none'; }, 500);
+      }
+      if(mainContent){
+        setTimeout(()=>{
+          mainContent.style.opacity = '1';
+          mainContent.style.pointerEvents = '';
+        }, 700);
+      }
   });
 })();

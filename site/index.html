@@ -44,8 +44,8 @@
     </script>
 </head>
 <body class="bg-white text-gray-800">
-    <!-- Page Loading Overlay -->
-    <div id="pageLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white bg-opacity-90 transition-opacity duration-500">
+    <!-- Page Loading Overlay (used for transitions too) -->
+    <div id="pageLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white bg-opacity-90 transition-opacity duration-500" style="display:none;">
         <img src="assets/images/begontechgif.gif" alt="Yükleniyor..." class="w-32 h-32 animate-spin-slow" />
     </div>
     <!-- Shared Header Placeholder: loaded via JS -->
@@ -89,40 +89,31 @@
     <!-- Services Preview: Three main service cards -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12">Hizmetlerimiz</h2>
+            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12">Çözümlerimiz</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Web Development Card -->
+                <!-- Müstakil Evler Card -->
                 <div class="text-center p-6 rounded-xl shadow-md service-card bg-white">
                     <div class="bg-brand-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <!-- Web icon -->
-                        <svg class="w-8 h-8 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
+                        <img src="assets/images/smart-home/villaico.png" alt="Villa Icon" class="w-16 h-16 mx-auto" />
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Web Geliştirme</h3>
-                    <p class="text-gray-600">Modern ve responsive web siteleri geliştiriyoruz.</p>
+                    <h3 class="text-xl font-semibold mb-2">Müstakil Evler</h3>
+                    <p class="text-gray-600">Akıllı ev sistemleri ile donatılmış müstakil ev çözümleri.</p>
                 </div>
-                <!-- Mobile Apps Card -->
+                <!-- Apartman Card -->
                 <div class="text-center p-6 rounded-xl shadow-md service-card bg-white">
                     <div class="bg-brand-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <!-- Mobile icon -->
-                        <svg class="w-8 h-8 text-brand-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
+                        <img src="assets/images/smart-home/apartmentico.png" alt="Apartman Icon" class="w-16 h-16 mx-auto" />
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Mobil Uygulamalar</h3>
-                    <p class="text-gray-600">iOS ve Android için özel mobil uygulamalar.</p>
+                    <h3 class="text-xl font-semibold mb-2">Apartman ve Site Çözümleri</h3>
+                    <p class="text-gray-600">Akıllı ev sistemleri ile donatılmış apartman ve site çözümleri.</p>
                 </div>
-                <!-- Cloud Solutions Card -->
+                <!-- Ofis Binaları Card -->
                 <div class="text-center p-6 rounded-xl shadow-md service-card bg-white">
                     <div class="bg-brand-light w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <!-- Cloud icon -->
-                        <svg class="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
+                        <img src="assets/images/smart-home/workplaceico.png" alt="Ofis Icon" class="w-16 h-16 mx-auto" />
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Bulut Çözümleri</h3>
-                    <p class="text-gray-600">Güvenli ve ölçeklenebilir bulut hizmetleri.</p>
+                    <h3 class="text-xl font-semibold mb-2">Ofis Binaları Çözümleri</h3>
+                    <p class="text-gray-600">Güvenli ve ölçeklenebilir ofis binaları çözümleri.</p>
                 </div>
             </div>
         </div>
