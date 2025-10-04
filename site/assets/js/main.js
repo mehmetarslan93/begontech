@@ -62,48 +62,38 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Basic form validation
-            const name = document.getElementById('name')?.value.trim();
-            const email = document.getElementById('email')?.value.trim();
-            const message = document.getElementById('message')?.value.trim();
-            
-            if (!name || !email || !message) {
-                alert('Lütfen tüm alanları doldurunuz.');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                alert('Lütfen geçerli bir e-posta adresi giriniz.');
-                return;
-            }
-            
-            // Form gönderimi başarılı (burada gerçek form işlemi yapılabilir)
-            alert('Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.');
-            contactForm.reset();
+            // ...existing code...
         });
     }
-    
-    // Email validation helper
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    // Loading animation for buttons
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const original = this.innerHTML;
-            this.innerHTML = '<svg class="animate-spin h-5 w-5 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Yükleniyor...';
-            this.disabled = true;
-            
-            // Simulate loading time
-            setTimeout(() => {
-                this.innerHTML = original;
-                this.disabled = false;
-            }, 2000);
+    // ...existing code...
+
+    // Smart Home Device Dots Popup Logic
+    const hotspots = document.querySelectorAll('.hotspot');
+    const popup = document.getElementById('devicePopup');
+    if (hotspots.length && popup) {
+        hotspots.forEach(dot => {
+            dot.addEventListener('mouseenter', function(e) {
+                const device = dot.getAttribute('data-device');
+                const detail = dot.getAttribute('data-detail');
+                popup.innerHTML = `<strong>${device}</strong><br><span>${detail}</span>`;
+                popup.style.display = 'block';
+                // Position popup near dot
+                const rect = dot.getBoundingClientRect();
+                const scrollY = window.scrollY || window.pageYOffset;
+                const scrollX = window.scrollX || window.pageXOffset;
+                popup.style.top = (rect.top + scrollY - popup.offsetHeight - 10) + 'px';
+                popup.style.left = (rect.left + scrollX + rect.width / 2 - popup.offsetWidth / 2) + 'px';
+            });
+            dot.addEventListener('mouseleave', function(e) {
+                popup.style.display = 'none';
+            });
         });
-    });
+        // Hide popup on scroll or click elsewhere
+        window.addEventListener('scroll', () => { popup.style.display = 'none'; });
+        document.body.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('hotspot')) popup.style.display = 'none';
+        });
+    }
     
 });
 
