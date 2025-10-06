@@ -222,7 +222,7 @@ html {
 .whats-float {
     position: fixed;
     transform:translate(108px,0px);
-    top:25%;
+    top:85%;
     right:0;
     width:150px;
     overflow: hidden;
