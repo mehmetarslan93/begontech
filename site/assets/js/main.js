@@ -85,12 +85,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 const detail = dot.getAttribute('data-detail');
                 popup.innerHTML = `<strong>${device}</strong><br><span>${detail}</span>`;
                 popup.style.display = 'block';
-                // Position popup near dot
-                const rect = dot.getBoundingClientRect();
-                const scrollY = window.scrollY || window.pageYOffset;
-                const scrollX = window.scrollX || window.pageXOffset;
-                popup.style.top = (rect.top + scrollY - popup.offsetHeight - 10) + 'px';
-                popup.style.left = (rect.left + scrollX + rect.width / 2 - popup.offsetWidth / 2) + 'px';
+                popup.style.position = 'fixed';
+                // Position popup near the dot
+                const dotRect = dot.getBoundingClientRect();
+                setTimeout(() => {
+                    const popupRect = popup.getBoundingClientRect();
+                    let top, left;
+                    const offset = 12;
+                    // Prefer above the dot
+                    if (dotRect.top - popupRect.height - offset > 0) {
+                        top = dotRect.top - popupRect.height - offset;
+                    } else {
+                        // If not enough space above, show below
+                        top = dotRect.bottom + offset;
+                    }
+                    // Center horizontally to dot
+                    left = dotRect.left + dotRect.width / 2 - popupRect.width / 2;
+                    // Prevent off-screen
+                    if (left + popupRect.width > window.innerWidth) {
+                        left = window.innerWidth - popupRect.width - 10;
+                    }
+                    if (left < 0) {
+                        left = 10;
+                    }
+                    popup.style.top = top + 'px';
+                    popup.style.left = left + 'px';
+                }, 0);
             });
             dot.addEventListener('mouseleave', function(e) {
                 popup.style.display = 'none';
