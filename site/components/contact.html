@@ -18,16 +18,54 @@
   <!-- Shared Header Placeholder -->
   <div id="__header"></div>
 
-  <main class="py-16">
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold text-brand-dark mb-4">İletişim</h1>
-      <p class="text-gray-600 mb-6">Hızlıca temasa geçmek için formu kullanabilirsiniz (şimdilik placeholder).</p>
-      <form class="max-w-xl space-y-4">
-        <input type="text" placeholder="Ad Soyad" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
-        <input type="email" placeholder="E-posta" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
-        <textarea placeholder="Mesajınız" rows="5" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
-        <button type="button" class="btn-primary text-white px-6 py-3 rounded-lg">Gönder</button>
-      </form>
+  <main class="py-10">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <h1 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4 text-center">İletişim</h1>
+      <p class="text-lg text-gray-700 mb-6 text-center">
+        BegonTech ile iletişime geçin, akıllı ev ve iş yeri çözümlerimiz hakkında bilgi alın. Size en uygun çözümü birlikte bulalım!
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <!-- Keşif Section: combines Akıllı Ev Dönüşümü and Keşif Çağrısı -->
+        <section class="bg-white/80 backdrop-blur-lg rounded-xl shadow-xl p-8 flex flex-col justify-between border border-brand-light">
+          <h2 class="text-xl font-bold text-brand-primary mb-2 flex items-center gap-2">
+            <i class="fa fa-search text-brand-secondary"></i> Keşif
+          </h2>
+          <p class="text-gray-700 mb-4">Evinizi en optimum çözümler ile akıllı eve dönüştürmek için bizimle iletişime geçin. Ücretsiz keşif çağrısı için telefon numaranızı bırakın, uzmanlarımız sizi arayarak en uygun çözümü birlikte belirlesin.</p>
+          <div class="flex flex-col gap-2 mb-6">
+            <a href="mailto:info@begontech.com" class="btn-primary text-white px-4 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center">
+              <i class="fa fa-envelope"></i> info@begontech.com
+            </a>
+          </div>
+          <form class="space-y-3 mt-auto">
+            <input type="text" placeholder="Ad Soyad" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <input type="tel" placeholder="Telefon Numaranız" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full font-semibold">Keşif Çağrısı Başlat</button>
+          </form>
+        </section>
+        <!-- İletişim Section: separate card -->
+        <section class="bg-white/80 backdrop-blur-lg rounded-xl shadow-xl p-8 flex flex-col justify-between border border-brand-light">
+          <h2 class="text-lg font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa fa-paper-plane text-brand-secondary"></i> İletişim Formu</h2>
+          <p class="text-gray-700 mb-4">Her türlü soru, öneri veya iş birliği için aşağıdaki formu doldurabilirsiniz.</p>
+          <form class="space-y-3 mt-auto">
+            <input type="text" placeholder="Ad Soyad" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <input type="email" placeholder="E-posta" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <textarea placeholder="Mesajınız" rows="3" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required></textarea>
+            <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full font-semibold">Gönder</button>
+          </form>
+          <div class="my-6 flex items-center">
+            <hr class="flex-grow border-t border-brand-light" />
+            <span class="mx-4 text-gray-400 text-sm">veya</span>
+            <hr class="flex-grow border-t border-brand-light" />
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="mb-2 text-brand-primary font-semibold text-base">WhatsApp ile bize ulaşın</span>
+            <a href="https://wa.me/905062691778" target="_blank" class="btn-primary text-white px-5 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center">
+              <i class="fa fa-whatsapp"></i> +90 506 269 1778
+            </a>
+          </div>
+        </section>
+      </div>
     </div>
   </main>
 
