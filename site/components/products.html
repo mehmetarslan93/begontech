@@ -26,6 +26,7 @@
       <!-- Title -->
       <div class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">Ürün Kataloğu</h1>
+        <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
         <p class="mt-2 text-brand-accent font-medium">Akuvox & Akubela ürünleriyle ilham alın</p>
       </div>
 
@@ -34,15 +35,40 @@
         <aside class="lg:col-span-3">
           <div class="bg-white rounded-xl shadow p-4 lg:sticky lg:top-24">
             <h2 class="text-lg font-semibold text-brand-dark mb-3">Kategoriler</h2>
-            <div class="flex flex-wrap gap-2">
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="all">Tümü</button>
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="door">Kapı Önü Ziller</button>
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="indoor">Daire İçi Paneller</button>
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="access">Access Kontrol</button>
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="twire">2 Kablolu IP Sistemleri</button>
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="villa">Villa Setler</button>
-              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="smart">Akıllı Ev Ürünleri</button>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="all"><i class="fa fa-th-large"></i> Tümü</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="door"><i class="fa fa-bell"></i> Kapı Önü Ziller</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="indoor"><i class="fa fa-tablet"></i> Daire İçi Paneller</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="access"><i class="fa fa-lock"></i> Access Kontrol</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="twire"><i class="fa fa-random"></i> 2 Kablolu IP Sistemleri</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="villa"><i class="fa fa-home"></i> Villa Setler</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="smart"><i class="fa fa-cogs"></i> Akıllı Ev Ürünleri</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-green-400 text-green-700 hover:border-brand-accent" data-cat="hypanel"><i class="fa fa-tablet"></i> HyPanel</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-blue-400 text-blue-700 hover:border-brand-accent" data-cat="kilit"><i class="fa fa-lock"></i> Akıllı Kilitler</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-yellow-400 text-yellow-700 hover:border-brand-accent" data-cat="sensor"><i class="fa fa-thermometer-half"></i> Sensörler</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-red-400 text-red-700 hover:border-brand-accent" data-cat="termostat"><i class="fa fa-fire"></i> Termostat</button>
+              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-purple-400 text-purple-700 hover:border-brand-accent" data-cat="anahtar"><i class="fa fa-toggle-on"></i> Anahtar</button>
             </div>
+            <div class="border-t border-gray-300 my-4"></div>
+
+            <h2 class="text-lg font-semibold text-brand-dark mb-2">Marka</h2>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="brand-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-brand="all">Tümü</button>
+              <button class="brand-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-brand="Akuvox">Akuvox</button>
+              <button class="brand-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-brand="Akubela">Akubela</button>
+            </div>
+            <div class="border-t border-gray-300 my-4"></div>
+
+            <h2 class="text-lg font-semibold text-brand-dark mb-2">Bağlantı</h2>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="all">Tümü</button>
+              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="WiFi">WiFi</button>
+              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="KNX">KNX</button>
+              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="Zigbee">Zigbee</button>
+              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="Bluetooth">Bluetooth</button>
+              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="IR">IR</button>
+            </div>
+            <div class="border-t border-gray-300 my-4"></div>
 
             <!-- Search -->
             <div class="mt-4">
@@ -59,20 +85,58 @@
 
         <!-- Products -->
         <section class="lg:col-span-6">
+          <!-- Controls: Görüntüle, grid/list, sort -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2 text-sm font-medium text-gray-800">
+              <span>Görüntüle :</span>
+              <button class="view-count-btn px-1 text-brand-primary" data-count="4">4</button> /
+              <button class="view-count-btn px-1 text-brand-primary" data-count="8">8</button> /
+              <button class="view-count-btn px-1 text-brand-primary" data-count="12">12</button> /
+              <button class="view-count-btn px-1 text-brand-primary" data-count="16">16</button> /
+              <button class="view-count-btn px-1 text-brand-primary" data-count="24">24</button> /
+              <button class="view-count-btn px-1 text-brand-primary" data-count="all">Tümü</button>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="view-list" class="p-1 border rounded text-gray-500 hover:text-brand-primary" title="Liste Görünümü">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="2" rx="1"/><rect x="4" y="11" width="16" height="2" rx="1"/><rect x="4" y="16" width="16" height="2" rx="1"/></svg>
+              </button>
+              <button id="view-grid" class="p-1 border rounded text-brand-primary bg-brand-light" title="Standart Grid Görünümü">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+              </button>
+              <button id="view-grid-dense" class="p-1 border rounded text-gray-500 hover:text-brand-primary" title="Yoğun Grid Görünümü">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="4" height="4" rx="1"/><rect x="10" y="4" width="4" height="4" rx="1"/><rect x="16" y="4" width="4" height="4" rx="1"/><rect x="4" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="16" y="10" width="4" height="4" rx="1"/><rect x="4" y="16" width="4" height="4" rx="1"/><rect x="10" y="16" width="4" height="4" rx="1"/><rect x="16" y="16" width="4" height="4" rx="1"/></svg>
+              </button>
+            </div>
+            <div class="relative">
+              <select id="sort-method" class="appearance-none border-b border-gray-300 pr-6 pl-2 py-1 text-sm font-medium text-gray-800 focus:outline-none focus:border-brand-accent">
+                <option value="default">Varsayılan Sıralama</option>
+                <option value="name-asc">İsim (A-Z)</option>
+                <option value="name-desc">İsim (Z-A)</option>
+                <option value="brand">Marka</option>
+              </select>
+              <span class="absolute right-1 top-2 text-gray-400 pointer-events-none">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </div>
+          </div>
           <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+          <div id="pagination" class="flex justify-center items-center gap-2 mt-6"></div>
         </section>
 
         <!-- Basket -->
         <aside class="lg:col-span-3">
           <div class="bg-white rounded-xl shadow p-4 lg:sticky lg:top-24">
             <div class="flex items-center justify-between mb-3">
-              <h2 class="text-lg font-semibold text-brand-dark">Sepet</h2>
+              <h2 class="text-lg font-semibold text-brand-dark flex items-center gap-4">
+                <img src="../assets/images/basketico.PNG" alt="Sepet" class="w-16 h-16" />
+                Sepet
+              </h2>
               <span id="basket-count" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-accent text-white text-sm">0</span>
             </div>
             <div id="basket-items" class="divide-y divide-gray-200"></div>
             <div class="mt-4 flex items-center justify-between">
               <button id="clear-basket" class="text-sm text-gray-500 hover:text-red-600">Temizle</button>
-              <button id="send-offer" class="btn-primary px-4 py-2 text-white rounded-lg">Teklif Gönder</button>
+              <button id="send-offer" class="btn-primary px-4 py-2 text-white rounded-lg">Teklif İste</button>
             </div>
           </div>
         </aside>
@@ -83,7 +147,7 @@
   <!-- Mobile basket button -->
   <button id="mobile-basket-btn" class="fixed bottom-5 right-5 md:hidden shadow-lg bg-brand-accent text-white rounded-full w-14 h-14 flex items-center justify-center">
     <span class="relative">
-      <i class="fa fa-shopping-basket text-xl"></i>
+      <img src="../assets/images/basketico.PNG" alt="Sepet" class="w-8 h-8" />
       <span id="mobile-basket-count" class="absolute -top-2 -right-3 text-xs bg-white text-brand-accent rounded-full w-5 h-5 flex items-center justify-center">0</span>
     </span>
   </button>
@@ -116,42 +180,163 @@
   </div>
 
   <script>
-    // Gerçek ürünler, her klasörden en az bir ürün
+    // Her resim için bir ürün: klasörler kategoriye göre eşlendi
     const PRODUCTS = [
-      // Kapı Önü Ziller
-      { id:'S539', cat:'door', name:'S539', desc:'10" Android Kapı Önü Zili', images:['../assets/images/products/doorbell/s539.png'] },
-      { id:'X915', cat:'door', name:'X915', desc:'Yüz Tanıma Android Kapı Zili', images:['../assets/images/products/doorbell/x915.png'] },
-      { id:'E18', cat:'door', name:'E18', desc:'7" Yüz Tanıma Kapı Zili', images:['../assets/images/products/doorbell/e18-03827.png'] },
-      // Daire İçi Paneller
-      { id:'X933', cat:'indoor', name:'X933', desc:'7" Android İç Panel', images:['../assets/images/products/interior_panel/x933-64601.png'] },
-      { id:'S567', cat:'indoor', name:'S567', desc:'10.1" Android Daire İçi Panel', images:['../assets/images/products/interior_panel/s567-11143.png'] },
-      { id:'C315', cat:'indoor', name:'C315', desc:'7" Android Daire İçi Panel', images:['../assets/images/products/interior_panel/akuvox-c315-silver_345x345_crop_center-copy-70935.jpg'] },
-      // Access Kontrol
-      { id:'A08', cat:'access', name:'A08', desc:'IP Access Kontrol Terminali', images:['../assets/images/products/accesscontrol/a08-70217.png'] },
-      { id:'EC33', cat:'access', name:'EC33', desc:'Asansör Erişim Kontrol Cihazı', images:['../assets/images/products/accesscontrol/ec33-70751.png'] },
-      { id:'SR01', cat:'access', name:'SR01', desc:'Güvenlik Rölesi', images:['../assets/images/products/accesscontrol/sr01-70924.png'] },
       // 2 Kablolu IP Sistemleri
-      { id:'R20K-2', cat:'twire', name:'R20K-2', desc:'2 Kablolu SIP Kapı Zili', images:['../assets/images/products/2wireintercom/r20k-04803-05251.jpg'] },
-      { id:'C313W-2', cat:'twire', name:'C313W-2', desc:'2 Kablolu İç Panel', images:['../assets/images/products/2wireintercom/c3151-02917.jpg'] },
-      { id:'NS-2', cat:'twire', name:'NS-2', desc:'2 Kablolu IP Ağ Anahtarı', images:['../assets/images/products/2wireintercom/ns2-05937.jpg'] },
+      {
+        id:'c3151-02917',
+        cat:'twire',
+        name:'Akuvox C315 - 7” Android',
+        desc:'7” Android daire içi panel',
+        brand:'Akuvox',
+        conn:['WiFi'],
+        images:['../assets/images/products/2wireintercom/c3151-02917.jpg'],
+        details:`<div class='mb-2'>7” dokunmatik ekranlı, Android tabanlı daire içi panel. Uygun maliyetle yüksek performans, şık görünüm ve kaliteyi bir arada sunar. Kullanıcı dostu arayüzü ve premium ses/görüntü kalitesiyle projeleriniz için idealdir.</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc'>
+          <li><b>Ekran:</b> 7” kapasitif dokunmatik TFT, 1024x600 çözünürlük, 16M renk, 16:9 oran</li>
+          <li><b>İşletim Sistemi:</b> Android OS</li>
+          <li><b>Ses/Görüntü:</b> Premium kalite, H.264 desteği</li>
+          <li><b>Güç:</b> PoE enerji besleme</li>
+          <li><b>Parlaklık:</b> 270 nits</li>
+          <li><b>Kontrast:</b> 800:1</li>
+          <li><b>Görüş Açısı:</b> 75° sol/sağ, 70° yukarı, 75° aşağı</li>
+          <li><b>Fiziksel Boyut:</b> 200x132x27mm</li>
+          <li><b>Arayüz:</b> 2 x RJ45 Ethernet, 1 röle çıkışı, 8 I/O güvenlik bağlantısı, RS485 portu</li>
+          <li><b>Alarm sistemine entegrasyon</b></li>
+        </ul>`
+      },
+      { id:'e121-00307', cat:'twire', name:'E121', desc:'2 Kablolu IP Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/e121-00307.jpg'] },
+      { id:'ns1-05948', cat:'twire', name:'NS1', desc:'2 Kablolu IP Ağ Anahtarı', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/ns1-05948.jpg'] },
+      { id:'ns2-05937', cat:'twire', name:'NS2', desc:'2 Kablolu IP Ağ Anahtarı', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/ns2-05937.jpg'] },
+      { id:'r20_11-05504', cat:'twire', name:'R20_11', desc:'2 Kablolu IP Kapı Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/r20_11-05504.png'] },
+      { id:'r20k-04803-05251', cat:'twire', name:'R20K', desc:'2 Kablolu SIP Kapı Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/r20k-04803-05251.jpg'] },
+      { id:'untitled-44-05734', cat:'twire', name:'Untitled', desc:'2 Kablolu IP Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/untitled-44-05734.png'] },
+      // Access Kontrol
+      { id:'a01-70903', cat:'access', name:'A01', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a01-70903.png'] },
+      { id:'a02-70842', cat:'access', name:'A02', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a02-70842.png'] },
+      { id:'a03-70822', cat:'access', name:'A03', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a03-70822.png'] },
+      { id:'a05-70052', cat:'access', name:'A05', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a05-70052.png'] },
+      { id:'a08-70217', cat:'access', name:'A08', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a08-70217.png'] },
+      { id:'a094-65835', cat:'access', name:'A094', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a094-65835.png'] },
+      { id:'a094-65835-1', cat:'access', name:'A094', desc:'IP Access Kontrol Terminali', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/a094-65835 (1).png'] },
+      { id:'akuvox-bkey-bluetooth-access-key-copy', cat:'access', name:'BKey', desc:'Bluetooth Access Key', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/akuvox-bkey-bluetooth-access-key-copy.jpg'] },
+      { id:'card-reader-43851', cat:'access', name:'Card Reader', desc:'Kart Okuyucu', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/card-reader-43851.png'] },
+      { id:'crm11-64259', cat:'access', name:'CRM11', desc:'Access Kontrol Modülü', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/crm11-64259.png'] },
+      { id:'crp11-60242', cat:'access', name:'CRP11', desc:'Access Kontrol Modülü', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/crp11-60242.png'] },
+      { id:'ec33-70751', cat:'access', name:'EC33', desc:'Asansör Erişim Kontrol Cihazı', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/ec33-70751.png'] },
+      { id:'sr01-70924', cat:'access', name:'SR01', desc:'Güvenlik Rölesi', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/accesscontrol/sr01-70924.png'] },
       // Akıllı Ev Ürünleri (Akubela)
-      { id:'HyPanel Supreme', cat:'smart', name:'HyPanel Supreme', desc:'12" Ekranlı, el hareketiyle kontrol edilen akıllı ev paneli', images:['../assets/images/products/akubela/hypanel_supreme.avif'] },
-      { id:'HyPanel Lux', cat:'smart', name:'HyPanel Lux', desc:'Sanat ve konforu birleştiren lüks akıllı ev paneli', images:['../assets/images/products/akubela/hypanel_lux.avif'] },
-      { id:'SmartPanel Pro', cat:'smart', name:'SmartPanel Pro', desc:'Akubela SmartPanel Pro akıllı ev kontrol paneli', images:['../assets/images/products/akubela/smartpanelpro.png'] },
-      { id:'SL60', cat:'smart', name:'SL60', desc:'Akubela akıllı kapı kilidi', images:['../assets/images/products/akubela/sl60_smartlock.png'] },
+      { id:'c6_smartlock', cat:'kilit', name:'C6 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/c6_smartlock.png'] },
+      { id:'f2_smartlock', cat:'kilit', name:'F2 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/f2_smartlock.png'] },
+      { id:'HyPanel KeyPlus-Front', cat:'hypanel', name:'HyPanel KeyPlus', desc:'Akubela HyPanel KeyPlus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel KeyPlus-Front.avif'] },
+      { id:'HyPanel Pro-Front', cat:'hypanel', name:'HyPanel Pro', desc:'Akubela HyPanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel Pro-Front.avif'] },
+      { id:'hypanel_elite7', cat:'hypanel', name:'HyPanel Elite7', desc:'Akubela HyPanel Elite7', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_elite7.avif'] },
+      { id:'hypanel_lite', cat:'hypanel', name:'HyPanel Lite', desc:'Akubela HyPanel Lite', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lite.avif'] },
+      { id:'hypanel_lux', cat:'hypanel', name:'HyPanel Lux', desc:'Akubela HyPanel Lux', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux.avif'] },
+      { id:'hypanel_lux-1', cat:'hypanel', name:'HyPanel Lux', desc:'Akubela HyPanel Lux', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux (1).avif'] },
+      { id:'hypanel_lux_ring', cat:'hypanel', name:'HyPanel Lux Ring', desc:'Akubela HyPanel Lux Ring', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux_ring.avif'] },
+      { id:'hypanel_plus', cat:'hypanel', name:'HyPanel Plus', desc:'Akubela HyPanel Plus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_plus.avif'] },
+      { id:'hypanel_supreme', cat:'hypanel', name:'HyPanel Supreme', desc:'Akubela HyPanel Supreme', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_supreme.avif'] },
+      { id:'hypanel_ultra', cat:'hypanel', name:'HyPanel Ultra', desc:'Akubela HyPanel Ultra', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_ultra.avif'] },
+      { id:'HyPanel-F', cat:'hypanel', name:'HyPanel F', desc:'Akubela HyPanel F', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel-F.avif'] },
+      { id:'sl50_smartlock', cat:'kilit', name:'SL50 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/sl50_smartlock.png'] },
+      { id:'sl60_smartlock', cat:'kilit', name:'SL60 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/sl60_smartlock.png'] },
+      { id:'Smartpanel', cat:'hypanel', name:'Smartpanel', desc:'Akubela Smartpanel', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/Smartpanel.png'] },
+      { id:'smartpanelpro', cat:'hypanel', name:'Smartpanel Pro', desc:'Akubela Smartpanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/smartpanelpro.png'] },
+      // Kapı Önü Ziller
+      { id:'2021070811575313-62640', cat:'door', name:'Kapı Zili', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/2021070811575313-62640.png'] },
+      { id:'db01-10421', cat:'door', name:'DB01', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/db01-10421.png'] },
+      { id:'e161-04401', cat:'door', name:'E161', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e161-04401.png'] },
+      { id:'e18-03827', cat:'door', name:'E18', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e18-03827.png'] },
+      { id:'e20-05454', cat:'door', name:'E20', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e20-05454.png'] },
+      { id:'e21-05617', cat:'door', name:'E21', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e21-05617.png'] },
+      { id:'r20_1', cat:'door', name:'R20_1', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r20_1.png'] },
+      { id:'r25a-10647', cat:'door', name:'R25A', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r25a-10647.png'] },
+      { id:'r27', cat:'door', name:'R27', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r27.png'] },
+      { id:'r28', cat:'door', name:'R28', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r28.png'] },
+      { id:'r29', cat:'door', name:'R29', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r29.png'] },
+      { id:'s532', cat:'door', name:'S532', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s532.png'] },
+      { id:'s535', cat:'door', name:'S535', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s535.png'],
+        details:`<div class='mb-2'>Akuvox S535, modüler yapısı ve çoklu geçiş kontrol seçenekleriyle apartman, site ve ticari binalar için yüksek güvenlik ve esneklik sunan bir IP interkom panelidir.</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc'>
+          <li><b>Ekran:</b> 5” IPS LCD dokunmatik ekran</li>
+          <li><b>Kamera:</b> 2MP ana kamera, otomatik ışıklandırma, sürekli çalışan kamera, LED gece modu</li>
+          <li><b>Görüş Açısı:</b> 110° yatay / 62° dikey</li>
+          <li><b>İşletim Sistemi:</b> Linux</li>
+          <li><b>Geçiş Seçenekleri:</b> Yüz tanıma, kart, PIN, BLE, QR kod</li>
+          <li><b>RF Kart Okuyucu:</b> 13.56MHz, 125kHz & NFC</li>
+          <li><b>Bağlantı:</b> Ethernet (RJ45), Bluetooth, RS485, Wiegand</li>
+          <li><b>Protokoller:</b> IPv4, HTTP, HTTPS, FTP, DNS, NTP, RTSP, RTP, TCP, UDP, ICMP, DHCP, ARP</li>
+          <li><b>Yönetim:</b> Web yönetim portalı, otomatik provisioning, konfigürasyon yedekleme/geri yükleme, erişim ve giriş kayıtları dışa aktarma, firmware güncelleme</li>
+          <li><b>Dayanıklılık:</b> IP66 suya ve toza dayanıklı, IK08 darbe koruma, alüminyum gövde</li>
+          <li><b>Montaj:</b> Sıva altı ve duvar tipi seçenekleri</li>
+          <li><b>Boyutlar:</b> 210 × 100 × 27 mm</li>
+          <li><b>Çalışma Sıcaklığı:</b> -40°C ~ +55°C</li>
+        </ul>`
+      },
+      { id:'s539', cat:'door', name:'S539', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s539.png'],
+        details:`<div class='mb-2'>Akuvox S539, sektörde ilk Metaverse özellikli Android tabanlı bina tipi interkom panelidir. 10” IPS dokunmatik ekranı, yüksek çözünürlüklü ve starlight destekli kamerası ile modern binalar için üst düzey güvenlik ve etkileşim sunar. Kart, şifre, yüz tanıma, QR kod ve BLE gibi çoklu geçiş kontrol seçenekleriyle donatılmıştır.</div>
+        <div class='mb-2'><a href='https://www.akuvoxinterkom.com/dosyalar/akuvox-s539-datasheet-v1.0.pdf' target='_blank' class='text-brand-primary underline font-semibold'>Resmi teknik doküman (PDF)</a></div>
+         <ul class='text-sm text-gray-700 pl-4 list-disc'>
+           <li><b>Ekran:</b> 10” tam renkli IPS dokunmatik ekran</li>
+           <li><b>Kamera:</b> 5MP ana kamera, HDR ve starlight destekli, sürekli çalışan kamera, otomatik gece modu</li>
+           <li><b>Görüş Açısı:</b> 120° yatay / 72° dikey</li>
+           <li><b>İşletim Sistemi:</b> Android</li>
+           <li><b>Yüz Tanıma:</b> AI destekli, >%99 doğruluk, <0.2 sn karşılaştırma süresi, <%0.1 yanlış tanıma oranı</li>
+           <li><b>Geçiş Seçenekleri:</b> QR kod, kart, PIN, BLE ve yüz tanıma ile çoklu kilit açma</li>
+           <li><b>RF Kart Okuyucu:</b> 13.56 MHz & 125 kHz</li>
+           <li><b>Bağlantı:</b> Ethernet (RJ45), Bluetooth, RS485, Wiegand, Line Out</li>
+           <li><b>Protokoller:</b> IPv4, HTTP, HTTPS, FTP, SNMP, DNS, NTP, RTSP, RTP, TCP, UDP, ICMP, DHCP, ARP</li>
+           <li><b>Yönetim:</b> Web tabanlı arayüz, otomatik provizyon, OTA yazılım güncelleme, sistem günlüğü</li>
+           <li><b>Dayanıklılık:</b> IP66 suya ve toza dayanıklı, IK08 darbe koruma, alüminyum gövde</li>
+           <li><b>Montaj:</b> Sıva altı ve sıva üstü seçenekleri</li>
+           <li><b>Boyutlar:</b> Sıva altı: 363.5 × 179.8 × 64 mm, Sıva üstü: 367.5 × 183 × 35.5 mm</li>
+           <li><b>Çalışma Sıcaklığı:</b> -30°C ~ +55°C</li>
+         </ul>`
+      },
+      { id:'x912', cat:'door', name:'X912', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/x912.png'] },
+      { id:'x915', cat:'door', name:'X915', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/x915.png'] },
+      { id:'x916', cat:'door', name:'X916', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/x916.png'] },
+      // Daire İçi Paneller
+  // ...existing code...
+      { id:'c316-65213', cat:'indoor', name:'C316', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/c316-65213.png'] },
+      { id:'c319-64641', cat:'indoor', name:'C319', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/c319-64641.png'] },
+      { id:'it88-1-22210', cat:'indoor', name:'IT88', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/it88-1-22210.png'] },
+      { id:'r49g-64702', cat:'indoor', name:'R49G', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/r49g-64702.png'] },
+      { id:'s560-65153', cat:'indoor', name:'S560', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/s560-65153.png'] },
+      { id:'s562-1-11117', cat:'indoor', name:'S562', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/s562-1-11117.png'] },
+      { id:'s563-11420', cat:'indoor', name:'S563', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/s563-11420.png'] },
+      { id:'s567-11143', cat:'indoor', name:'S567', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/s567-11143.png'] },
+      { id:'s567-11143-1', cat:'indoor', name:'S567', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/s567-11143 (1).png'] },
+      { id:'x933-64601', cat:'indoor', name:'X933', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/x933-64601.png'] },
+      { id:'x937-32741', cat:'indoor', name:'X937', desc:'Daire İçi Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/x937-32741.png'] },
     ];
 
     // State
-    let activeCat = 'all';
-    let filtered = PRODUCTS.slice();
-    let basket = JSON.parse(localStorage.getItem('begon_basket') || '[]');
-    let modalIndex = 0;
-    let currentModal = null;
+  let activeCat = 'all';
+  let activeBrand = 'all';
+  let activeConn = 'all';
+  let activeViewCount = 16;
+  let activePage = 1;
+  let activeViewMode = 'grid'; // 'grid', 'list', 'grid-dense'
+  let activeSort = 'default';
+  let filtered = PRODUCTS.slice();
+  let basket = JSON.parse(localStorage.getItem('begon_basket') || '[]');
+  let modalIndex = 0;
+  let currentModal = null;
 
     // Elements
-    const gridEl = document.getElementById('grid');
-    const catBtns = document.querySelectorAll('.cat-btn');
-    const searchEl = document.getElementById('search');
+  const gridEl = document.getElementById('grid');
+  const paginationEl = document.getElementById('pagination');
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const brandBtns = document.querySelectorAll('.brand-btn');
+  const connBtns = document.querySelectorAll('.conn-btn');
+  const viewCountBtns = document.querySelectorAll('.view-count-btn');
+  const viewListBtn = document.getElementById('view-list');
+  const viewGridBtn = document.getElementById('view-grid');
+  const viewGridDenseBtn = document.getElementById('view-grid-dense');
+  const sortMethodEl = document.getElementById('sort-method');
+  const searchEl = document.getElementById('search');
     const basketCountEl = document.getElementById('basket-count');
     const mobileBasketBtn = document.getElementById('mobile-basket-btn');
     const mobileBasketCount = document.getElementById('mobile-basket-count');
@@ -170,40 +355,131 @@
     const modalClose2 = document.getElementById('modal-close-2');
 
     function renderGrid(){
-      const html = filtered.map(p => `
-        <div class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition product-card" data-id="${p.id}">
-          <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="w-40 h-28 object-contain mx-auto mb-4" />
-          <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
-          <p class="text-sm text-gray-500">${p.desc}</p>
-          <div class="mt-4 flex gap-2">
-            <button data-action="details" class="px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition">Detay</button>
-            <button data-action="add" class="px-3 py-2 text-sm border border-brand-accent text-brand-accent rounded hover:bg-brand-accent hover:text-white transition">Sepete Ekle</button>
-          </div>
-        </div>
-      `).join('');
+      // Sorting
+      let sorted = filtered.slice();
+      if(activeSort === 'name-asc') sorted.sort((a,b)=>a.name.localeCompare(b.name));
+      else if(activeSort === 'name-desc') sorted.sort((a,b)=>b.name.localeCompare(a.name));
+      else if(activeSort === 'brand') sorted.sort((a,b)=>a.brand.localeCompare(b.brand));
+      // Pagination
+      let pageSize = activeViewCount === 'all' ? sorted.length : parseInt(activeViewCount);
+      let totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
+      if(activePage > totalPages) activePage = totalPages;
+      let start = (activePage-1)*pageSize;
+      let end = activeViewCount === 'all' ? sorted.length : start+pageSize;
+      const paged = sorted.slice(start, end);
+      let html = paged.map(p => {
+        if(activeViewMode==='list'){
+          return `<div class="bg-white rounded-xl shadow p-5 flex items-center gap-6 hover:shadow-lg transition product-card" data-id="${p.id}">
+            <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="w-32 h-24 object-contain" />
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
+              <p class="text-sm text-gray-500 mb-1">${p.desc}</p>
+              <div class="text-xs text-gray-400 mb-2">Marka: <span class="font-semibold text-brand-primary">${p.brand}</span> | Bağlantı: <span class="font-semibold text-brand-primary">${p.conn.join(', ')}</span></div>
+              <div class="flex gap-2">
+                <button data-action="details" class="px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition">Detay</button>
+                <button data-action="add" class="px-3 py-2 text-sm border border-brand-accent text-brand-accent rounded hover:bg-brand-accent hover:text-white transition">Sepete Ekle</button>
+              </div>
+            </div>
+          </div>`;
+        } else {
+          return `<div class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition product-card" data-id="${p.id}">
+            <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="w-40 h-28 object-contain mx-auto mb-4" />
+            <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
+            <p class="text-sm text-gray-500">${p.desc}</p>
+            <div class="text-xs text-gray-400 mb-2">Marka: <span class="font-semibold text-brand-primary">${p.brand}</span> | Bağlantı: <span class="font-semibold text-brand-primary">${p.conn.join(', ')}</span></div>
+            <div class="mt-4 flex gap-2">
+              <button data-action="details" class="px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition">Detay</button>
+              <button data-action="add" class="px-3 py-2 text-sm border border-brand-accent text-brand-accent rounded hover:bg-brand-accent hover:text-white transition">Sepete Ekle</button>
+            </div>
+          </div>`;
+        }
+      }).join('');
       gridEl.innerHTML = html;
+      // Update grid/list/dense classes
+      if(activeViewMode==='list') gridEl.className = 'flex flex-col gap-6';
+      else if(activeViewMode==='grid-dense') gridEl.className = 'grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4';
+      else gridEl.className = 'grid grid-cols-1 sm:grid-cols-2 gap-6';
+      // Pagination controls
+      if(activeViewCount === 'all' || totalPages === 1){
+        paginationEl.innerHTML = '';
+      } else {
+        let pagHtml = '';
+        if(activePage > 1) pagHtml += `<button class="px-2 py-1 border rounded text-brand-primary" data-page="prev">&lt;</button>`;
+        for(let i=1;i<=totalPages;i++){
+          pagHtml += `<button class="px-2 py-1 border rounded ${i===activePage?'bg-brand-primary text-white font-bold':'text-gray-700'}" data-page="${i}">${i}</button>`;
+        }
+        if(activePage < totalPages) pagHtml += `<button class="px-2 py-1 border rounded text-brand-primary" data-page="next">&gt;</button>`;
+        paginationEl.innerHTML = pagHtml;
+      }
     }
+    // View count selector
+    viewCountBtns.forEach(btn=>btn.addEventListener('click',()=>{
+      let val = btn.dataset.count;
+      activeViewCount = val === 'all' ? 'all' : parseInt(val);
+      activePage = 1;
+      viewCountBtns.forEach(b=>b.classList.remove('font-bold','text-black'));
+      btn.classList.add('font-bold','text-black');
+      renderGrid();
+    }));
+    paginationEl.addEventListener('click', e => {
+      const page = e.target.getAttribute('data-page');
+      if (!page) return;
+      if (page === 'prev') activePage = Math.max(1, activePage - 1);
+      else if (page === 'next') activePage = activePage + 1;
+      else activePage = parseInt(page);
+      renderGrid();
+    });
+    // View mode toggles
+    viewListBtn.addEventListener('click', () => {
+      activeViewMode = 'list';
+      viewListBtn.classList.add('text-brand-primary', 'bg-brand-light');
+      viewGridBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      viewGridDenseBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      renderGrid();
+    });
+    viewGridBtn.addEventListener('click', () => {
+      activeViewMode = 'grid';
+      viewGridBtn.classList.add('text-brand-primary', 'bg-brand-light');
+      viewListBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      viewGridDenseBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      renderGrid();
+    });
+    viewGridDenseBtn.addEventListener('click', () => {
+      activeViewMode = 'grid-dense';
+      viewGridDenseBtn.classList.add('text-brand-primary', 'bg-brand-light');
+      viewGridBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      viewListBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      renderGrid();
+    });
+    // Sort method
+    sortMethodEl.addEventListener('change', () => {
+      activeSort = sortMethodEl.value;
+      renderGrid();
+    });
 
-    function applyFilters(){
+    function applyFilters() {
       const q = (searchEl.value || '').trim().toLowerCase();
-      filtered = PRODUCTS.filter(p => (activeCat === 'all' || p.cat === activeCat) && (
-        p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
-      ));
+      filtered = PRODUCTS.filter(p =>
+        (activeCat === 'all' || p.cat === activeCat) &&
+        (activeBrand === 'all' || p.brand === activeBrand) &&
+        (activeConn === 'all' || (p.conn && p.conn.includes(activeConn))) &&
+        (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))
+      );
       renderGrid();
     }
 
-    function saveBasket(){
+    function saveBasket() {
       localStorage.setItem('begon_basket', JSON.stringify(basket));
     }
 
-    function updateBasketBadges(){
-      const total = basket.reduce((s,i)=>s+i.qty,0);
+    function updateBasketBadges() {
+      const total = basket.reduce((s, i) => s + i.qty, 0);
       basketCountEl.textContent = total;
       mobileBasketCount.textContent = total;
     }
 
-    function renderBasket(){
-      if(!basket.length){
+    function renderBasket() {
+      if (!basket.length) {
         basketListEl.innerHTML = '<p class="text-sm text-gray-500">Sepetiniz boş.</p>';
         updateBasketBadges();
         return;
@@ -224,92 +500,145 @@
       updateBasketBadges();
     }
 
-    function addToBasket(id){
-      const p = PRODUCTS.find(x=>x.id===id);
-      if(!p) return;
-      const existing = basket.find(x=>x.id===id);
-      if(existing) existing.qty += 1; else basket.push({ id:p.id, name:p.name, qty:1 });
+    function addToBasket(id) {
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p) return;
+      const existing = basket.find(x => x.id === id);
+      if (existing) existing.qty += 1;
+      else basket.push({ id: p.id, name: p.name, qty: 1 });
       saveBasket();
       renderBasket();
     }
 
-    function openModal(id){
-      const p = PRODUCTS.find(x=>x.id===id);
-      if(!p) return;
-      currentModal = p;
-      modalIndex = 0;
-      modalTitle.textContent = p.name;
-      modalName.textContent = p.name;
-      modalDesc.textContent = p.desc;
-      modalImg.src = p.images[0] || '../assets/images/logo.png';
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    function openModal(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  currentModal = p;
+  modalIndex = 0;
+  modalTitle.textContent = p.name;
+  modalName.textContent = p.name;
+  // Enhance readability: add spacing between paragraphs
+  let descHtml = p.desc;
+  if (p.details) {
+    // Add margin-bottom to paragraphs and list for better spacing
+    let detailsHtml = p.details.replace(/<div([^>]*)>/g, '<div$1 style="margin-bottom:1em;">')
+                              .replace(/<ul([^>]*)>/g, '<ul$1 style="margin-bottom:1em;">')
+                              .replace(/<li([^>]*)>/g, '<li$1 style="margin-bottom:0.5em;">');
+    descHtml += detailsHtml;
+  }
+  modalDesc.innerHTML = descHtml;
+  modalImg.src = p.images[0] || '../assets/images/logo.png';
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
     }
 
-    function closeModal(){
+    function closeModal() {
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     }
 
-    function showModalImage(delta){
-      if(!currentModal) return;
+    function showModalImage(delta) {
+      if (!currentModal) return;
       const imgs = currentModal.images || [];
-      if(!imgs.length) return;
+      if (!imgs.length) return;
       modalIndex = (modalIndex + delta + imgs.length) % imgs.length;
       modalImg.src = imgs[modalIndex];
     }
 
     // Wire filters
-    catBtns.forEach(btn=>btn.addEventListener('click',()=>{
+    catBtns.forEach(btn => btn.addEventListener('click', () => {
       activeCat = btn.dataset.cat;
-      catBtns.forEach(b=>b.classList.remove('bg-brand-accent','text-white','border-brand-accent'));
-      btn.classList.add('bg-brand-accent','text-white','border-brand-accent');
+      catBtns.forEach(b => b.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent'));
+      btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
+      applyFilters();
+    }));
+    brandBtns.forEach(btn => btn.addEventListener('click', () => {
+      activeBrand = btn.dataset.brand;
+      brandBtns.forEach(b => b.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent'));
+      btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
+      applyFilters();
+    }));
+    connBtns.forEach(btn => btn.addEventListener('click', () => {
+      activeConn = btn.dataset.conn;
+      connBtns.forEach(b => b.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent'));
+      btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
       applyFilters();
     }));
     searchEl.addEventListener('input', applyFilters);
 
     // Grid actions
-    gridEl.addEventListener('click', (e)=>{
+    gridEl.addEventListener('click', (e) => {
       const card = e.target.closest('.product-card');
-      if(!card) return;
+      if (!card) return;
       const id = card.dataset.id;
-      if(e.target.matches('[data-action="add"]')){ addToBasket(id); }
-      if(e.target.matches('[data-action="details"]')){ openModal(id); }
+      // If add button, add to basket
+      if (e.target.matches('[data-action="add"]')) { addToBasket(id); return; }
+      // If Detay button or anywhere else on card, open modal
+      openModal(id);
     });
 
     // Basket actions
-    document.getElementById('basket-items').addEventListener('click', (e)=>{
+    document.getElementById('basket-items').addEventListener('click', (e) => {
       const dec = e.target.getAttribute('data-dec');
       const inc = e.target.getAttribute('data-inc');
       const del = e.target.getAttribute('data-del');
-      if(dec){ const it = basket.find(x=>x.id===dec); if(it){ it.qty=Math.max(1,it.qty-1); saveBasket(); renderBasket(); } }
-      if(inc){ const it = basket.find(x=>x.id===inc); if(it){ it.qty+=1; saveBasket(); renderBasket(); } }
-      if(del){ basket = basket.filter(x=>x.id!==del); saveBasket(); renderBasket(); }
+      if (dec) { const it = basket.find(x => x.id === dec); if (it) { it.qty = Math.max(1, it.qty - 1); saveBasket(); renderBasket(); } }
+      if (inc) { const it = basket.find(x => x.id === inc); if (it) { it.qty += 1; saveBasket(); renderBasket(); } }
+      if (del) { basket = basket.filter(x => x.id !== del); saveBasket(); renderBasket(); }
     });
-    document.getElementById('clear-basket').addEventListener('click', ()=>{ basket=[]; saveBasket(); renderBasket(); });
+    document.getElementById('clear-basket').addEventListener('click', () => { basket = []; saveBasket(); renderBasket(); });
 
     // Send offer: go to contact page and prefill basket via localStorage
-    document.getElementById('send-offer').addEventListener('click', ()=>{
-      if(!basket.length){ alert('Sepetiniz boş.'); return; }
+    document.getElementById('send-offer').addEventListener('click', () => {
+      if (!basket.length) { alert('Sepetiniz boş.'); return; }
       // Mark that we came from basket for UI hint
       localStorage.setItem('begon_basket_from', '1');
       window.location.href = './contact.html?from=basket';
     });
 
     // Mobile basket button just scrolls to basket panel
-    mobileBasketBtn.addEventListener('click', ()=>{
-      document.getElementById('basket-items').scrollIntoView({behavior:'smooth', block:'start'});
+    mobileBasketBtn.addEventListener('click', () => {
+      document.getElementById('basket-items').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     // Modal wiring
     modalClose.addEventListener('click', closeModal);
     modalClose2.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    modalPrev.addEventListener('click', ()=>showModalImage(-1));
-    modalNext.addEventListener('click', ()=>showModalImage(1));
-    modalAdd.addEventListener('click', ()=>{ if(currentModal) addToBasket(currentModal.id); closeModal(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    modalPrev.addEventListener('click', () => showModalImage(-1));
+    modalNext.addEventListener('click', () => showModalImage(1));
+    modalAdd.addEventListener('click', () => { if (currentModal) addToBasket(currentModal.id); closeModal(); });
 
     // Init
+    // Highlight defaults on load
+    window.addEventListener('DOMContentLoaded', () => {
+      // Görüntüle
+      viewCountBtns.forEach(btn => {
+        if (btn.dataset.count === '16') btn.classList.add('font-bold', 'text-black');
+        else btn.classList.remove('font-bold', 'text-black');
+      });
+      // Grid view
+      viewGridBtn.classList.add('text-brand-primary', 'bg-brand-light');
+      viewListBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      viewGridDenseBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      // Varsayılan Sıralama
+      sortMethodEl.value = 'default';
+      // Kategori (Tümü)
+      catBtns.forEach(btn => {
+        if (btn.dataset.cat === 'all') btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
+        else btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+      });
+      // Marka (Tümü)
+      brandBtns.forEach(btn => {
+        if (btn.dataset.brand === 'all') btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
+        else btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+      });
+      // Bağlantı (Tümü)
+      connBtns.forEach(btn => {
+        if (btn.dataset.conn === 'all') btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
+        else btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+      });
+    });
     applyFilters();
     renderBasket();
   </script>
