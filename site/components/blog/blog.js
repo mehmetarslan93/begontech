@@ -11,7 +11,7 @@
       const card = document.createElement('article');
       card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg';
       card.innerHTML = `
-  <a href="./blog/detail.html?slug=${p.slug}" class="block group relative">
+        <a href="./blog/detail.html?slug=${p.slug}" class="block group relative">
           <div class="relative">
             <img src="${p.image}" alt="${p.title}" class="w-full h-48 object-cover group-hover:opacity-95 transition" />
             <div class="absolute inset-x-0 top-0 flex justify-between p-2">
@@ -24,6 +24,7 @@
         </a>
         <div class="p-5 flex-1 flex flex-col">
           <h2 class="text-xl font-semibold text-gray-900">${p.title}</h2>
+          ${p.subtitle ? `<h3 class='mt-1 text-base font-semibold text-brand-primary tracking-tight'>${p.subtitle}</h3>` : ''}
           <p class="mt-2 text-gray-600 text-sm">${p.excerpt}</p>
           <div class="mt-4">
             <a href="./blog/detail.html?slug=${p.slug}" class="inline-flex items-center gap-2 text-brand-primary font-semibold hover:text-brand-secondary transition">
