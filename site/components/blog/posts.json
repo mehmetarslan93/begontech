@@ -2,15 +2,21 @@
   {
     "slug": "ip-interkom",
     "title": "IP Interkom Nedir?",
+    "subtitle": "IP İnterkom Altyapısı Nasıl Çalışır?",
+    "subtitle2": "IP İnterkom Faydaları Nelerdir?",
     "excerpt": "IP tabanlı interkom sistemlerinin ne olduğunu, nasıl çalıştığını ve avantajlarını keşfedin.",
     "date": "07 Ekim 2025",
     "dateISO": "2025-10-07",
-  "image": "/site/assets/images/Blog/ipintercom.jpg",
-  "imageAlt": "/site/assets/images/Blog/ipintercım.jpg",
+    "image": "/site/assets/images/Blog/ipintercom.jpg",
+    "imageAlt": "/site/assets/images/Blog/ipintercım.jpg",
     "content": [
       "Klasik (analog) diyafon sistemleri gibi işyeri ve apartmanlarda kullanılan sesli iletişim altyapılarının daha detaylı versiyonları olan İnterkom sistemleri dahili (yerel) bir iletişim kanalıdır. Bu bağlamda İnterkom sistemleri, bas konuş prensibi ile çalışan klasik (analog) sistemlerin aksine iletişim haricinde güvenliği sağlama fonksiyonuyla paralel olarak da kullanılır. İş yerlerinde, villalarda, sitelerde ya da apartmanlarda farklı işlevsel ihtiyaçlara yönelik ürün seçenekleri bulunan İnterkom modelleri kullanıcılarına çok yönlü kullanım olanağı sağlar. Kullanımı daha ileri bir seviyeye taşıyan IP İnterkom sistemi ise kamera yapısı ve güvenlik sistemleri ile bütünleşik bir kullanım sunarak güvenlik düzeyini maksimum seviyeye çıkarırlar.",
-      "IP İnterkom Altyapısı Nasıl Çalışır?",
-      "IP İnterkom altyapısı öncelikli olarak akıllı dijital teknolojilerin kullanıldığı ve IOT tabanlı bir sistem olarak öne çıkar. Yapı ya da ev sınırları içerisindeki diğer cihazlarla iletişim kurabilen IP İnterkom; bütüncül bir iletişim ağı oluşturarak katılımcıların birbirleriyle etkili bir şekilde iletişim kurmasına olanak verir. Kapı çalması durumunda çift taraflı sesli ya da görüntülü yanıt sistemi, istenmeyen zaman aralıklarında çağrı reddi gibi seçeneklerin yanı sıra; binadaki IP kamera güvenlik altyapısına da erişimi mümkündür. Aynı şekilde yapı sınırları içerisinde ağ katılımcıları da diğer katılımcılarla interkom sistemi üzerinden birbirleriyle rahatlıkla iletişim kurabilirler."
+      "IP İnterkom altyapısı öncelikli olarak akıllı dijital teknolojilerin kullanıldığı ve IOT tabanlı bir sistem olarak öne çıkar. Yapı ya da ev sınırları içerisindeki diğer cihazlarla iletişim kurabilen IP İnterkom; bütüncül bir iletişim ağı oluşturarak katılımcıların birbirleriyle etkili bir şekilde iletişim kurmasına olanak verir. Kapı çalması durumunda çift taraflı sesli ya da görüntülü yanıt sistemi, istenmeyen zaman aralıklarında çağrı reddi gibi seçeneklerin yanı sıra; binadaki IP kamera güvenlik altyapısına da erişimi mümkündür. Aynı şekilde yapı sınırları içerisinde ağ katılımcıları da diğer katılımcılarla interkom sistemi üzerinden birbirleriyle rahatlıkla iletişim kurabilirler.",
+      "Kullanıcılar tarafından görüntülü diyafon sistemleri olarak da adlandırılan İnterkom altyapısı çift yönlü iletişim avantajı, apartman güvenlik sistemiyle ve daire içi alarmla entegrasyonu gibi seçenekler de sunar. Klasik (analog) diyafon sistemlerinin maliyeti göz önüne alındığında, IP İnterkom fiyatlarının özellikle kabalık haneli muhitler için uygun olduğunu söylemek doğru olacaktır. Çok yönlü ve işlevsel kullanım avantajları sağlayan IP İnterkom sistemi avantajları kapsamın öne çıkan başlıkları şu şekilde sıralamak doğru olacaktır:",
+      "Sınırsız Cihaz Sayısı\n\nIP İnterkom sistemleri kapsamında en önemli ve öncelikli avantajlardan biri geniş, çok katılımcılı ve iç içe geçmiş bir ağ ortamı olanağı olacaktır. İster 2, isterseniz de 2000 adet cihaz IP İnterkom sistemi sayesinde ağa kolayca dahil edilebilir ve bu cihazlar arasında hızlı, etkili ve nitelikli şekilde iletişim kurabilir.",
+      "Yenilikçi İletişim Biçimleri\n\nIP İnterkom altyapısı kapsamında öne çıkan bir diğer önemli avantaj da tekdüze olmayan iletişim biçimlerinin mevcut olmasıdır. Geleneksel sesli diyafon sistemleri aksine İnterkom sistemleri kapsamında ses haricinde multimedya veri aktarımları da mevcuttur. Örneğin yapı sınırları içerisinde, altyapı olanaklarını kullanarak mesaj atılabilir, görüntülü arama yapılabilir, IP kamera altyapısı ile bağlantı kurulabilir.",
+      "Alarm ve Güvenlik Sistemlerine Entegrasyon\n\nBelki de IP İnterkom sistemleri kapsamında en önemli avantajlardan biri de alarm ve güvenlik sistemleriyle bütünleşmiş çalışabilmesidir. Sistem kullanıcıları bu özellik sayesinde alarm yönetimi paneline erişim sağlayarak kendi yaşam alanlarına dair güvenlik detaylarını kontrol edebilirler.",
+      "Reklam ve Özelleştirilebilir Görüntü Seçenekleri\n\nIP sistemleri genelinde öne çıkan bir diğer özellikler arasında da görüntü çeşitliliği yer alır. Bu çeşitlilik sayesinde kullanıcılar kendi dairelerindeki interkom ekranlarını, yakın muhitteki alışveriş merkezlerindeki ticari kuruluşlara kiralayarak maddi kazanç da elde edebilirler. Sistem, teknolojik altyapısı ve donanımı gereği yüksek çözünürlüklü görüntüye olanak verdiğinden reklam gibi faaliyetlerden yararlanabilirler."
     ]
   }
 ]
