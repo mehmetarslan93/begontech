@@ -20,9 +20,13 @@
 
   <main class="py-10">
     <div class="container mx-auto px-4 max-w-5xl">
-      <h1 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4 text-center">İletişim</h1>
-      <p class="text-lg text-gray-700 mb-6 text-center">
-        BegonTech ile iletişime geçin, akıllı ev ve iş yeri çözümlerimiz hakkında bilgi alın. Size en uygun çözümü birlikte bulalım!
+      <h1 class="text-3xl md:text-4xl font-bold text-brand-dark text-center">İletişim</h1>
+      <div class="flex justify-center my-6">
+        <span class="inline-block w-16 h-1 rounded bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></span>
+      </div>
+      <p class="text-lg text-gray-700 mb-8 text-center">
+        <span class="font-bold text-brand-dark">IP intercom ve akıllı otomasyon çözümlerinde uzmanız.</span><br>
+        Projeniz için doğru teknolojiye birlikte karar verelim.
       </p>
 
       <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -33,13 +37,13 @@
           </h2>
           <p class="text-gray-700 mb-4">Evinizi en optimum çözümler ile akıllı eve dönüştürmek için bizimle iletişime geçin. Ücretsiz keşif çağrısı için telefon numaranızı bırakın, uzmanlarımız sizi arayarak en uygun çözümü birlikte belirlesin.</p>
           <div class="flex flex-col gap-2 mb-6">
-            <a href="mailto:info@begontech.com" class="btn-primary text-white px-4 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center">
-              <i class="fa fa-envelope"></i> info@begontech.com
+            <a href="mailto:bilgi@begontec.com" class="btn-primary text-white px-4 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center">
+              <i class="fa fa-envelope"></i> bilgi@begontec.com
             </a>
           </div>
-          <form class="space-y-3 mt-auto">
-            <input type="text" placeholder="Ad Soyad" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
-            <input type="tel" placeholder="Telefon Numaranız" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+          <form class="space-y-3 mt-auto" action="https://formspree.io/f/mvgwbpdr" method="POST">
+            <input type="text" name="adsoyad" placeholder="Ad Soyad" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <input type="tel" name="telefon" placeholder="Telefon Numaranız" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
             <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full font-semibold">Keşif Çağrısı Başlat</button>
           </form>
         </section>
@@ -47,12 +51,15 @@
         <section class="bg-white/80 backdrop-blur-lg rounded-xl shadow-xl p-8 flex flex-col justify-between border border-brand-light">
           <h2 class="text-lg font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa fa-paper-plane text-brand-secondary"></i> İletişim Formu</h2>
           <p class="text-gray-700 mb-4">Her türlü soru, öneri veya iş birliği için aşağıdaki formu doldurabilirsiniz.</p>
-          <form class="space-y-3 mt-auto">
-            <input type="text" placeholder="Ad Soyad" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
-            <input type="email" placeholder="E-posta" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
-            <textarea placeholder="Mesajınız" rows="3" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required></textarea>
+          <form class="space-y-3 mt-auto" action="https://formspree.io/f/mldpwrar" method="POST">
+            <input type="text" name="adsoyad" placeholder="Ad Soyad" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <input type="email" name="email" placeholder="E-posta" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
+            <textarea name="mesaj" placeholder="Mesajınız" rows="3" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required></textarea>
             <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full font-semibold">Gönder</button>
+            <input type="hidden" name="_replyto" value="bilgi@begontec.com" />
+            <input type="hidden" name="_subject" value="BegonTech İletişim Formu Mesajı" />
           </form>
+          <div id="formspree-success" class="hidden mt-4 text-green-600 font-semibold text-center">Mesajınız başarıyla gönderildi!</div>
           <div class="my-6 flex items-center">
             <hr class="flex-grow border-t border-brand-light" />
             <span class="mx-4 text-gray-400 text-sm">veya</span>
