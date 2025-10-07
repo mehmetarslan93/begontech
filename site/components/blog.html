@@ -19,9 +19,16 @@
   <div id="__header"></div>
 
   <main class="py-16">
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold text-brand-dark mb-4">Blog</h1>
-      <p class="text-gray-600">İskelet sayfa. İçerik daha sonra eklenecek.</p>
+    <div class="container mx-auto px-4 max-w-6xl">
+      <header class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">Blog</h1>
+        <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+        <p class="text-gray-600">Akıllı ev, IP interkom ve bina otomasyonu üzerine yazılar.</p>
+      </header>
+
+      <section id="blogGrid" data-blog-grid class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <!-- Blog cards will be injected here by blog/blog.js -->
+      </section>
     </div>
   </main>
 
@@ -30,6 +37,7 @@
 
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/includes.js"></script>
+  <script src="./blog/blog.js"></script>
 
   <!-- Google Fonts -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="./style.css">

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog Yazısı" />
+  <title>Blog Yazısı - BegonTech</title>
+  <link rel="icon" type="image/png" href="../../assets/images/begontechlight.png" />
+  <link rel="apple-touch-icon" href="../../assets/images/begontechlight.png" />
+  <link rel="shortcut icon" href="../../assets/images/begontechlight.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
+  </script>
+</head>
+<body class="bg-white text-gray-800">
+  <div id="__header"></div>
+
+  <main class="py-12">
+    <article class="container mx-auto px-4 max-w-3xl" id="postRoot">
+      <header class="mb-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900" data-title>Başlık</h1>
+        <div class="mt-2 flex items-center justify-center gap-2 text-xs text-gray-600" data-meta>
+          <span class="inline-flex items-center gap-1 bg-gray-50 border border-gray-200 px-2 py-1 rounded">
+            <i class="fa fa-calendar text-xs text-brand-primary"></i>
+            <time data-date datetime="">Yayın tarihi</time>
+          </span>
+        </div>
+        <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+        <img data-image class="mt-6 w-full h-64 object-cover rounded-2xl shadow-sm" alt="Blog görseli" />
+      </header>
+      <section class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700" data-content></section>
+      <div class="mt-10">
+        <a href="../blog.html" class="inline-flex items-center gap-2 text-brand-primary font-semibold hover:text-brand-secondary"><i class="fa fa-long-arrow-left"></i> Bloga dön</a>
+      </div>
+    </article>
+  </main>
+
+  <div id="__footer"></div>
+
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/includes.js"></script>
+  <script>
+    (async function(){
+      function qs(name){ const url = new URL(location.href); return url.searchParams.get(name); }
+      const slug = qs('slug');
+      if(!slug) return;
+      try {
+        const res = await fetch('./posts.json');
+        const posts = await res.json();
+        const post = posts.find(p => p.slug === slug);
+        if(!post) return;
+        document.querySelector('[data-title]').textContent = post.title;
+        const img = document.querySelector('[data-image]');
+        img.src = post.image; img.alt = post.title;
+        img.addEventListener('error', () => { if(post.imageAlt){ img.src = post.imageAlt; } });
+        const timeEl = document.querySelector('[data-date]');
+        if (timeEl) { timeEl.textContent = post.date || ''; if (post.dateISO) timeEl.setAttribute('datetime', post.dateISO); }
+        const root = document.querySelector('[data-content]');
+        post.content.forEach(par => {
+          const p = document.createElement('p');
+          p.textContent = par; root.appendChild(p);
+        });
+      } catch (e) { console.error('Detail load failed', e); }
+    })();
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</body>
+</html>

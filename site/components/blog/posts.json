@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "ip-interkom",
+    "title": "IP Interkom Nedir?",
+    "excerpt": "IP tabanlı interkom sistemlerinin ne olduğunu, nasıl çalıştığını ve avantajlarını keşfedin.",
+    "date": "07 Ekim 2025",
+    "dateISO": "2025-10-07",
+  "image": "/site/assets/images/Blog/ipintercom.jpg",
+  "imageAlt": "/site/assets/images/Blog/ipintercım.jpg",
+    "content": [
+      "Klasik (analog) diyafon sistemleri gibi işyeri ve apartmanlarda kullanılan sesli iletişim altyapılarının daha detaylı versiyonları olan İnterkom sistemleri dahili (yerel) bir iletişim kanalıdır. Bu bağlamda İnterkom sistemleri, bas konuş prensibi ile çalışan klasik (analog) sistemlerin aksine iletişim haricinde güvenliği sağlama fonksiyonuyla paralel olarak da kullanılır. İş yerlerinde, villalarda, sitelerde ya da apartmanlarda farklı işlevsel ihtiyaçlara yönelik ürün seçenekleri bulunan İnterkom modelleri kullanıcılarına çok yönlü kullanım olanağı sağlar. Kullanımı daha ileri bir seviyeye taşıyan IP İnterkom sistemi ise kamera yapısı ve güvenlik sistemleri ile bütünleşik bir kullanım sunarak güvenlik düzeyini maksimum seviyeye çıkarırlar.",
+      "IP İnterkom Altyapısı Nasıl Çalışır?",
+      "IP İnterkom altyapısı öncelikli olarak akıllı dijital teknolojilerin kullanıldığı ve IOT tabanlı bir sistem olarak öne çıkar. Yapı ya da ev sınırları içerisindeki diğer cihazlarla iletişim kurabilen IP İnterkom; bütüncül bir iletişim ağı oluşturarak katılımcıların birbirleriyle etkili bir şekilde iletişim kurmasına olanak verir. Kapı çalması durumunda çift taraflı sesli ya da görüntülü yanıt sistemi, istenmeyen zaman aralıklarında çağrı reddi gibi seçeneklerin yanı sıra; binadaki IP kamera güvenlik altyapısına da erişimi mümkündür. Aynı şekilde yapı sınırları içerisinde ağ katılımcıları da diğer katılımcılarla interkom sistemi üzerinden birbirleriyle rahatlıkla iletişim kurabilirler."
+    ]
+  }
+]
