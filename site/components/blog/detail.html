@@ -78,8 +78,49 @@
           if (post.content.length > 1) {
             const p2 = document.createElement('p');
             p2.textContent = post.content[1];
-            p2.className = 'mb-0 text-gray-700 text-base leading-relaxed';
+            p2.className = 'mb-6 text-gray-700 text-base leading-relaxed';
             root.appendChild(p2);
+          }
+          // Subtitle2 as heading
+          if (post.subtitle2) {
+            const h3 = document.createElement('h2');
+            h3.textContent = post.subtitle2;
+            h3.className = 'mb-4 mt-2 text-lg md:text-xl font-semibold text-brand-primary tracking-tight';
+            root.appendChild(h3);
+          }
+          // Subtitle2 content paragraphs
+          const boldTitles = [
+            'Sınırsız Cihaz Sayısı',
+            'Yenilikçi İletişim Biçimleri',
+            'Alarm ve Güvenlik Sistemlerine Entegrasyon',
+            'Reklam ve Özelleştirilebilir Görüntü Seçenekleri'
+          ];
+          for (let i = 2; i < post.content.length; i++) {
+            // If paragraph contains double newlines, split for sub-sections
+            const parts = post.content[i].split(/\n\n/);
+            parts.forEach((part, idx) => {
+              // Check if part starts with a bold title
+              let matched = false;
+              boldTitles.forEach(title => {
+                if (part.startsWith(title)) {
+                  matched = true;
+                  const p = document.createElement('p');
+                  // Split title and rest
+                  const rest = part.slice(title.length).trim();
+                  p.innerHTML = `<span class='font-bold text-brand-primary'>${title}</span>${rest ? ' ' + rest : ''}`;
+                  p.className = 'mb-6 text-gray-700 text-base leading-relaxed';
+                  if (i === post.content.length - 1 && idx === parts.length - 1) p.className += ' mb-0';
+                  root.appendChild(p);
+                }
+              });
+              if (!matched) {
+                const p = document.createElement('p');
+                p.textContent = part;
+                p.className = 'mb-6 text-gray-700 text-base leading-relaxed';
+                if (i === post.content.length - 1 && idx === parts.length - 1) p.className += ' mb-0';
+                root.appendChild(p);
+              }
+            });
           }
         }
       } catch (e) { console.error('Detail load failed', e); }
