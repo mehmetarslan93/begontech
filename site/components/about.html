@@ -18,13 +18,113 @@
   <!-- Shared Header Placeholder -->
   <div id="__header"></div>
 
-  <main class="py-16">
-    <div class="container mx-auto px-4 max-w-3xl">
-      <h1 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6">Hakkımızda</h1>
-      <p class="text-lg text-gray-700 mb-8">
-        BegonTech olarak, geleneksel evleri ve iş yerlerini en yenilikçi ve güvenli akıllı sistemlerle donatıyoruz. Akıllı ev teknolojileriyle hayatınızı kolaylaştırıyor, enerji verimliliği ve güvenlik sağlıyoruz. Uzman ekibimizle, ihtiyacınıza en uygun çözümleri sunmak için buradayız.
-      </p>
-    </div>
+  <main class="pb-16">
+    <!-- Başlık ve Kısa Açıklama -->
+    <header class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-5xl text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">Hakkımızda</h1>
+        <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+        <p class="mt-4 text-gray-700 max-w-3xl mx-auto">
+          BegonTech, 10 yıllık mühendislik deneyimiyle eski diafon sistemlerini yeni nesil IP Intercom çözümlerine dönüştürür; mevcut binalara akıllı ev ve bina otomasyonu entegre eder ve sıfırdan montaj, kurulum ve devreye alma hizmetleri sunar.
+        </p>
+      </div>
+    </header>
+
+    <!-- İki Sütun: Solda metin, sağda görsel -->
+    <section class="py-12">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center relative">
+        <div class="relative z-10">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">BegonTech Hakkında</h2>
+          <p class="text-gray-700 mb-6">Amacımız, mevcut veya yeni yapılarda kullanılan geleneksel sistemleri modern, IP tabanlı çözümlerle buluşturmak; güvenli, konforlu ve sürdürülebilir yaşam alanları oluşturmaktır.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <i class="fa fa-check-circle text-green-600 mt-1"></i>
+              <span>Eski diafon sistemlerinden yeni nesil IP Intercom sistemlerine dönüşüm</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa fa-check-circle text-green-600 mt-1"></i>
+              <span>Mevcut binalara akıllı ev ve bina otomasyonu entegrasyonu</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa fa-check-circle text-green-600 mt-1"></i>
+              <span>Sıfırdan montaj, kurulum ve devreye alma hizmetleri</span>
+            </li>
+          </ul>
+        </div>
+        <div class="relative h-72 md:h-full flex items-center justify-center">
+          <img src="../assets/images/about.jpg" alt="BegonTech - Akıllı bina ve IP Intercom çözümleri" class="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-85" style="z-index:1;" />
+          <div class="relative z-10 w-full h-full flex items-end justify-end md:items-end md:justify-end">
+            <h3 class="absolute bottom-0 right-0 md:bottom-0 md:right-0 text-[1rem] font-semibold text-brand-primary/70 bg-white/60 px-4 py-2 rounded-tl-lg shadow-sm text-right" style="backdrop-filter: blur(2px); min-width: 180px;">
+              Akıllı Ev ve IP Intercom Çözümleri
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Misyon & Vizyon -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-6">
+        <article class="rounded-xl bg-white p-6 border border-green-100">
+          <header class="flex items-center gap-2 text-brand-primary font-semibold"><i class="fa fa-bullseye text-brand-primary"></i> <h3 class="text-lg">Misyonumuz</h3></header>
+          <ul class="mt-3 space-y-2 text-gray-700">
+            <li>Yaşam alanlarını güvenli, konforlu ve akıllı hale getirmek.</li>
+            <li>Teknolojiyi herkes için erişilebilir kılmak.</li>
+          </ul>
+        </article>
+        <article class="rounded-xl bg-white p-6 border border-green-100">
+          <header class="flex items-center gap-2 text-brand-primary font-semibold"><i class="fa fa-eye text-brand-primary"></i> <h3 class="text-lg">Vizyonumuz</h3></header>
+          <ul class="mt-3 space-y-2 text-gray-700">
+            <li>Türkiye’de akıllı sistem dönüşümünde referans marka olmak.</li>
+            <li>Kaliteli mühendislik ve güvenilir hizmetle fark yaratmak.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Neden BegonTech? -->
+    <section class="py-12">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <header class="mb-6 text-center">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Neden BegonTech?</h3>
+        </header>
+        <p class="text-gray-700 text-base md:text-lg mb-8 text-center">
+          Her projeye mühendislik disipliniyle ve titizlikle yaklaşır, teknik doğruluğu estetik ve kullanıcı deneyimiyle birleştiririz. Yalnızca sistem kurmakla kalmayıp, her bina ve kullanıcı için uzun ömürlü, güvenli ve modern teknolojik altyapılar tasarlıyoruz. Deneyim, güvenilirlik ve yenilikçi bakış açımızla, standartların ötesinde, her ihtiyaca özel çözümler geliştiriyoruz.
+        </p>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <li class="rounded-xl bg-white p-6 border border-gray-100 shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center text-xl"><i class="fa fa-cogs"></i></div>
+            <h4 class="mt-3 font-semibold text-gray-900">Mühendislik Disiplini</h4>
+            <p class="text-sm text-gray-600">Her detayda teknik doğruluk ve özen</p>
+          </li>
+          <li class="rounded-xl bg-white p-6 border border-gray-100 shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center text-xl"><i class="fa fa-home"></i></div>
+            <h4 class="mt-3 font-semibold text-gray-900">Özel Çözümler</h4>
+            <p class="text-sm text-gray-600">Her bina ve kullanıcıya uygun planlama</p>
+          </li>
+          <li class="rounded-xl bg-white p-6 border border-gray-100 shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center text-xl"><i class="fa fa-plug"></i></div>
+            <h4 class="mt-3 font-semibold text-gray-900">Uzun Ömürlü Teknoloji</h4>
+            <p class="text-sm text-gray-600">Güvenli, modern ve sürdürülebilir altyapı</p>
+          </li>
+          <li class="rounded-xl bg-white p-6 border border-gray-100 shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center text-xl"><i class="fa fa-lightbulb-o"></i></div>
+            <h4 class="mt-3 font-semibold text-gray-900">Deneyim & Yenilik</h4>
+            <p class="text-sm text-gray-600">Güvenilirlik ve inovasyon bir arada</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- Alt CTA: Ücretsiz keşif veya proje danışmanlığı için iletişime davet -->
+    <section class="py-14">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="rounded-2xl bg-gradient-to-br from-brand-primary to-brand-secondary text-white p-10 text-center shadow-lg">
+          <h3 class="text-2xl md:text-3xl font-bold mb-2">Bina veya projeniz için ücretsiz keşif ve danışmanlık alın.</h3>
+          <p class="mb-6 text-white/90">Size özel çözümler ve detaylı bilgi için hemen bizimle iletişime geçin.</p>
+          <a href="/site/components/contact.html" class="inline-block bg-white text-brand-primary font-semibold px-6 py-3 rounded-lg shadow hover:bg-brand-primary/10 transition">İletişim ve Keşif Formu</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Shared Footer Placeholder -->
