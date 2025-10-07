@@ -88,6 +88,49 @@
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/includes.js"></script>
 
+  <script>
+    // Prefill iletişim formu mesajı sepetten gelen ürünlerle
+    document.addEventListener('DOMContentLoaded', function(){
+      try{
+        const params = new URLSearchParams(location.search);
+        const fromBasket = params.get('from') === 'basket' || localStorage.getItem('begon_basket_from') === '1';
+        if(!fromBasket) return;
+
+        const basket = JSON.parse(localStorage.getItem('begon_basket') || '[]');
+        if(!basket.length) return;
+
+        const mesajEl = document.querySelector('form[action="https://formspree.io/f/mldpwrar"] textarea[name="mesaj"]');
+        if(!mesajEl) return;
+
+        const lines = [
+          'Teklif talebi: Ürün sepeti',
+          '--------------------------------',
+          ...basket.map(it => `• ${it.name} — Adet: ${it.qty}`),
+          '--------------------------------',
+          'Lütfen iletişim bilgilerimi kullanarak fiyat teklifi ile dönüş yapınız.'
+        ];
+        mesajEl.value = lines.join('\n');
+
+        // Small banner feedback
+        let banner = document.getElementById('basket-prefill-banner');
+        if(!banner){
+          banner = document.createElement('div');
+          banner.id = 'basket-prefill-banner';
+          banner.className = 'container mx-auto px-4 max-w-5xl';
+          banner.innerHTML = '<div class="mt-4 mb-2 bg-green-50 text-green-700 border border-green-200 rounded-lg p-3 text-sm">Sepetiniz iletişim formuna aktarıldı. Lütfen bilgilerinizi doldurup Gönder’e basın.</div>';
+          const main = document.querySelector('main .container');
+          if(main) main.prepend(banner);
+        }
+
+        // Scroll to iletişim formu
+        mesajEl.scrollIntoView({behavior:'smooth', block:'center'});
+      }catch(err){ console.warn('Basket prefill failed', err); }
+      finally{
+        localStorage.removeItem('begon_basket_from');
+      }
+    });
+  </script>
+
   <!-- Google Fonts -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="./style.css">
 

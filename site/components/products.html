@@ -13,24 +13,310 @@
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
   </script>
+</head>
+<body class="bg-white text-gray-800">
   <!-- Page Loading Overlay (used for transitions too) -->
   <div id="pageLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white bg-opacity-90 transition-opacity duration-500" style="display:none;">
     <img src="../assets/images/begontechgif.gif" alt="Yükleniyor..." class="w-32 h-32 animate" />
   </div>
-</head>
-<body class="bg-white text-gray-800">
   <!-- Shared Header Placeholder -->
   <div id="__header"></div>
-
-  <main class="py-16">
+  <main class="py-12">
     <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold text-brand-dark mb-4">Ürünler</h1>
-      <p class="text-gray-600">İçerik daha sonra eklenecek. Bu sayfa iskelet amaçlı oluşturulmuştur.</p>
+      <!-- Title -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">Ürün Kataloğu</h1>
+        <p class="mt-2 text-brand-accent font-medium">Akuvox & Akubela ürünleriyle ilham alın</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Filters -->
+        <aside class="lg:col-span-3">
+          <div class="bg-white rounded-xl shadow p-4 lg:sticky lg:top-24">
+            <h2 class="text-lg font-semibold text-brand-dark mb-3">Kategoriler</h2>
+            <div class="flex flex-wrap gap-2">
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="all">Tümü</button>
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="door">Kapı Önü Ziller</button>
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="indoor">Daire İçi Paneller</button>
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="access">Access Kontrol</button>
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="twire">2 Kablolu IP Sistemleri</button>
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="villa">Villa Setler</button>
+              <button class="cat-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-cat="smart">Akıllı Ev Ürünleri</button>
+            </div>
+
+            <!-- Search -->
+            <div class="mt-4">
+              <label for="search" class="sr-only">Ara</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
+                </span>
+                <input id="search" type="text" placeholder="Ürünlerde ara" class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent" />
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Products -->
+        <section class="lg:col-span-6">
+          <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+        </section>
+
+        <!-- Basket -->
+        <aside class="lg:col-span-3">
+          <div class="bg-white rounded-xl shadow p-4 lg:sticky lg:top-24">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-lg font-semibold text-brand-dark">Sepet</h2>
+              <span id="basket-count" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-accent text-white text-sm">0</span>
+            </div>
+            <div id="basket-items" class="divide-y divide-gray-200"></div>
+            <div class="mt-4 flex items-center justify-between">
+              <button id="clear-basket" class="text-sm text-gray-500 hover:text-red-600">Temizle</button>
+              <button id="send-offer" class="btn-primary px-4 py-2 text-white rounded-lg">Teklif Gönder</button>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </main>
 
-  <!-- Shared Footer Placeholder -->
-  <div id="__footer"></div>
+  <!-- Mobile basket button -->
+  <button id="mobile-basket-btn" class="fixed bottom-5 right-5 md:hidden shadow-lg bg-brand-accent text-white rounded-full w-14 h-14 flex items-center justify-center">
+    <span class="relative">
+      <i class="fa fa-shopping-basket text-xl"></i>
+      <span id="mobile-basket-count" class="absolute -top-2 -right-3 text-xs bg-white text-brand-accent rounded-full w-5 h-5 flex items-center justify-center">0</span>
+    </span>
+  </button>
+
+  <!-- Product modal -->
+  <div id="product-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-black/50 p-4">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-3 border-b">
+        <h3 id="modal-title" class="text-lg font-semibold">Ürün Detayı</h3>
+        <button id="modal-close" class="text-gray-500 hover:text-gray-800">✕</button>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 p-4">
+        <!-- Carousel -->
+        <div class="relative">
+          <img id="modal-image" src="../assets/images/logo.png" alt="Ürün görseli" class="w-full h-64 object-contain bg-gray-50 rounded-lg" />
+          <button id="modal-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-9 h-9 flex items-center justify-center shadow">‹</button>
+          <button id="modal-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-9 h-9 flex items-center justify-center shadow">›</button>
+        </div>
+        <!-- Details -->
+        <div>
+          <h4 id="modal-name" class="text-xl font-bold mb-2">Ürün Adı</h4>
+          <p id="modal-desc" class="text-gray-600 mb-4">Ürün açıklaması.</p>
+          <div class="flex gap-2">
+            <button id="modal-add" class="btn-primary text-white px-4 py-2 rounded-lg">Sepete Ekle</button>
+            <button id="modal-close-2" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg">Kapat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Gerçek ürünler, her klasörden en az bir ürün
+    const PRODUCTS = [
+      // Kapı Önü Ziller
+      { id:'S539', cat:'door', name:'S539', desc:'10" Android Kapı Önü Zili', images:['../assets/images/products/doorbell/s539.png'] },
+      { id:'X915', cat:'door', name:'X915', desc:'Yüz Tanıma Android Kapı Zili', images:['../assets/images/products/doorbell/x915.png'] },
+      { id:'E18', cat:'door', name:'E18', desc:'7" Yüz Tanıma Kapı Zili', images:['../assets/images/products/doorbell/e18-03827.png'] },
+      // Daire İçi Paneller
+      { id:'X933', cat:'indoor', name:'X933', desc:'7" Android İç Panel', images:['../assets/images/products/interior_panel/x933-64601.png'] },
+      { id:'S567', cat:'indoor', name:'S567', desc:'10.1" Android Daire İçi Panel', images:['../assets/images/products/interior_panel/s567-11143.png'] },
+      { id:'C315', cat:'indoor', name:'C315', desc:'7" Android Daire İçi Panel', images:['../assets/images/products/interior_panel/akuvox-c315-silver_345x345_crop_center-copy-70935.jpg'] },
+      // Access Kontrol
+      { id:'A08', cat:'access', name:'A08', desc:'IP Access Kontrol Terminali', images:['../assets/images/products/accesscontrol/a08-70217.png'] },
+      { id:'EC33', cat:'access', name:'EC33', desc:'Asansör Erişim Kontrol Cihazı', images:['../assets/images/products/accesscontrol/ec33-70751.png'] },
+      { id:'SR01', cat:'access', name:'SR01', desc:'Güvenlik Rölesi', images:['../assets/images/products/accesscontrol/sr01-70924.png'] },
+      // 2 Kablolu IP Sistemleri
+      { id:'R20K-2', cat:'twire', name:'R20K-2', desc:'2 Kablolu SIP Kapı Zili', images:['../assets/images/products/2wireintercom/r20k-04803-05251.jpg'] },
+      { id:'C313W-2', cat:'twire', name:'C313W-2', desc:'2 Kablolu İç Panel', images:['../assets/images/products/2wireintercom/c3151-02917.jpg'] },
+      { id:'NS-2', cat:'twire', name:'NS-2', desc:'2 Kablolu IP Ağ Anahtarı', images:['../assets/images/products/2wireintercom/ns2-05937.jpg'] },
+      // Akıllı Ev Ürünleri (Akubela)
+      { id:'HyPanel Supreme', cat:'smart', name:'HyPanel Supreme', desc:'12" Ekranlı, el hareketiyle kontrol edilen akıllı ev paneli', images:['../assets/images/products/akubela/hypanel_supreme.avif'] },
+      { id:'HyPanel Lux', cat:'smart', name:'HyPanel Lux', desc:'Sanat ve konforu birleştiren lüks akıllı ev paneli', images:['../assets/images/products/akubela/hypanel_lux.avif'] },
+      { id:'SmartPanel Pro', cat:'smart', name:'SmartPanel Pro', desc:'Akubela SmartPanel Pro akıllı ev kontrol paneli', images:['../assets/images/products/akubela/smartpanelpro.png'] },
+      { id:'SL60', cat:'smart', name:'SL60', desc:'Akubela akıllı kapı kilidi', images:['../assets/images/products/akubela/sl60_smartlock.png'] },
+    ];
+
+    // State
+    let activeCat = 'all';
+    let filtered = PRODUCTS.slice();
+    let basket = JSON.parse(localStorage.getItem('begon_basket') || '[]');
+    let modalIndex = 0;
+    let currentModal = null;
+
+    // Elements
+    const gridEl = document.getElementById('grid');
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const searchEl = document.getElementById('search');
+    const basketCountEl = document.getElementById('basket-count');
+    const mobileBasketBtn = document.getElementById('mobile-basket-btn');
+    const mobileBasketCount = document.getElementById('mobile-basket-count');
+    const basketListEl = document.getElementById('basket-items');
+
+    // Modal els
+    const modal = document.getElementById('product-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalImg = document.getElementById('modal-image');
+    const modalName = document.getElementById('modal-name');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+    const modalAdd = document.getElementById('modal-add');
+    const modalClose = document.getElementById('modal-close');
+    const modalClose2 = document.getElementById('modal-close-2');
+
+    function renderGrid(){
+      const html = filtered.map(p => `
+        <div class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition product-card" data-id="${p.id}">
+          <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="w-40 h-28 object-contain mx-auto mb-4" />
+          <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
+          <p class="text-sm text-gray-500">${p.desc}</p>
+          <div class="mt-4 flex gap-2">
+            <button data-action="details" class="px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition">Detay</button>
+            <button data-action="add" class="px-3 py-2 text-sm border border-brand-accent text-brand-accent rounded hover:bg-brand-accent hover:text-white transition">Sepete Ekle</button>
+          </div>
+        </div>
+      `).join('');
+      gridEl.innerHTML = html;
+    }
+
+    function applyFilters(){
+      const q = (searchEl.value || '').trim().toLowerCase();
+      filtered = PRODUCTS.filter(p => (activeCat === 'all' || p.cat === activeCat) && (
+        p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+      ));
+      renderGrid();
+    }
+
+    function saveBasket(){
+      localStorage.setItem('begon_basket', JSON.stringify(basket));
+    }
+
+    function updateBasketBadges(){
+      const total = basket.reduce((s,i)=>s+i.qty,0);
+      basketCountEl.textContent = total;
+      mobileBasketCount.textContent = total;
+    }
+
+    function renderBasket(){
+      if(!basket.length){
+        basketListEl.innerHTML = '<p class="text-sm text-gray-500">Sepetiniz boş.</p>';
+        updateBasketBadges();
+        return;
+      }
+      basketListEl.innerHTML = basket.map(item => `
+        <div class="py-3 flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-800">${item.name}</p>
+            <div class="flex items-center gap-2 mt-1">
+              <button data-dec="${item.id}" class="w-7 h-7 rounded border border-gray-300">-</button>
+              <span class="text-sm">${item.qty} adet</span>
+              <button data-inc="${item.id}" class="w-7 h-7 rounded border border-gray-300">+</button>
+            </div>
+          </div>
+          <button data-del="${item.id}" class="text-red-600 hover:underline text-sm">Sil</button>
+        </div>
+      `).join('');
+      updateBasketBadges();
+    }
+
+    function addToBasket(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      if(!p) return;
+      const existing = basket.find(x=>x.id===id);
+      if(existing) existing.qty += 1; else basket.push({ id:p.id, name:p.name, qty:1 });
+      saveBasket();
+      renderBasket();
+    }
+
+    function openModal(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      if(!p) return;
+      currentModal = p;
+      modalIndex = 0;
+      modalTitle.textContent = p.name;
+      modalName.textContent = p.name;
+      modalDesc.textContent = p.desc;
+      modalImg.src = p.images[0] || '../assets/images/logo.png';
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal(){
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function showModalImage(delta){
+      if(!currentModal) return;
+      const imgs = currentModal.images || [];
+      if(!imgs.length) return;
+      modalIndex = (modalIndex + delta + imgs.length) % imgs.length;
+      modalImg.src = imgs[modalIndex];
+    }
+
+    // Wire filters
+    catBtns.forEach(btn=>btn.addEventListener('click',()=>{
+      activeCat = btn.dataset.cat;
+      catBtns.forEach(b=>b.classList.remove('bg-brand-accent','text-white','border-brand-accent'));
+      btn.classList.add('bg-brand-accent','text-white','border-brand-accent');
+      applyFilters();
+    }));
+    searchEl.addEventListener('input', applyFilters);
+
+    // Grid actions
+    gridEl.addEventListener('click', (e)=>{
+      const card = e.target.closest('.product-card');
+      if(!card) return;
+      const id = card.dataset.id;
+      if(e.target.matches('[data-action="add"]')){ addToBasket(id); }
+      if(e.target.matches('[data-action="details"]')){ openModal(id); }
+    });
+
+    // Basket actions
+    document.getElementById('basket-items').addEventListener('click', (e)=>{
+      const dec = e.target.getAttribute('data-dec');
+      const inc = e.target.getAttribute('data-inc');
+      const del = e.target.getAttribute('data-del');
+      if(dec){ const it = basket.find(x=>x.id===dec); if(it){ it.qty=Math.max(1,it.qty-1); saveBasket(); renderBasket(); } }
+      if(inc){ const it = basket.find(x=>x.id===inc); if(it){ it.qty+=1; saveBasket(); renderBasket(); } }
+      if(del){ basket = basket.filter(x=>x.id!==del); saveBasket(); renderBasket(); }
+    });
+    document.getElementById('clear-basket').addEventListener('click', ()=>{ basket=[]; saveBasket(); renderBasket(); });
+
+    // Send offer: go to contact page and prefill basket via localStorage
+    document.getElementById('send-offer').addEventListener('click', ()=>{
+      if(!basket.length){ alert('Sepetiniz boş.'); return; }
+      // Mark that we came from basket for UI hint
+      localStorage.setItem('begon_basket_from', '1');
+      window.location.href = './contact.html?from=basket';
+    });
+
+    // Mobile basket button just scrolls to basket panel
+    mobileBasketBtn.addEventListener('click', ()=>{
+      document.getElementById('basket-items').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Modal wiring
+    modalClose.addEventListener('click', closeModal);
+    modalClose2.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    modalPrev.addEventListener('click', ()=>showModalImage(-1));
+    modalNext.addEventListener('click', ()=>showModalImage(1));
+    modalAdd.addEventListener('click', ()=>{ if(currentModal) addToBasket(currentModal.id); closeModal(); });
+
+    // Init
+    applyFilters();
+    renderBasket();
+  </script>
+
+  <!-- Spacer then Footer -->
+  <div class="h-16 md:h-24 lg:h-32"></div>
+  <div id="__footer" class="w-full"></div>
 
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/includes.js"></script>
