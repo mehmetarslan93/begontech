@@ -10,9 +10,308 @@
   <link rel="shortcut icon" href="../assets/images/begontechlight.png" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
   </script>
+  <style>
+    /* Modern Product Page Styles */
+    .product-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .product-card:hover::before {
+      left: 100%;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.25);
+      border-color: #3b82f6;
+    }
+    
+    .product-image {
+      transition: all 0.4s ease;
+      filter: brightness(1) contrast(1);
+    }
+    
+    .product-card:hover .product-image {
+      filter: brightness(1.1) contrast(1.1);
+      transform: scale(1.05);
+    }
+    
+    .filter-btn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .filter-btn:hover::before {
+      left: 100%;
+    }
+    
+    .filter-btn.active {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px -3px rgba(30, 64, 175, 0.3);
+    }
+    
+    .category-grid {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .stagger-animation {
+      animation: staggerFadeIn 0.6s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes staggerFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .floating-element {
+      /* animation intentionally disabled; ensure it never blocks interactions */
+      pointer-events: none;
+      user-select: none;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(1deg); }
+      50% { transform: translateY(-5px) rotate(0deg); }
+      75% { transform: translateY(-15px) rotate(-1deg); }
+    }
+    
+    .search-input {
+      transition: all 0.3s ease;
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    }
+    
+    .search-input:focus {
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 8px 25px -3px rgba(30, 64, 175, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .basket-item {
+      animation: slideInRight 0.4s ease-out;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .page-title {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #0891b2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes titleGlow {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.2); }
+    }
+    
+    .modal-backdrop {
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .modal-content {
+      animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .gradient-border {
+      position: relative;
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    }
+    
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 2px;
+      background: linear-gradient(135deg, #3b82f6, #1e40af, #0891b2);
+      border-radius: inherit;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      /* Ensure the decorative border layer doesn't block interactions */
+      pointer-events: none;
+    }
+    
+    .view-toggle-btn {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .view-toggle-btn.active {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    }
+    
+    .pagination-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .pagination-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -3px rgba(30, 64, 175, 0.15);
+    }
+    
+    .loading-shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 640px) {
+      .product-card {
+        transform: none;
+      }
+      .product-card:hover {
+        transform: translateY(-4px);
+      }
+    }
+    
+    /* Smooth transitions for responsive design */
+    @media (min-width: 768px) {
+      .responsive-grid {
+        transition: grid-template-columns 0.3s ease;
+      }
+    }
+    
+    /* Line clamp utilities */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    /* Brand color utilities */
+    .bg-blue-500 { background-color: #3b82f6; }
+    .bg-green-500 { background-color: #10b981; }
+    .text-blue-500 { color: #3b82f6; }
+    .text-green-500 { color: #10b981; }
+    .w-2 { width: 0.5rem; }
+    .h-2 { height: 0.5rem; }
+    .w-3 { width: 0.75rem; }
+    .h-3 { height: 0.75rem; }
+    
+    /* Enhanced shadow utilities */
+    .shadow-3xl {
+      box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Better mobile responsiveness for product cards */
+    @media (max-width: 640px) {
+      .product-card {
+        margin-bottom: 1rem;
+      }
+      .product-card .btn-primary,
+      .product-card button {
+        font-size: 0.875rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+    
+    /* Fix overlapping issues for dense grid */
+    @media (min-width: 768px) {
+      .category-grid.grid-cols-4 .product-card,
+      .category-grid.grid-cols-6 .product-card {
+        min-height: 280px;
+      }
+    }
+    
+    /* Ensure proper spacing between elements */
+    .xl\\:col-span-3 {
+      margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 1280px) {
+      .xl\\:col-span-3 {
+        margin-bottom: 0;
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
   <!-- Page Loading Overlay (used for transitions too) -->
@@ -21,122 +320,325 @@
   </div>
   <!-- Shared Header Placeholder -->
   <div id="__header"></div>
-  <main class="py-12">
-    <div class="container mx-auto px-4">
-      <!-- Title -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">Ürün Kataloğu</h1>
-        <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
-        <p class="mt-2 text-brand-accent font-medium">Akuvox & Akubela ürünleriyle ilham alın</p>
+  <main class="py-8 md:py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <!-- Title Section -->
+  <div class="text-center mb-12">
+  <div class="inline-block mb-4">
+          <h1 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-2">Ürün Kataloğu</h1>
+        </div>
+  <div class="mx-auto my-6 w-24 h-1.5 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent shadow-lg"></div>
+  <p class="mt-4 text-xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          Akuvox & Akubela ürünleriyle ilham alın, geleceği evinize taşıyın
+        </p>
+  <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <div class="flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-md">
+            <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="text-sm font-medium text-gray-700" id="product-count">Ürünler yükleniyor...</span>
+          </div>
+          <div class="flex items-center gap-4 bg-white rounded-full px-6 py-3 shadow-md">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+              <span class="text-sm font-semibold text-blue-700">Akuvox</span>
+            </div>
+            <div class="w-px h-4 bg-gray-300"></div>
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+              <span class="text-sm font-semibold text-orange-700">Akubela</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
         <!-- Filters -->
-        <aside class="lg:col-span-3">
-          <div class="bg-white rounded-xl shadow p-4 lg:sticky lg:top-24">
-            <h2 class="text-lg font-semibold text-brand-dark mb-3">Kategoriler</h2>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="all"><i class="fa fa-th-large"></i> Tümü</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="door"><i class="fa fa-bell"></i> Kapı Önü Ziller</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="indoor"><i class="fa fa-tablet"></i> Daire İçi Paneller</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="access"><i class="fa fa-lock"></i> Access Kontrol</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="twire"><i class="fa fa-random"></i> 2 Kablolu IP Sistemleri</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="villa"><i class="fa fa-home"></i> Villa Setler</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-gray-200 text-gray-700 hover:border-brand-accent" data-cat="smart"><i class="fa fa-cogs"></i> Akıllı Ev Ürünleri</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-green-400 text-green-700 hover:border-brand-accent" data-cat="hypanel"><i class="fa fa-tablet"></i> HyPanel</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-blue-400 text-blue-700 hover:border-brand-accent" data-cat="kilit"><i class="fa fa-lock"></i> Akıllı Kilitler</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-yellow-400 text-yellow-700 hover:border-brand-accent" data-cat="sensor"><i class="fa fa-thermometer-half"></i> Sensörler</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-red-400 text-red-700 hover:border-brand-accent" data-cat="termostat"><i class="fa fa-fire"></i> Termostat</button>
-              <button class="cat-btn px-3 py-2 w-full flex items-center gap-2 rounded-lg border border-purple-400 text-purple-700 hover:border-brand-accent" data-cat="anahtar"><i class="fa fa-toggle-on"></i> Anahtar</button>
+        <aside class="xl:col-span-3" data-aos="fade-right" data-aos-duration="600">
+          <div class="gradient-border rounded-2xl shadow-xl p-6 lg:sticky lg:top-24 backdrop-blur-sm">
+            <h2 class="text-xl font-bold text-brand-dark mb-6 flex items-center gap-3">
+              <div class="w-2 h-8 bg-gradient-to-b from-brand-primary to-brand-secondary rounded-full"></div>
+              Kategoriler
+            </h2>
+            <div class="space-y-2 mb-6">
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="all">
+                <i class="fa fa-th-large text-gray-400"></i>
+                <span class="">Tümü</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-all">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="door">
+                <i class="fa fa-bell text-red-500"></i> 
+                <span>Kapı Önü Ziller</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-door">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="indoor">
+                <i class="fa fa-tablet text-blue-500"></i> 
+                <span>Daire İçi Paneller</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-indoor">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="access">
+                <i class="fa fa-lock text-yellow-600"></i> 
+                <span>Access Kontrol</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-access">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="twire">
+                <i class="fa fa-random text-purple-500"></i> 
+                <span>2 Kablolu IP Sistemleri</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-twire">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="villa">
+                <i class="fa fa-home text-green-600"></i> 
+                <span>Villa Setler</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-villa">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="smart">
+                <i class="fa fa-cogs text-indigo-500"></i> 
+                <span>Akıllı Ev Ürünleri</span>
+                <span class="ml-auto bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="count-smart">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-green-400 text-green-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="hypanel">
+                <i class="fa fa-tablet text-green-500"></i> 
+                <span>HyPanel</span>
+                <span class="ml-auto bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs" id="count-hypanel">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-blue-400 text-blue-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="kilit">
+                <i class="fa fa-lock text-blue-500"></i> 
+                <span>Akıllı Kilitler</span>
+                <span class="ml-auto bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs" id="count-kilit">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-yellow-400 text-yellow-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="sensor">
+                <i class="fa fa-thermometer-half text-yellow-500"></i> 
+                <span>Sensörler</span>
+                <span class="ml-auto bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full text-xs" id="count-sensor">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-red-400 text-red-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="termostat">
+                <i class="fa fa-fire text-red-500"></i> 
+                <span>Termostat</span>
+                <span class="ml-auto bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs" id="count-termostat">0</span>
+              </button>
+              <button class="filter-btn cat-btn px-4 py-3 w-full flex items-center gap-3 rounded-xl border border-purple-400 text-purple-700 hover:border-brand-accent font-medium transition-all duration-300" data-cat="anahtar">
+                <i class="fa fa-toggle-on text-purple-500"></i> 
+                <span>Anahtar</span>
+                <span class="ml-auto bg-purple-100 text-purple-600 px-2 py-1 rounded-full text-xs" id="count-anahtar">0</span>
+              </button>
             </div>
-            <div class="border-t border-gray-300 my-4"></div>
+            <div class="border-t border-gray-200 my-6"></div>
 
-            <h2 class="text-lg font-semibold text-brand-dark mb-2">Marka</h2>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <button class="brand-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-brand="all">Tümü</button>
-              <button class="brand-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-brand="Akuvox">Akuvox</button>
-              <button class="brand-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-brand="Akubela">Akubela</button>
+            <h2 class="text-xl font-bold text-brand-dark mb-4 flex items-center gap-3">
+              <div class="w-2 h-8 bg-gradient-to-b from-brand-secondary to-brand-accent rounded-full"></div>
+              Marka
+            </h2>
+            <div class="grid grid-cols-1 gap-2 mb-6">
+              <button class="filter-btn brand-btn px-4 py-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 flex items-center justify-between" data-brand="all">
+                <span>Tümü</span>
+                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs" id="brand-count-all">0</span>
+              </button>
+              <button class="filter-btn brand-btn px-4 py-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 flex items-center justify-between" data-brand="Akuvox">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <span>Akuvox</span>
+                </div>
+                <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs" id="brand-count-akuvox">0</span>
+              </button>
+              <button class="filter-btn brand-btn px-4 py-3 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 flex items-center justify-between" data-brand="Akubela">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                  <span>Akubela</span>
+                </div>
+                <span class="bg-orange-100 text-orange-600 px-2 py-1 rounded-full text-xs" id="brand-count-akubela">0</span>
+              </button>
             </div>
-            <div class="border-t border-gray-300 my-4"></div>
+            <div class="border-t border-gray-200 my-6"></div>
 
-            <h2 class="text-lg font-semibold text-brand-dark mb-2">Bağlantı</h2>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="all">Tümü</button>
-              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="WiFi">WiFi</button>
-              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="KNX">KNX</button>
-              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="Zigbee">Zigbee</button>
-              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="Bluetooth">Bluetooth</button>
-              <button class="conn-btn px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-brand-accent" data-conn="IR">IR</button>
+            <h2 class="text-xl font-bold text-brand-dark mb-4 flex items-center gap-3">
+              <div class="w-2 h-8 bg-gradient-to-b from-brand-accent to-brand-primary rounded-full"></div>
+              Bağlantı
+            </h2>
+            <div class="grid grid-cols-2 gap-2 mb-6">
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="all">Tümü</button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm flex items-center gap-1" data-conn="WiFi">
+                <i class="fa fa-wifi text-blue-500"></i>
+                WiFi
+              </button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="KNX">KNX</button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="Zigbee">Zigbee</button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm flex items-center gap-1" data-conn="Bluetooth">
+                <i class="fa fa-bluetooth text-blue-600"></i>
+                BT
+              </button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="IR">IR</button>
             </div>
-            <div class="border-t border-gray-300 my-4"></div>
+            <div class="border-t border-gray-200 my-6"></div>
 
             <!-- Search -->
-            <div class="mt-4">
-              <label for="search" class="sr-only">Ara</label>
+            <div class="mt-2">
+              <label for="search" class="block text-sm font-medium text-gray-700 mb-3">🔍 Ürün Ara</label>
               <div class="relative">
-                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
                 </span>
-                <input id="search" type="text" placeholder="Ürünlerde ara" class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent" />
+                <input id="search" type="text" placeholder="Ürün adı, model veya özellik ara..." class="search-input w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent font-medium" />
+                <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
+                  <kbd class="px-2 py-1 text-xs font-semibold text-gray-600 bg-gray-100 border border-gray-200 rounded-lg">⌘K</kbd>
+                </div>
               </div>
             </div>
           </div>
         </aside>
 
         <!-- Products -->
-        <section class="lg:col-span-6">
+        <section class="xl:col-span-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <!-- Controls: Görüntüle, grid/list, sort -->
-          <div class="flex items-center justify-between mb-4">
-            <div class="flex items-center gap-2 text-sm font-medium text-gray-800">
-              <span>Görüntüle :</span>
-              <button class="view-count-btn px-1 text-brand-primary" data-count="4">4</button> /
-              <button class="view-count-btn px-1 text-brand-primary" data-count="8">8</button> /
-              <button class="view-count-btn px-1 text-brand-primary" data-count="12">12</button> /
-              <button class="view-count-btn px-1 text-brand-primary" data-count="16">16</button> /
-              <button class="view-count-btn px-1 text-brand-primary" data-count="24">24</button> /
-              <button class="view-count-btn px-1 text-brand-primary" data-count="all">Tümü</button>
-            </div>
-            <div class="flex items-center gap-2">
-              <button id="view-list" class="p-1 border rounded text-gray-500 hover:text-brand-primary" title="Liste Görünümü">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="2" rx="1"/><rect x="4" y="11" width="16" height="2" rx="1"/><rect x="4" y="16" width="16" height="2" rx="1"/></svg>
-              </button>
-              <button id="view-grid" class="p-1 border rounded text-brand-primary bg-brand-light" title="Standart Grid Görünümü">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
-              </button>
-              <button id="view-grid-dense" class="p-1 border rounded text-gray-500 hover:text-brand-primary" title="Yoğun Grid Görünümü">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="4" height="4" rx="1"/><rect x="10" y="4" width="4" height="4" rx="1"/><rect x="16" y="4" width="4" height="4" rx="1"/><rect x="4" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="16" y="10" width="4" height="4" rx="1"/><rect x="4" y="16" width="4" height="4" rx="1"/><rect x="10" y="16" width="4" height="4" rx="1"/><rect x="16" y="16" width="4" height="4" rx="1"/></svg>
-              </button>
-            </div>
-            <div class="relative">
-              <select id="sort-method" class="appearance-none border-b border-gray-300 pr-6 pl-2 py-1 text-sm font-medium text-gray-800 focus:outline-none focus:border-brand-accent">
-                <option value="default">Varsayılan Sıralama</option>
-                <option value="name-asc">İsim (A-Z)</option>
-                <option value="name-desc">İsim (Z-A)</option>
-                <option value="brand">Marka</option>
-              </select>
-              <span class="absolute right-1 top-2 text-gray-400 pointer-events-none">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </span>
+          <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <!-- View Count Controls -->
+              <div class="flex items-center gap-3">
+                <span class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                  <i class="fa fa-eye text-brand-accent"></i>
+                  Görüntüle:
+                </span>
+                <div class="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
+                  <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="4">4</button>
+                  <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="8">8</button>
+                  <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="12">12</button>
+                  <button class="view-count-btn active px-3 py-2 text-sm font-medium font-bold text-white bg-gradient-to-r from-brand-primary to-brand-accent rounded-lg shadow-lg" data-count="16">16</button>
+                  <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="24">24</button>
+                  <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="all">Tümü</button>
+                </div>
+              </div>
+              
+              <!-- View Toggle Buttons -->
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold text-gray-700 mr-2">Görünüm:</span>
+                <div class="flex bg-gray-50 rounded-xl p-1">
+                  <button id="view-list" class="view-toggle-btn p-3 rounded-lg transition-all duration-300" title="Liste Görünümü">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="2" rx="1"/><rect x="4" y="11" width="16" height="2" rx="1"/><rect x="4" y="16" width="16" height="2" rx="1"/></svg>
+                  </button>
+                  <button id="view-grid" class="view-toggle-btn active p-3 rounded-lg transition-all duration-300" title="Standart Grid Görünümü">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+                  </button>
+                  <button id="view-grid-dense" class="view-toggle-btn p-3 rounded-lg transition-all duration-300" title="Yoğun Grid Görünümü">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="4" height="4" rx="1"/><rect x="10" y="4" width="4" height="4" rx="1"/><rect x="16" y="4" width="4" height="4" rx="1"/><rect x="4" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="16" y="10" width="4" height="4" rx="1"/><rect x="4" y="16" width="4" height="4" rx="1"/><rect x="10" y="16" width="4" height="4" rx="1"/><rect x="16" y="16" width="4" height="4" rx="1"/></svg>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Sort Dropdown -->
+              <div class="relative">
+                <label class="text-sm font-semibold text-gray-700 block mb-2">Sıralama:</label>
+                <div class="relative">
+                  <select id="sort-method" class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent min-w-[200px]">
+                    <option value="default">Varsayılan Sıralama</option>
+                    <option value="name-asc">İsim (A-Z)</option>
+                    <option value="name-desc">İsim (Z-A)</option>
+                    <option value="brand">Marka</option>
+                  </select>
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-          <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
-          <div id="pagination" class="flex justify-center items-center gap-2 mt-6"></div>
+          
+          <!-- Loading State -->
+          <div id="loading-state" class="hidden text-center py-20">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-brand-primary to-brand-accent rounded-full mb-6">
+              <div class="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Ürünler yükleniyor...</h3>
+            <p class="text-gray-600">Lütfen bekleyin, ürünler hazırlanıyor.</p>
+          </div>
+          
+          <!-- No Results State -->
+          <div id="no-results" class="hidden text-center py-20">
+            <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+              <i class="fa fa-search text-3xl text-gray-400"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Sonuç bulunamadı</h3>
+            <p class="text-gray-600 mb-6">Arama kriterlerinizi değiştirerek tekrar deneyin.</p>
+            <button id="clear-filters" class="btn-primary px-6 py-3 text-white rounded-xl font-semibold">
+              <i class="fa fa-refresh mr-2"></i>Filtreleri Temizle
+            </button>
+          </div>
+          
+          <!-- Loading State -->
+          <div id="loading-state" class="hidden text-center py-20">
+            <div class="loading-shimmer w-full h-64 rounded-2xl mb-6"></div>
+            <div class="flex justify-center items-center gap-3">
+              <div class="w-4 h-4 bg-brand-primary rounded-full animate-bounce"></div>
+              <div class="w-4 h-4 bg-brand-secondary rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+              <div class="w-4 h-4 bg-brand-accent rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+            </div>
+            <p class="text-gray-600 mt-4 font-medium">Ürünler yükleniyor...</p>
+          </div>
+          
+          <!-- No Results State -->
+          <div id="no-results" class="hidden text-center py-20">
+            <div class="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+              <i class="fa fa-search text-2xl text-gray-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Ürün bulunamadı</h3>
+            <p class="text-gray-600 mb-6 max-w-md mx-auto">Aradığınız kriterlere uygun ürün bulunamadı. Lütfen filtreleri değiştirerek tekrar deneyin.</p>
+            <button id="clear-filters" class="btn-primary px-6 py-3 text-white rounded-xl font-semibold transition-all duration-300">
+              <i class="fa fa-refresh mr-2"></i>
+              Filtreleri Temizle
+            </button>
+          </div>
+          
+          <!-- Products Grid -->
+          <div id="grid" class="category-grid responsive-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-12"></div>
+          
+          <!-- Pagination -->
+          <div id="pagination" class="flex justify-center items-center gap-3 mt-12 mb-20"></div>
         </section>
 
         <!-- Basket -->
-        <aside class="lg:col-span-3">
-          <div class="bg-white rounded-xl shadow p-4 lg:sticky lg:top-24">
-            <div class="flex items-center justify-between mb-3">
-              <h2 class="text-lg font-semibold text-brand-dark flex items-center gap-4">
-                <img src="../assets/images/basketico.PNG" alt="Sepet" class="w-16 h-16" />
-                Sepet
+        <aside class="xl:col-span-3" data-aos="fade-left" data-aos-duration="600" data-aos-delay="400">
+          <div class="gradient-border rounded-2xl shadow-xl p-6 lg:sticky lg:top-24 backdrop-blur-sm" style="max-height: calc(100vh - 200px); overflow-y: auto;">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-xl font-bold text-brand-dark flex items-center gap-3">
+                <div class="relative">
+                  <img src="../assets/images/basketico.PNG" alt="Sepet" class="w-14 h-14 floating-element" />
+                  <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <span id="basket-count" class="text-white text-xs font-bold">0</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="block">Sepetim</span>
+                  <span class="text-sm text-gray-500 font-normal">Teklif için ürün ekleyin</span>
+                </div>
               </h2>
-              <span id="basket-count" class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-accent text-white text-sm">0</span>
             </div>
-            <div id="basket-items" class="divide-y divide-gray-200"></div>
-            <div class="mt-4 flex items-center justify-between">
-              <button id="clear-basket" class="text-sm text-gray-500 hover:text-red-600">Temizle</button>
-              <button id="send-offer" class="btn-primary px-4 py-2 text-white rounded-lg">Teklif İste</button>
+            
+            <!-- Empty Basket State -->
+            <div id="empty-basket" class="text-center py-8">
+              <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                <i class="fa fa-shopping-basket text-2xl text-gray-400"></i>
+              </div>
+              <p class="text-gray-500 font-medium mb-2">Sepetiniz boş</p>
+              <p class="text-sm text-gray-400">Ürün eklemek için ürünlere tıklayın</p>
+            </div>
+            
+            <!-- Basket Items -->
+            <div id="basket-items" class="space-y-3 mb-6 max-h-96 overflow-y-auto"></div>
+            
+            <!-- Basket Actions -->
+            <div class="space-y-3 pt-4 border-t border-gray-200">
+              <div class="flex items-center justify-between">
+                <button id="clear-basket" class="text-sm text-gray-500 hover:text-red-600 font-medium transition-colors duration-300 flex items-center gap-2">
+                  <i class="fa fa-trash"></i>
+                  Sepeti Temizle
+                </button>
+                <span class="text-sm text-gray-600">
+                  <span id="basket-total-count">0</span> ürün
+                </span>
+              </div>
+              <button id="send-offer" class="btn-primary w-full px-6 py-4 text-white rounded-xl font-semibold text-center transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                <i class="fa fa-paper-plane"></i>
+                Teklif İste
+              </button>
+              <p class="text-xs text-gray-500 text-center">
+                Sepetinizdeki ürünler için ücretsiz teklif alın
+              </p>
             </div>
           </div>
         </aside>
@@ -144,40 +646,87 @@
     </div>
   </main>
 
+  <!-- Toast placeholder -->
+  <div id="toast" aria-live="polite" class="fixed bottom-8 right-8 z-50 hidden">
+    <div id="toast-inner" class="bg-black text-white px-4 py-2 rounded shadow">Sepete eklendi</div>
+  </div>
+
+  <!-- Debug panel (hidden by default) -->
+  <div id="basket-debug" style="position:fixed;left:12px;bottom:12px;z-index:99999;background:rgba(0,0,0,0.75);color:#fff;padding:8px;border-radius:6px;font-size:12px;max-width:320px;display:none;white-space:pre-wrap;max-height:40vh;overflow:auto;">
+    <strong>Basket debug</strong>
+    <div id="basket-debug-content" style="margin-top:6px;font-family:monospace;font-size:11px"></div>
+    <div style="margin-top:6px;opacity:0.7;font-size:10px">Toggle: Ctrl+Shift+D</div>
+  </div>
+
   <!-- Mobile basket button -->
-  <button id="mobile-basket-btn" class="fixed bottom-5 right-5 md:hidden shadow-lg bg-brand-accent text-white rounded-full w-14 h-14 flex items-center justify-center">
+  <button id="mobile-basket-btn" class="fixed bottom-6 right-6 xl:hidden shadow-2xl bg-gradient-to-r from-brand-primary to-brand-accent text-white rounded-full w-16 h-16 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-3xl z-50">
     <span class="relative">
-      <img src="../assets/images/basketico.PNG" alt="Sepet" class="w-8 h-8" />
-      <span id="mobile-basket-count" class="absolute -top-2 -right-3 text-xs bg-white text-brand-accent rounded-full w-5 h-5 flex items-center justify-center">0</span>
+      <img src="../assets/images/basketico.PNG" alt="Sepet" class="w-8 h-8 floating-element" />
+      <span id="mobile-basket-count" class="absolute -top-3 -right-3 text-xs bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold animate-pulse">0</span>
     </span>
   </button>
 
   <!-- Product modal -->
-  <div id="product-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-black/50 p-4">
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden">
-      <div class="flex items-center justify-between px-4 py-3 border-b">
-        <h3 id="modal-title" class="text-lg font-semibold">Ürün Detayı</h3>
-        <button id="modal-close" class="text-gray-500 hover:text-gray-800">✕</button>
+  <div id="product-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center modal-backdrop p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden border border-gray-100">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
+        <h3 id="modal-title" class="text-xl font-bold text-brand-dark flex items-center gap-3">
+          <div class="w-2 h-8 bg-gradient-to-b from-brand-primary to-brand-accent rounded-full"></div>
+          Ürün Detayı
+        </h3>
+        <button id="modal-close" class="text-gray-400 hover:text-gray-600 transition-colors duration-300 p-2 hover:bg-gray-100 rounded-full">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
-      <div class="grid md:grid-cols-2 gap-4 p-4">
-        <!-- Carousel -->
-        <div class="relative">
-          <img id="modal-image" src="../assets/images/logo.png" alt="Ürün görseli" class="w-full h-64 object-contain bg-gray-50 rounded-lg" />
-          <button id="modal-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-9 h-9 flex items-center justify-center shadow">‹</button>
-          <button id="modal-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full w-9 h-9 flex items-center justify-center shadow">›</button>
+      
+      <!-- Modal Content -->
+      <div class="grid md:grid-cols-2 gap-8 p-6">
+        <!-- Image Carousel -->
+        <div class="relative bg-gray-50 rounded-2xl p-4">
+          <img id="modal-image" src="../assets/images/logo.png" alt="Ürün görseli" class="w-full h-80 object-contain rounded-xl transition-all duration-300" />
+          <button id="modal-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button id="modal-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
         </div>
-        <!-- Details -->
-        <div>
-          <h4 id="modal-name" class="text-xl font-bold mb-2">Ürün Adı</h4>
-          <p id="modal-desc" class="text-gray-600 mb-4">Ürün açıklaması.</p>
-          <div id="modal-datasheet" class="mb-4 hidden">
-            <a id="datasheet-link" href="#" target="_blank" class="inline-flex items-center gap-2 text-brand-primary underline">
-              <span>Teknik Döküman (PDF)</span>
+        
+        <!-- Product Details -->
+        <div class="space-y-6">
+          <div>
+            <h4 id="modal-name" class="text-2xl font-bold text-brand-dark mb-3">Ürün Adı</h4>
+            <div id="modal-desc" class="text-gray-600 leading-relaxed">Ürün açıklaması.</div>
+          </div>
+          
+          <!-- Datasheet Link -->
+          <div id="modal-datasheet" class="hidden">
+            <a id="datasheet-link" href="#" target="_blank" class="inline-flex items-center gap-3 text-brand-primary hover:text-brand-secondary font-semibold transition-colors duration-300 bg-blue-50 px-4 py-3 rounded-xl">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span>Teknik Döküman İndir (PDF)</span>
             </a>
           </div>
-          <div class="flex gap-2">
-            <button id="modal-add" class="btn-primary text-white px-4 py-2 rounded-lg">Sepete Ekle</button>
-            <button id="modal-close-2" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg">Kapat</button>
+          
+          <!-- Action Buttons -->
+          <div class="flex gap-3 pt-4">
+            <button id="modal-add" class="btn-primary flex-1 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l-2.5-5M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2"/>
+              </svg>
+              Sepete Ekle
+            </button>
+            <button id="modal-close-2" class="border-2 border-gray-200 text-gray-700 px-6 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300">
+              Kapat
+            </button>
           </div>
         </div>
       </div>
@@ -639,7 +1188,7 @@
   let modalIndex = 0;
   let currentModal = null;
 
-    // Elements
+  // Elements
   const gridEl = document.getElementById('grid');
   const paginationEl = document.getElementById('pagination');
   const catBtns = document.querySelectorAll('.cat-btn');
@@ -655,6 +1204,31 @@
     const mobileBasketBtn = document.getElementById('mobile-basket-btn');
     const mobileBasketCount = document.getElementById('mobile-basket-count');
     const basketListEl = document.getElementById('basket-items');
+
+    // Helper to attach listeners even if element isn't present yet
+    function onReadyAttach(idOrEl, cb) {
+      if (!idOrEl) return;
+      if (typeof idOrEl === 'string') {
+        const attach = (el) => { if (el) cb(el); };
+        const el = document.getElementById(idOrEl);
+        if (el) return attach(el);
+        document.addEventListener('DOMContentLoaded', () => attach(document.getElementById(idOrEl)));
+      } else if (idOrEl instanceof Element) {
+        cb(idOrEl);
+      }
+    }
+
+    // Small toast helper
+    function showToast(msg, duration = 2000) {
+      try {
+        const toast = document.getElementById('toast');
+        const inner = document.getElementById('toast-inner');
+        if (!toast || !inner) return;
+        inner.textContent = msg;
+        toast.classList.remove('hidden');
+        setTimeout(() => { toast.classList.add('hidden'); }, duration);
+      } catch(_){}
+    }
 
     // Modal els
     const modal = document.getElementById('product-modal');
@@ -680,7 +1254,50 @@
       return m ? m[0] : normalizeModel(id);
     }
 
+    // Helper functions for category icons and names (global so other renderers can use them)
+    function getCategoryIcon(cat) {
+      const icons = {
+        door: '<i class="fa fa-bell text-red-500"></i>',
+        indoor: '<i class="fa fa-tablet text-blue-500"></i>',
+        access: '<i class="fa fa-lock text-yellow-600"></i>',
+        twire: '<i class="fa fa-random text-purple-500"></i>',
+        villa: '<i class="fa fa-home text-green-600"></i>',
+        smart: '<i class="fa fa-cogs text-indigo-500"></i>',
+        hypanel: '<i class="fa fa-tablet text-green-500"></i>',
+        kilit: '<i class="fa fa-lock text-blue-500"></i>',
+        sensor: '<i class="fa fa-thermometer-half text-yellow-500"></i>',
+        termostat: '<i class="fa fa-fire text-red-500"></i>',
+        anahtar: '<i class="fa fa-toggle-on text-purple-500"></i>'
+      };
+      return icons[cat] || '<i class="fa fa-cube text-gray-500"></i>';
+    }
+
+    function getCategoryName(cat) {
+      const names = {
+        door: 'Kapı Zili',
+        indoor: 'İç Panel',
+        access: 'Erişim',
+        twire: '2-Kablo',
+        villa: 'Villa',
+        smart: 'Akıllı Ev',
+        hypanel: 'HyPanel',
+        kilit: 'Kilit',
+        sensor: 'Sensör',
+        termostat: 'Termostat',
+        anahtar: 'Anahtar'
+      };
+      return names[cat] || 'Diğer';
+    }
+
     function renderGrid(){
+      // Check if no results
+      if (filtered.length === 0) {
+        showNoResults();
+        return;
+      }
+      
+      showGrid();
+      
       // Sorting
       let sorted = filtered.slice();
       if(activeSort === 'name-asc') sorted.sort((a,b)=>a.name.localeCompare(b.name));
@@ -694,47 +1311,181 @@
       let end = activeViewCount === 'all' ? sorted.length : start+pageSize;
       const paged = sorted.slice(start, end);
       let html = paged.map(p => {
+        const brandColor = p.brand === 'Akuvox' ? 'blue' : 'orange';
+        const categoryIcon = getCategoryIcon(p.cat);
+        
         if(activeViewMode==='list'){
-          return `<div class="bg-white rounded-xl shadow p-5 flex items-center gap-6 hover:shadow-lg transition product-card" data-id="${p.id}">
-            <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="w-32 h-24 object-contain" />
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
-              <p class="text-sm text-gray-500 mb-1">${p.desc}</p>
-              <div class="text-xs text-gray-400 mb-2">Marka: <span class="font-semibold text-brand-primary">${p.brand}</span> | Bağlantı: <span class="font-semibold text-brand-primary">${p.conn.join(', ')}</span></div>
-              <div class="flex gap-2">
-                <button data-action="details" class="px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition">Detay</button>
-                <button data-action="add" class="px-3 py-2 text-sm border border-brand-accent text-brand-accent rounded hover:bg-brand-accent hover:text-white transition">Sepete Ekle</button>
+          return `<div class="product-card border-2 border-gray-100 rounded-2xl p-6 flex items-center gap-6 cursor-pointer transition-all duration-400" data-id="${p.id}">
+            <div class="relative flex-shrink-0">
+              <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="product-image w-36 h-28 object-contain rounded-xl bg-gray-50 p-2" />
+              <div class="absolute -top-2 -right-2 bg-${brandColor}-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                ${p.brand}
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-bold text-brand-dark line-clamp-2">${p.name}</h3>
+                <div class="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                  ${categoryIcon}
+                  <span class="capitalize">${getCategoryName(p.cat)}</span>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-2">${p.desc}</p>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 bg-${brandColor}-500 rounded-full"></div>
+                  <span class="text-sm font-medium text-gray-700">${p.brand}</span>
+                </div>
+                <div class="text-gray-300">•</div>
+                <div class="flex items-center gap-1 text-sm text-gray-600">
+                  <i class="fa fa-wifi text-brand-accent"></i>
+                  <span>${p.conn.join(', ')}</span>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <button data-action="details" class="flex-1 px-4 py-3 text-sm font-medium border-2 border-gray-200 text-gray-700 rounded-xl hover:border-brand-accent hover:text-brand-accent transition-all duration-300">
+                  <i class="fa fa-eye mr-2"></i>Detay Görüntüle
+                </button>
+                <button data-action="add" class="flex-1 btn-primary px-4 py-3 text-sm font-semibold text-white rounded-xl transition-all duration-300">
+                  <i class="fa fa-cart-plus mr-2"></i>Sepete Ekle
+                </button>
               </div>
             </div>
           </div>`;
         } else {
-          return `<div class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition product-card" data-id="${p.id}">
-            <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="w-40 h-28 object-contain mx-auto mb-4" />
-            <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
-            <p class="text-sm text-gray-500">${p.desc}</p>
-            <div class="text-xs text-gray-400 mb-2">Marka: <span class="font-semibold text-brand-primary">${p.brand}</span> | Bağlantı: <span class="font-semibold text-brand-primary">${p.conn.join(', ')}</span></div>
-            <div class="mt-4 flex gap-2">
-              <button data-action="details" class="px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition">Detay</button>
-              <button data-action="add" class="px-3 py-2 text-sm border border-brand-accent text-brand-accent rounded hover:bg-brand-accent hover:text-white transition">Sepete Ekle</button>
-                       </div>
+          const isGridDense = activeViewMode === 'grid-dense';
+          const cardClass = isGridDense ? 'p-4' : 'p-6';
+          const imageHeight = isGridDense ? 'h-32' : 'h-48';
+          const titleSize = isGridDense ? 'text-sm' : 'text-lg';
+          const descSize = isGridDense ? 'text-xs' : 'text-sm';
+          const buttonClass = isGridDense ? 'px-2 py-2 text-xs' : 'px-4 py-3 text-sm';
+          const marginBottom = isGridDense ? 'mb-3' : 'mb-6';
+          
+          return `<div class="product-card border-2 border-gray-100 rounded-2xl ${cardClass} cursor-pointer transition-all duration-400 group" data-id="${p.id}">
+            <div class="relative ${marginBottom}">
+              <img src="${p.images[0] || '../assets/images/logo.png'}" alt="${p.name}" class="product-image w-full ${imageHeight} object-contain rounded-xl bg-gray-50 p-2" />
+              <div class="absolute top-2 right-2 bg-${brandColor}-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                ${p.brand}
+              </div>
+              ${!isGridDense ? `<div class="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-gray-600 text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1">
+                ${categoryIcon}
+                <span class="capitalize">${getCategoryName(p.cat)}</span>
+              </div>` : ''}
+            </div>
+            
+            <div class="${isGridDense ? 'space-y-2' : 'space-y-4'}">
+              <div>
+                <h3 class="${titleSize} font-bold text-brand-dark line-clamp-2 ${isGridDense ? 'mb-1' : 'mb-2'} group-hover:text-brand-primary transition-colors duration-300">${p.name}</h3>
+                ${!isGridDense ? `<p class="text-gray-600 ${descSize} line-clamp-3">${p.desc}</p>` : ''}
+              </div>
+              
+              <div class="flex items-center ${isGridDense ? 'justify-center' : 'justify-between'} ${descSize}">
+                <div class="flex items-center gap-1">
+                  <div class="w-2 h-2 bg-${brandColor}-500 rounded-full"></div>
+                  <span class="font-medium text-gray-700 ${isGridDense ? 'text-xs' : ''}">${p.brand}</span>
+                </div>
+                ${!isGridDense ? `<div class="flex items-center gap-1 text-gray-600">
+                  <i class="fa fa-wifi text-brand-accent"></i>
+                  <span>${p.conn.join(', ')}</span>
+                </div>` : ''}
+              </div>
+              
+              <div class="${isGridDense ? 'flex flex-col gap-2' : 'grid grid-cols-2 gap-3'} pt-2">
+                <button data-action="details" class="${buttonClass} font-medium border-2 border-gray-200 text-gray-700 rounded-xl hover:border-brand-accent hover:text-brand-accent transition-all duration-300 ${isGridDense ? 'w-full' : ''}">
+                  <i class="fa fa-eye ${isGridDense ? 'mr-1' : 'mb-1 block'}"></i>
+                  <span>Detay</span>
+                </button>
+                <button data-action="add" class="btn-primary ${buttonClass} font-semibold text-white rounded-xl transition-all duration-300 ${isGridDense ? 'w-full' : ''}">
+                  <i class="fa fa-cart-plus ${isGridDense ? 'mr-1' : 'mb-1 block'}"></i>
+                  <span>Sepete Ekle</span>
+                </button>
+              </div>
+            </div>
           </div>`;
         }
       }).join('');
+      
       gridEl.innerHTML = html;
-      // Update grid/list/dense classes
-      if(activeViewMode==='list') gridEl.className = 'flex flex-col gap-6';
-      else if(activeViewMode==='grid-dense') gridEl.className = 'grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4';
-      else gridEl.className = 'grid grid-cols-1 sm:grid-cols-2 gap-6';
-      // Pagination controls
+      
+      // Update grid/list/dense classes with modern responsive design
+      if(activeViewMode==='list') {
+        gridEl.className = 'category-grid responsive-grid flex flex-col gap-6 mb-8';
+      } else if(activeViewMode==='grid-dense') {
+        gridEl.className = 'category-grid responsive-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-8';
+      } else {
+        gridEl.className = 'category-grid responsive-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mb-8';
+      }
+      
+      // Animate cards after rendering
+      setTimeout(animateProductCards, 100);
+      
+      // Modern pagination controls
       if(activeViewCount === 'all' || totalPages === 1){
         paginationEl.innerHTML = '';
       } else {
-        let pagHtml = '';
-        if(activePage > 1) pagHtml += `<button class="px-2 py-1 border rounded text-brand-primary" data-page="prev">&lt;</button>`;
-        for(let i=1;i<=totalPages;i++){
-          pagHtml += `<button class="px-2 py-1 border rounded ${i===activePage?'bg-brand-primary text-white font-bold':'text-gray-700'}" data-page="${i}">${i}</button>`;
+        let pagHtml = '<div class="flex items-center gap-2">';
+        
+        // Previous button
+        if(activePage > 1) {
+          pagHtml += `<button class="pagination-btn px-4 py-3 border-2 border-gray-200 rounded-xl text-brand-primary font-medium hover:border-brand-accent hover:bg-brand-accent hover:text-white transition-all duration-300" data-page="prev">
+            <i class="fa fa-chevron-left mr-2"></i>Önceki
+          </button>`;
         }
-        if(activePage < totalPages) pagHtml += `<button class="px-2 py-1 border rounded text-brand-primary" data-page="next">&gt;</button>`;
+        
+        // Page numbers
+        pagHtml += '<div class="flex items-center gap-1 mx-4">';
+        const maxPagesToShow = 5;
+        if (totalPages <= maxPagesToShow + 2) {
+          for(let i=1;i<=totalPages;i++){
+            const isActive = i === activePage;
+            pagHtml += `<button class="pagination-btn w-12 h-12 border-2 rounded-xl font-bold transition-all duration-300 ${
+              isActive 
+                ? 'bg-gradient-to-r from-brand-primary to-brand-accent text-white border-brand-accent shadow-lg' 
+                : 'border-gray-200 text-gray-700 hover:border-brand-accent hover:text-brand-accent'
+            }" data-page="${i}">${i}</button>`;
+          }
+        } else {
+          // Always show first page
+          pagHtml += `<button class="pagination-btn w-12 h-12 border-2 rounded-xl font-bold transition-all duration-300 ${activePage === 1 ? 'bg-gradient-to-r from-brand-primary to-brand-accent text-white border-brand-accent shadow-lg' : 'border-gray-200 text-gray-700 hover:border-brand-accent hover:text-brand-accent'}" data-page="1">1</button>`;
+          // Show ellipsis if needed
+          if (activePage > 3) {
+            pagHtml += `<span class="px-2 text-gray-400">...</span>`;
+          }
+          // Show middle pages
+          let start = Math.max(2, activePage - 1);
+          let end = Math.min(totalPages - 1, activePage + 1);
+          if (activePage <= 3) {
+            start = 2;
+            end = maxPagesToShow;
+          } else if (activePage >= totalPages - 2) {
+            start = totalPages - maxPagesToShow + 1;
+            end = totalPages - 1;
+          }
+          for(let i=start;i<=end;i++){
+            const isActive = i === activePage;
+            pagHtml += `<button class="pagination-btn w-12 h-12 border-2 rounded-xl font-bold transition-all duration-300 ${
+              isActive 
+                ? 'bg-gradient-to-r from-brand-primary to-brand-accent text-white border-brand-accent shadow-lg' 
+                : 'border-gray-200 text-gray-700 hover:border-brand-accent hover:text-brand-accent'
+            }" data-page="${i}">${i}</button>`;
+          }
+          // Show ellipsis if needed
+          if (activePage < totalPages - 2) {
+            pagHtml += `<span class="px-2 text-gray-400">...</span>`;
+          }
+          // Always show last page
+          pagHtml += `<button class="pagination-btn w-12 h-12 border-2 rounded-xl font-bold transition-all duration-300 ${activePage === totalPages ? 'bg-gradient-to-r from-brand-primary to-brand-accent text-white border-brand-accent shadow-lg' : 'border-gray-200 text-gray-700 hover:border-brand-accent hover:text-brand-accent'}" data-page="${totalPages}">${totalPages}</button>`;
+        }
+        pagHtml += '</div>';
+        
+        // Next button  
+        if(activePage < totalPages) {
+          pagHtml += `<button class="pagination-btn px-4 py-3 border-2 border-gray-200 rounded-xl text-brand-primary font-medium hover:border-brand-accent hover:bg-brand-accent hover:text-white transition-all duration-300" data-page="next">
+            Sonraki<i class="fa fa-chevron-right ml-2"></i>
+          </button>`;
+        }
+        
+        pagHtml += '</div>';
         paginationEl.innerHTML = pagHtml;
       }
     }
@@ -743,8 +1494,16 @@
       let val = btn.dataset.count;
       activeViewCount = val === 'all' ? 'all' : parseInt(val);
       activePage = 1;
-      viewCountBtns.forEach(b=>b.classList.remove('font-bold','text-black'));
-      btn.classList.add('font-bold','text-black');
+      
+      // Update button styles
+      viewCountBtns.forEach(b => {
+        b.classList.remove('active', 'font-bold', 'text-white', 'bg-gradient-to-r', 'from-brand-primary', 'to-brand-accent', 'shadow-lg');
+        b.classList.add('text-gray-600', 'hover:text-brand-primary', 'hover:bg-white');
+      });
+      
+      btn.classList.add('active', 'font-bold', 'text-white', 'bg-gradient-to-r', 'from-brand-primary', 'to-brand-accent', 'shadow-lg');
+      btn.classList.remove('text-gray-600', 'hover:text-brand-primary', 'hover:bg-white');
+      
       renderGrid();
     }));
     paginationEl.addEventListener('click', e => {
@@ -758,23 +1517,20 @@
     // View mode toggles
     viewListBtn.addEventListener('click', () => {
       activeViewMode = 'list';
-      viewListBtn.classList.add('text-brand-primary', 'bg-brand-light');
-      viewGridBtn.classList.remove('text-brand-primary', 'bg-brand-light');
-      viewGridDenseBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      [viewListBtn, viewGridBtn, viewGridDenseBtn].forEach(btn => btn.classList.remove('active', 'text-brand-primary', 'bg-brand-light'));
+      viewListBtn.classList.add('active', 'text-brand-primary', 'bg-brand-light');
       renderGrid();
     });
     viewGridBtn.addEventListener('click', () => {
       activeViewMode = 'grid';
-      viewGridBtn.classList.add('text-brand-primary', 'bg-brand-light');
-      viewListBtn.classList.remove('text-brand-primary', 'bg-brand-light');
-      viewGridDenseBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      [viewListBtn, viewGridBtn, viewGridDenseBtn].forEach(btn => btn.classList.remove('active', 'text-brand-primary', 'bg-brand-light'));
+      viewGridBtn.classList.add('active', 'text-brand-primary', 'bg-brand-light');
       renderGrid();
     });
     viewGridDenseBtn.addEventListener('click', () => {
       activeViewMode = 'grid-dense';
-      viewGridDenseBtn.classList.add('text-brand-primary', 'bg-brand-light');
-      viewGridBtn.classList.remove('text-brand-primary', 'bg-brand-light');
-      viewListBtn.classList.remove('text-brand-primary', 'bg-brand-light');
+      [viewListBtn, viewGridBtn, viewGridDenseBtn].forEach(btn => btn.classList.remove('active', 'text-brand-primary', 'bg-brand-light'));
+      viewGridDenseBtn.classList.add('active', 'text-brand-primary', 'bg-brand-light');
       renderGrid();
     });
     // Sort method
@@ -784,56 +1540,223 @@
     });
 
     function applyFilters() {
+      // Show loading state
+      showLoadingState();
+      
+      setTimeout(() => {
+        const q = (searchEl.value || '').trim().toLowerCase();
+        filtered = PRODUCTS.filter(p =>
+          (activeCat === 'all' || p.cat === activeCat) &&
+          (activeBrand === 'all' || p.brand === activeBrand) &&
+          (activeConn === 'all' || (p.conn && p.conn.includes(activeConn))) &&
+          (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))
+        );
+        
+        hideLoadingState();
+        renderGrid();
+        updateProductCount();
+      }, 300); // Small delay for better UX
+    }
+    
+    function applyFiltersToProducts() {
       const q = (searchEl.value || '').trim().toLowerCase();
-      filtered = PRODUCTS.filter(p =>
+      return PRODUCTS.filter(p =>
         (activeCat === 'all' || p.cat === activeCat) &&
         (activeBrand === 'all' || p.brand === activeBrand) &&
         (activeConn === 'all' || (p.conn && p.conn.includes(activeConn))) &&
         (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))
       );
-      renderGrid();
+    }
+    
+    function showLoadingState() {
+      document.getElementById('grid').style.display = 'none';
+      document.getElementById('no-results').style.display = 'none';
+      document.getElementById('loading-state').style.display = 'block';
+      document.getElementById('pagination').innerHTML = '';
+    }
+    
+    function hideLoadingState() {
+      document.getElementById('loading-state').style.display = 'none';
+    }
+    
+    function showNoResults() {
+      document.getElementById('grid').style.display = 'none';
+      document.getElementById('loading-state').style.display = 'none';
+      document.getElementById('no-results').style.display = 'block';
+      document.getElementById('pagination').innerHTML = '';
+    }
+    
+    function showGrid() {
+      document.getElementById('no-results').style.display = 'none';
+      document.getElementById('loading-state').style.display = 'none';
+      document.getElementById('grid').style.display = 'grid';
+    }
+
+    // Update the on-screen debug panel with current basket/localStorage state
+    function updateDebugPanel() {
+      try {
+        const panel = document.getElementById('basket-debug');
+        const content = document.getElementById('basket-debug-content');
+        if (!panel || !content) return;
+        const ls = (() => { try { return JSON.parse(localStorage.getItem('begon_basket')||'[]'); } catch(_) { return localStorage.getItem('begon_basket'); } })();
+        const hasBasketEl = !!document.getElementById('basket-items');
+        const html = `basket (in-memory): ${JSON.stringify(basket, null, 2)}\nlocalStorage: ${JSON.stringify(ls, null, 2)}\n#basket-items present: ${hasBasketEl}`;
+        content.textContent = html;
+      } catch (e) { console.log('updateDebugPanel err', e); }
     }
 
     function saveBasket() {
+      try{ console.log('saveBasket: saving', basket); }catch(_){ }
       localStorage.setItem('begon_basket', JSON.stringify(basket));
+      try { updateDebugPanel(); } catch(_){}
+      try { syncSendOfferState(); } catch (_){ }
     }
 
+    function updateHeaderBasketBadge(total){
+      try{
+        const hdr = document.getElementById('header-basket-count') || document.querySelector('[data-basket-count]');
+        if(hdr) hdr.textContent = String(total);
+      }catch(_){/* no-op */}
+    }
+
+    // debounce timer to coalesce rapid badge updates (prevents repeated console noise)
+    let __begon_updateBasket_timer = null;
     function updateBasketBadges() {
-      const total = basket.reduce((s, i) => s + i.qty, 0);
-      basketCountEl.textContent = total;
-      mobileBasketCount.textContent = total;
+      // schedule the actual DOM updates a short time later so multiple callers collapse
+      try { clearTimeout(__begon_updateBasket_timer); } catch(_) {}
+      __begon_updateBasket_timer = setTimeout(() => {
+        try {
+          const total = basket.reduce((s, i) => s + i.qty, 0);
+          // Query DOM elements each time because partials may replace them after script load
+          const basketCountElNow = document.getElementById('basket-count');
+          const mobileBasketCountNow = document.getElementById('mobile-basket-count');
+          // Only log when an explicit debug flag is enabled to avoid spam in console
+          try { if (window.BEGON_DEBUG) console.log('updateBasketBadges: total=', total, 'basket=', basket); } catch(_) {}
+          if (basketCountElNow) basketCountElNow.textContent = String(total);
+          if (mobileBasketCountNow) mobileBasketCountNow.textContent = String(total);
+          updateHeaderBasketBadge(total);
+          try { syncSendOfferState(); } catch(_){ }
+        } catch (e) { /* swallow errors to avoid breaking callers */ }
+      }, 80);
     }
 
-    function renderBasket() {
-      if (!basket.length) {
-        basketListEl.innerHTML = '<p class="text-sm text-gray-500">Sepetiniz boş.</p>';
-        updateBasketBadges();
-        return;
-      }
-      basketListEl.innerHTML = basket.map(item => `
-        <div class="py-3 flex items-center justify-between">
-          <div>
-            <p class="text-sm font-medium text-gray-800">${item.name}</p>
-            <div class="flex items-center gap-2 mt-1">
-              <button data-dec="${item.id}" class="w-7 h-7 rounded border border-gray-300">-</button>
-              <span class="text-sm">${item.qty} adet</span>
-              <button data-inc="${item.id}" class="w-7 h-7 rounded border border-gray-300">+</button>
-            </div>
-          </div>
-          <button data-del="${item.id}" class="text-red-600 hover:underline text-sm">Sil</button>
-        </div>
-      `).join('');
-      updateBasketBadges();
+    // Ensure the Teklif İste button state matches the basket
+    function syncSendOfferState() {
+      try {
+        const sendBtn = document.getElementById('send-offer');
+        if (!sendBtn) return;
+        if (!basket || !basket.length) {
+          sendBtn.disabled = true;
+          sendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          sendBtn.style.pointerEvents = 'none';
+        } else {
+          sendBtn.disabled = false;
+          sendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          sendBtn.style.pointerEvents = 'auto';
+        }
+      } catch (e) { console.log('syncSendOfferState err', e); }
     }
+
+  function renderBasket() {
+      const basketItemsEl = document.getElementById('basket-items');
+      const emptyBasketEl = document.getElementById('empty-basket');
+      const sendOfferBtn = document.getElementById('send-offer');
+      const totalCountEl = document.getElementById('basket-total-count');
+
+      if (!basketItemsEl) {
+        // DOM element not available right now
+        return false;
+      }
+
+      if (!basket.length) {
+        basketItemsEl.innerHTML = '';
+        if (emptyBasketEl) emptyBasketEl.style.display = 'block';
+        if (sendOfferBtn) { sendOfferBtn.disabled = true; sendOfferBtn.classList.add('opacity-50','cursor-not-allowed'); }
+        if (totalCountEl) totalCountEl.textContent = '0';
+        updateBasketBadges();
+        return true;
+      }
+
+      // Build items
+      basketItemsEl.innerHTML = basket.map(item => {
+        const product = PRODUCTS.find(p => p.id === item.id);
+        const brandColor = product?.brand === 'Akuvox' ? 'blue' : 'green';
+        const category = product ? getCategoryName(product.cat) : 'Ürün';
+        const priceText = item.price ? `<div class="text-xs text-gray-500">${item.price}</div>` : '';
+
+  return `
+  <div class="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-gray-200 transition-all duration-300">
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex-1 min-w-0">
+              <h4 class="text-sm font-semibold text-gray-800 line-clamp-2">${item.name}</h4>
+              ${product ? `<div class="flex items-center gap-2 mt-1"><div class="w-2 h-2 bg-${brandColor}-500 rounded-full"></div><span class="text-xs text-gray-600">${product.brand}</span></div>` : ''}
+              ${priceText}
+            </div>
+            <button data-del="${item.id}" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded-lg transition-all duration-300" title="Sepetten Çıkar">
+              <i class="fa fa-trash text-xs"></i>
+            </button>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-1">
+              <button data-dec="${item.id}" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-brand-primary transition-all duration-300 font-semibold"><i class="fa fa-minus text-xs"></i></button>
+              <span class="text-sm font-semibold text-gray-800 min-w-[3rem] text-center">${item.qty} adet</span>
+              <button data-inc="${item.id}" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-brand-primary transition-all duration-300 font-semibold"><i class="fa fa-plus text-xs"></i></button>
+            </div>
+            <div class="text-xs text-gray-500 font-medium">${category}</div>
+          </div>
+        </div>`;
+      }).join('');
+
+      if (emptyBasketEl) emptyBasketEl.style.display = 'none';
+      if (sendOfferBtn) { sendOfferBtn.disabled = false; sendOfferBtn.classList.remove('opacity-50','cursor-not-allowed'); }
+      if (totalCountEl) totalCountEl.textContent = String(basket.reduce((s,i)=>s+i.qty,0));
+
+      updateBasketBadges();
+      return true;
+    }
+
+    // Safe render: try to render immediately, otherwise retry a few times
+    function safeRenderBasket(attempts = 5, delay = 120) {
+      try {
+        const basketItemsEl = document.getElementById('basket-items');
+        try { if (window.BEGON_DEBUG) console.log('safeRenderBasket: attempts=', attempts, 'basketExists=', !!basketItemsEl); } catch(_) {}
+        updateDebugPanel();
+        const ok = renderBasket();
+        if (ok) return;
+        if (attempts <= 0) {
+          try { if (window.BEGON_DEBUG) console.log('safeRenderBasket: giving up after retries'); } catch(_) {}
+          return;
+        }
+        setTimeout(() => safeRenderBasket(attempts - 1, delay), delay);
+      } catch (err) {
+        console.log('safeRenderBasket: caught err', err);
+        if (attempts <= 0) return;
+        setTimeout(() => safeRenderBasket(attempts - 1, delay), delay);
+      }
+    }
+
+    // Initialization: sync basket count and render current basket on page load
+    // Data flow docs:
+    // - products.html: clicking [data-action="add"] calls addToBasket(id) which updates the in-memory `basket`, saves it to localStorage ('begon_basket'), and refreshes UI badges.
+    // - contact.html: when redirected via "Teklif İste", it reads localStorage('begon_basket') to prefill the form with product names/quantities (and optional prices).
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        basket = JSON.parse(localStorage.getItem('begon_basket') || '[]');
+      } catch (_) { basket = []; }
+      updateBasketBadges();
+      renderBasket();
+    });
 
     function addToBasket(id) {
       const p = PRODUCTS.find(x => x.id === id);
       if (!p) return;
+      console.log('addToBasket called with id=', id, ' product=', p);
       const existing = basket.find(x => x.id === id);
       if (existing) existing.qty += 1;
-      else basket.push({ id: p.id, name: p.name, qty: 1 });
+      else basket.push({ id: p.id, name: p.name, price: p.price ?? null, qty: 1 });
       saveBasket();
-      renderBasket();
+      safeRenderBasket();
+      try { showToast(p.name + ' sepete eklendi'); } catch(_){}
     }
 
     function openModal(id) {
@@ -877,7 +1800,10 @@
     // Wire filters
     catBtns.forEach(btn => btn.addEventListener('click', () => {
       activeCat = btn.dataset.cat;
-      catBtns.forEach(b => b.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent'));
+      catBtns.forEach(b => {
+        b.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+      });
+      // Sadece seçili butonu mavi yap
       btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
       applyFilters();
     }));
@@ -895,81 +1821,413 @@
     }));
     searchEl.addEventListener('input', applyFilters);
 
-    // Grid actions
-    gridEl.addEventListener('click', (e) => {
-      const card = e.target.closest('.product-card');
-      if (!card) return;
-      const id = card.dataset.id;
-      // If add button, add to basket
-      if (e.target.matches('[data-action="add"]')) { addToBasket(id); return; }
-      // If Detay button or anywhere else on card, open modal
-      openModal(id);
+    // Grid actions (use closest to capture clicks on nested elements)
+    function attachGridHandler(el) {
+      if (!el) return;
+      el.addEventListener('click', (e) => {
+        const card = e.target.closest('.product-card');
+        if (!card) return;
+        const id = card.dataset.id;
+        const addBtn = e.target.closest('[data-action="add"]');
+        if (addBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Grid: add button clicked for id=', id);
+          addToBasket(id);
+          showToast('Sepete eklendi');
+          return;
+        }
+        const detailsBtn = e.target.closest('[data-action="details"]');
+        // Open modal for details button or any other click on the card
+        if (detailsBtn) {
+          openModal(id);
+        } else if (card && !addBtn) {
+          // Click on card body opens details
+          openModal(id);
+        }
+      });
+    }
+
+    if (gridEl) attachGridHandler(gridEl);
+    else onReadyAttach('grid', attachGridHandler);
+
+    // Fallback delegated handler: capture any click on elements with data-action="add"
+    document.addEventListener('click', (e) => {
+      const addBtn = e.target.closest('[data-action="add"]');
+      if (!addBtn) return;
+      // Find the closest product card to extract id
+      const card = addBtn.closest('.product-card');
+      const id = card ? card.dataset.id : addBtn.getAttribute('data-id');
+      if (!id) return;
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Delegated: add button clicked for id=', id);
+      addToBasket(id);
     });
 
-    // Basket actions
-    document.getElementById('basket-items').addEventListener('click', (e) => {
-      const dec = e.target.getAttribute('data-dec');
-      const inc = e.target.getAttribute('data-inc');
-      const del = e.target.getAttribute('data-del');
-      if (dec) { const it = basket.find(x => x.id === dec); if (it) { it.qty = Math.max(1, it.qty - 1); saveBasket(); renderBasket(); } }
-      if (inc) { const it = basket.find(x => x.id === inc); if (it) { it.qty += 1; saveBasket(); renderBasket(); } }
-      if (del) { basket = basket.filter(x => x.id !== del); saveBasket(); renderBasket(); }
-    });
-    document.getElementById('clear-basket').addEventListener('click', () => { basket = []; saveBasket(); renderBasket(); });
+    // Basket actions (attach robustly)
+    onReadyAttach('basket-items', el => {
+      // Prevent duplicate bindings that can cause double increments
+      if (el.__begon_bound) return;
+      el.__begon_bound = true;
+      el.addEventListener('click', (e) => {
+        const decBtn = e.target.closest('[data-dec]');
+        const incBtn = e.target.closest('[data-inc]');
+        const delBtn = e.target.closest('[data-del]');
 
-    // Send offer: go to contact page and prefill basket via localStorage
-    document.getElementById('send-offer').addEventListener('click', () => {
-      if (!basket.length) { alert('Sepetiniz boş.'); return; }
-      // Mark that we came from basket for UI hint
-      localStorage.setItem('begon_basket_from', '1');
-      window.location.href = './contact.html?from=basket';
+        if (decBtn) {
+          const dec = decBtn.getAttribute('data-dec');
+          const it = basket.find(x => x.id === dec);
+          if (it) { it.qty = Math.max(1, it.qty - 1); saveBasket(); safeRenderBasket(); }
+          return;
+        }
+
+        if (incBtn) {
+          const inc = incBtn.getAttribute('data-inc');
+          const it = basket.find(x => x.id === inc);
+          if (it) { it.qty += 1; saveBasket(); safeRenderBasket(); }
+          return;
+        }
+
+        if (delBtn) {
+          const del = delBtn.getAttribute('data-del');
+          basket = basket.filter(x => x.id !== del);
+          saveBasket(); safeRenderBasket();
+          return;
+        }
+      });
     });
 
-    // Mobile basket button just scrolls to basket panel
-    mobileBasketBtn.addEventListener('click', () => {
-      document.getElementById('basket-items').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Use delegated handlers so buttons work even if DOM is updated by partial loader
+    document.addEventListener('click', (e) => {
+      const clearBtn = e.target.closest('#clear-basket');
+      if (clearBtn) {
+        basket = [];
+        saveBasket();
+        safeRenderBasket();
+        return;
+      }
+      const sendBtn = e.target.closest('#send-offer');
+      if (sendBtn) {
+        if (!basket.length) { alert('Sepetiniz boş.'); return; }
+        localStorage.setItem('begon_basket_from', '1');
+        window.location.href = './contact.html?from=basket';
+        return;
+      }
+      const mobBtn = e.target.closest('#mobile-basket-btn');
+      if (mobBtn) {
+        const items = document.getElementById('basket-items');
+        if (items) items.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+    });
+
+    // Also attach direct listeners to the basket action buttons when they appear
+    onReadyAttach('clear-basket', (el) => {
+      try{ el.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); console.log('clear-basket clicked'); basket = []; saveBasket(); safeRenderBasket(); }); }catch(_){ }
+    });
+    onReadyAttach('send-offer', (el) => {
+      try{ el.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); console.log('send-offer clicked'); if (!basket.length) { alert('Sepetiniz boş.'); return; } localStorage.setItem('begon_basket_from', '1'); window.location.href = './contact.html?from=basket'; }); }catch(_){ }
     });
 
     // Modal wiring
     modalClose.addEventListener('click', closeModal);
+    modalAdd.addEventListener('click', () => {
+      if (currentModal) {
+        addToBasket(currentModal.id);
+      }
+    });
     modalClose2.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    modalPrev.addEventListener('click', () => showModalImage(-1));
-    modalNext.addEventListener('click', () => showModalImage(1));
-    modalAdd.addEventListener('click', () => { if (currentModal) addToBasket(currentModal.id); closeModal(); });
+  modalPrev.addEventListener('click', () => showModalImage(-1));
+  modalNext.addEventListener('click', () => showModalImage(1));
+
+    // Update product count display
+    function updateProductCount() {
+      const totalProducts = PRODUCTS.length;
+      const filteredProducts = applyFiltersToProducts();
+      const countElement = document.getElementById('product-count');
+      if (countElement) {
+        countElement.textContent = `${filteredProducts.length} / ${totalProducts} ürün gösteriliyor`;
+      }
+      
+      // Update category counts
+      const categoryCounts = {};
+      PRODUCTS.forEach(product => {
+        const cat = product.cat || 'other';
+        categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+      });
+      
+      Object.keys(categoryCounts).forEach(cat => {
+        const countEl = document.getElementById(`count-${cat}`);
+        if (countEl) countEl.textContent = categoryCounts[cat];
+      });
+      
+      // Update brand counts
+      const brandCounts = { all: totalProducts };
+      PRODUCTS.forEach(product => {
+        const brand = product.brand?.toLowerCase() || 'other';
+        brandCounts[brand] = (brandCounts[brand] || 0) + 1;
+      });
+      
+      Object.keys(brandCounts).forEach(brand => {
+        const countEl = document.getElementById(`brand-count-${brand}`);
+        if (countEl) countEl.textContent = brandCounts[brand];
+      });
+    }
+
+    // Keep a stable reference to the original renderer to avoid recursion
+    const renderBasketBase = renderBasket;
+
+    // Enhanced basket rendering with animations
+    function renderBasketEnhanced() {
+      // Call original basket renderer to populate basic list
+      if (typeof renderBasketBase === 'function') renderBasketBase();
+      
+      // Update empty state
+      const emptyBasket = document.getElementById('empty-basket');
+      const basketItems = document.getElementById('basket-items');
+      const sendOfferBtn = document.getElementById('send-offer');
+      
+      if (basket.length === 0) {
+        emptyBasket.style.display = 'block';
+        sendOfferBtn.disabled = true;
+        sendOfferBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      } else {
+        emptyBasket.style.display = 'none';
+        sendOfferBtn.disabled = false;
+        sendOfferBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+      
+      // Update total count
+      const totalCountEl = document.getElementById('basket-total-count');
+      if (totalCountEl) {
+        totalCountEl.textContent = basket.reduce((sum, item) => sum + item.qty, 0);
+      }
+    }
+    
+    // Stagger animation for product cards
+    function animateProductCards() {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach((card, index) => {
+        card.classList.add('stagger-animation');
+        card.style.animationDelay = `${index * 0.1}s`;
+      });
+    }
+    
+    // Clear filters functionality
+    function clearAllFilters() {
+      // Reset all filter states
+      activeCat = 'all';
+      activeBrand = 'all';
+      activeConn = 'all';
+      searchEl.value = '';
+      
+      // Update UI
+      catBtns.forEach(btn => {
+        if (btn.dataset.cat === 'all') btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      brandBtns.forEach(btn => {
+        if (btn.dataset.brand === 'all') btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      connBtns.forEach(btn => {
+        if (btn.dataset.conn === 'all') btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      
+      // Apply filters
+      applyFilters();
+    }
+    
+    // Enhanced keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search').focus();
+      }
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+      // Toggle debug panel with Ctrl+Shift+D
+      if (e.ctrlKey && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
+        const panel = document.getElementById('basket-debug');
+        if (!panel) return;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        updateDebugPanel();
+      }
+    });
+    
+    // Clear filters button event
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'clear-filters') {
+        clearAllFilters();
+      }
+    });
 
     // Init
     // Highlight defaults on load
     window.addEventListener('DOMContentLoaded', () => {
-      // Görüntüle
+      // Initialize AOS animations
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          offset: 100
+        });
+      }
+      
+      // Görüntüle buttons
       viewCountBtns.forEach(btn => {
-        if (btn.dataset.count === '16') btn.classList.add('font-bold', 'text-black');
-        else btn.classList.remove('font-bold', 'text-black');
+        if (btn.dataset.count === '16') {
+          btn.classList.add('active', 'font-bold', 'text-white', 'bg-gradient-to-r', 'from-brand-primary', 'to-brand-accent', 'shadow-lg');
+          btn.classList.remove('text-gray-600', 'hover:text-brand-primary', 'hover:bg-white');
+        } else {
+          btn.classList.remove('active', 'font-bold', 'text-white', 'bg-gradient-to-r', 'from-brand-primary', 'to-brand-accent', 'shadow-lg');
+          btn.classList.add('text-gray-600', 'hover:text-brand-primary', 'hover:bg-white');
+        }
       });
-      // Grid view
-      viewGridBtn.classList.add('text-brand-primary', 'bg-brand-light');
-      viewListBtn.classList.remove('text-brand-primary', 'bg-brand-light');
-      viewGridDenseBtn.classList.remove('text-brand-primary', 'bg-brand-light');
-      // Varsayılan Sıralama
+      
+      // View toggle buttons
+      viewGridBtn.classList.add('active');
+      viewListBtn.classList.remove('active');
+      viewGridDenseBtn.classList.remove('active');
+      
+      // Default sorting
       sortMethodEl.value = 'default';
-      // Kategori (Tümü)
+      
+      // Category filters (Tümü selected)
       catBtns.forEach(btn => {
-        if (btn.dataset.cat === 'all') btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
-        else btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+        if (btn.dataset.cat === 'all') {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
       });
-      // Marka (Tümü)
+      
+      // Brand filters (Tümü selected)
       brandBtns.forEach(btn => {
-        if (btn.dataset.brand === 'all') btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
-        else btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+        if (btn.dataset.brand === 'all') {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
       });
-      // Bağlantı (Tümü)
-      connBtns.foreach(btn => {
-        if (btn.dataset.conn === 'all') btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent');
-        else btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent');
+      
+      // Connection filters (Tümü selected)
+      connBtns.forEach(btn => {
+        if (btn.dataset.conn === 'all') {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
       });
+      
+  // Initialize counts and filters
+  updateProductCount();
+  applyFilters();
+  // Render basket using enhanced renderer
+  renderBasketEnhanced();
+  try { updateDebugPanel(); } catch(_){}
+  try { syncSendOfferState(); } catch(_){ }
+      
+      // Add stagger animation to initial load
+      setTimeout(animateProductCards, 500);
     });
-    applyFilters();
-    renderBasket();
+    
+  // Replace the global renderBasket with the enhanced version
+  renderBasket = renderBasketEnhanced;
+
+  // Ensure basket action handlers are attached even if partial loader replaces DOM
+  function attachBasketActionHandlers() {
+    try {
+      const sendBtn = document.getElementById('send-offer');
+      const clearBtn = document.getElementById('clear-basket');
+      const basketItemsEl = document.getElementById('basket-items');
+
+      if (sendBtn && !sendBtn.__begon_bound) {
+        sendBtn.addEventListener('click', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          console.log('send-offer clicked (attached)');
+          if (!basket.length) { alert('Sepetiniz boş.'); return; }
+          localStorage.setItem('begon_basket_from', '1');
+          window.location.href = './contact.html?from=basket';
+        });
+        sendBtn.__begon_bound = true;
+      }
+
+      if (clearBtn && !clearBtn.__begon_bound) {
+        clearBtn.addEventListener('click', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          console.log('clear-basket clicked (attached)');
+          basket = [];
+          saveBasket();
+          safeRenderBasket();
+        });
+        clearBtn.__begon_bound = true;
+      }
+
+      if (basketItemsEl && !basketItemsEl.__begon_bound) {
+        basketItemsEl.addEventListener('click', (e) => {
+          const decBtn = e.target.closest('[data-dec]');
+          const incBtn = e.target.closest('[data-inc]');
+          const delBtn = e.target.closest('[data-del]');
+
+          if (decBtn) {
+            const dec = decBtn.getAttribute('data-dec');
+            const it = basket.find(x => x.id === dec);
+            if (it) { it.qty = Math.max(1, it.qty - 1); saveBasket(); safeRenderBasket(); }
+            return;
+          }
+          if (incBtn) {
+            const inc = incBtn.getAttribute('data-inc');
+            const it = basket.find(x => x.id === inc);
+            if (it) { it.qty += 1; saveBasket(); safeRenderBasket(); }
+            return;
+          }
+          if (delBtn) {
+            const del = delBtn.getAttribute('data-del');
+            basket = basket.filter(x => x.id !== del);
+            saveBasket(); safeRenderBasket();
+            return;
+          }
+        });
+        basketItemsEl.__begon_bound = true;
+      }
+
+      // Sync state visuals
+      try { syncSendOfferState(); } catch(_){}
+    } catch (err) {
+      console.warn('attachBasketActionHandlers error', err);
+    }
+  }
+
+  // Observe DOM changes and reattach handlers when basket or its controls are inserted/replaced
+  (function watchBasketArea(){
+    try {
+      // Attach initially in case elements are already present
+      attachBasketActionHandlers();
+
+      const observer = new MutationObserver((mutations) => {
+        let found = false;
+        for (const m of mutations) {
+          for (const n of m.addedNodes) {
+            if (!(n instanceof Element)) continue;
+            if (n.id === 'basket-items' || n.querySelector && n.querySelector('#basket-items')) found = true;
+            if (n.id === 'send-offer' || n.querySelector && n.querySelector('#send-offer')) found = true;
+            if (n.id === 'clear-basket' || n.querySelector && n.querySelector('#clear-basket')) found = true;
+          }
+        }
+        if (found) {
+          // Delay slightly to allow partial loading transitions to finish
+          setTimeout(() => { attachBasketActionHandlers(); safeRenderBasket(); }, 50);
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    } catch (e) { console.warn('watchBasketArea init err', e); }
+  })();
   </script>
 
   <!-- Spacer then Footer -->
@@ -980,7 +2238,8 @@
   <script src="../assets/js/includes.js"></script>
 
   <!-- Google Fonts -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
 
   <!-- Floating WhatsApp Button -->
   <div class="whats-float">

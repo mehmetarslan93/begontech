@@ -40,21 +40,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add scroll effect to header
+    // Add scroll effect to header (guard in case header is loaded asynchronously by partials)
     const header = document.querySelector('header');
     let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', function() {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 100) {
-            header.classList.add('shadow-lg');
-        } else {
-            header.classList.remove('shadow-lg');
-        }
-        
-        lastScrollY = currentScrollY;
-    });
+
+    if (header) {
+        window.addEventListener('scroll', function() {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    } else {
+        // Header partial may be loaded later; attempt to attach when header appears
+        document.addEventListener('DOMContentLoaded', () => {
+            const hdr = document.querySelector('header');
+            if (!hdr) return;
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > 100) hdr.classList.add('shadow-lg');
+                else hdr.classList.remove('shadow-lg');
+            });
+        });
+    }
     
     // Service cards hover animation enhancement
     const serviceCards = document.querySelectorAll('.service-card');

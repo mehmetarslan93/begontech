@@ -15,6 +15,11 @@
     transition: opacity 0.5s;
 }
 
+/* When loader is hidden (opacity 0), allow clicks through */
+#pageLoader[style*="opacity: 0"] {
+    pointer-events: none;
+}
+
 .animate-spin-slow {
     animation: spin 2s linear infinite;
 }

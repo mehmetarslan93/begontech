@@ -26,6 +26,7 @@
           if(loader){
             loader.style.display = 'flex';
             loader.style.opacity = '1';
+            loader.style.pointerEvents = 'auto';
           }
           try{
             const res = await fetch(url, { cache: 'no-cache' });
@@ -41,6 +42,7 @@
                 // Hide loader and fade in new content
                 if(loader){
                   loader.style.opacity = '0';
+                  loader.style.pointerEvents = 'none';
                   setTimeout(()=>{ loader.style.display = 'none'; }, 500);
                 }
                 newEl.classList.remove('fade-out');
@@ -97,6 +99,7 @@
       if(loader){
         loader.style.display = 'flex';
         loader.style.opacity = '1';
+        loader.style.pointerEvents = 'auto';
       }
       // Load header and footer in parallel
       await Promise.all([
@@ -111,6 +114,7 @@
       setTimeout(() => {
         if(loader){
           loader.style.opacity = '0';
+          loader.style.pointerEvents = 'none';
           setTimeout(()=>{ loader.style.display = 'none'; }, 500);
         }
         if(mainContent){
