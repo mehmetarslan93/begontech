@@ -18,11 +18,114 @@
   <!-- Shared Header Placeholder -->
   <div id="__header"></div>
 
-  <!-- Page content placeholder -->
-  <main class="py-16">
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold text-brand-dark mb-4">Çözümler</h1>
-      <p class="text-gray-600">Bu sayfa, çakışma yaşamadan geliştirme yapılabilmesi için iskelet olarak oluşturulmuştur. İçerik daha sonra eklenecektir.</p>
+  <!-- Çözümler: Dikey 4 bölüm, her biri anchor ile erişilebilir -->
+  <main class="py-12">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <header class="mb-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-brand-dark">Çözümlerimiz</h1>
+        <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">Farklı yaşam ve çalışma alanları için akıllı, güvenli ve ölçeklenebilir çözümler. Aşağıdaki başlıklardan ihtiyacınıza uygun çözümü inceleyin.</p>
+      </header>
+
+      <!-- Hızlı gezinme -->
+      <nav aria-label="Çözüm kısayolları" class="mb-10">
+        <ul class="flex flex-wrap items-center justify-center gap-3 text-sm">
+          <li><a href="#mustakil-evler" class="inline-block px-4 py-2 rounded-full border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition">Müstakil Evler</a></li>
+          <li><a href="#apartman-site" class="inline-block px-4 py-2 rounded-full border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition">Apartman ve Site</a></li>
+          <li><a href="#ofis-binalari" class="inline-block px-4 py-2 rounded-full border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition">Ofis Binaları</a></li>
+          <li><a href="#endustriyel" class="inline-block px-4 py-2 rounded-full border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition">Endüstriyel</a></li>
+        </ul>
+      </nav>
+
+      <!-- 1) Müstakil Evler -->
+      <section id="mustakil-evler" class="mb-16 scroll-mt-24" aria-labelledby="mustakil-heading">
+        <div class="relative rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('../assets/images/smart-home/service-bg-houses.jpg');"></div>
+          <div class="relative bg-gradient-to-r from-black/60 via-black/30 to-transparent text-white p-8 md:p-12">
+            <h2 id="mustakil-heading" class="text-2xl md:text-3xl font-extrabold">Müstakil Evler</h2>
+            <p class="mt-3 max-w-3xl text-white/90">Akıllı ev cihazlarının tek bir deneyimde birleştiği, güvenlik, konfor ve enerji verimliliğini standart hâline getiren villa ve müstakil ev çözümleri. Kapı girişinden oda içi iklimlendirmeye, aydınlatmadan sahne otomasyonlarına kadar her noktayı tek uygulamadan yönetin.</p>
+          </div>
+        </div>
+        <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+          <article class="prose prose-lg max-w-none prose-p:text-gray-700">
+            <p>Günlük rutinlerinizi kolaylaştıran sahne senaryoları (Eve Dönüş, Gece Modu vb.), akıllı kilit ve görüntülü interkom ile güvenli giriş, panjur/aydınlatma/iklimlendirme otomasyonları ve uzaktan kontrol ile her zaman evinizin içinde gibisiniz. Aile bireyleri için kişisel erişim seviyeleri, bildirimler ve ziyaretçi yönetimi gibi özelliklerle hem kontrol hem de güvenlik dengede tutulur.</p>
+            <p>Akıllı termostat ve sensörlerle enerji tüketimini optimize ederken; IP kameralar, hareket ve duman sensörleriyle güvenliği bir üst seviyeye taşıyın. Tüm sistem, sezgisel bir panel ve mobil uygulama üzerinden merkezi olarak yönetilir.</p>
+          </article>
+          <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
+            <img src="../assets/images/solutions/müstakilevler.jpg" alt="Müstakil evler için akıllı ev çözümleri" class="w-full h-full object-cover" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- 2) Apartman ve Site Çözümleri -->
+      <section id="apartman-site" class="mb-16 scroll-mt-24" aria-labelledby="apartman-heading">
+        <div class="relative rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('../assets/images/smart-home/service-bg-apartments.jpg');"></div>
+          <div class="relative bg-gradient-to-r from-black/60 via-black/30 to-transparent text-white p-8 md:p-12">
+            <h2 id="apartman-heading" class="text-2xl md:text-3xl font-extrabold">Apartman ve Site Çözümleri</h2>
+            <p class="mt-3 max-w-3xl text-white/90">Güvenlik, erişim kontrolü ve toplu bildirimlere odaklanan; yönetim paneli ve mobil uygulama entegrasyonu ile ölçeklenebilir apartman ve site çözümleri. Ziyaretçi ve kargo yönetimi, toplu alan erişimleri ve kapı önü güvenliği tek bir çatı altında.</p>
+          </div>
+        </div>
+        <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+          <article class="prose prose-lg max-w-none prose-p:text-gray-700">
+            <p>IP interkom ve kart/QR erişim sistemleri ile güvenliği ve geçiş yönetimini merkezi olarak sağlayın. Daire içi paneller ve mobil uygulama ile kapı çalma, görüntülü görüşme, zil geçmişi, ziyaretçi yetkilendirme ve kapı açma işlemlerini güvenle gerçekleştirin.</p>
+            <p>Site yönetimi; duyurular, arıza/şikâyet kayıtları ve rezervasyon modülleri gibi topluluk özelliklerini tek panel üzerinden yönetebilir. Bulut ve yerel sunucu seçenekleri ile farklı ölçeklerde esnek kurulum mümkündür.</p>
+          </article>
+          <div class="grid gap-6">
+            <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
+              <img src="../assets/images/solutions/residental.png" alt="Konut odaklı apartman/site çözümleri" class="w-full h-full object-cover" />
+            </figure>
+            <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
+              <img src="../assets/images/solutions/community.jpg" alt="Topluluk ve site yönetimi çözümleri" class="w-full h-full object-cover" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) Ofis Binaları Çözümleri -->
+      <section id="ofis-binalari" class="mb-16 scroll-mt-24" aria-labelledby="ofis-heading">
+        <div class="relative rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('../assets/images/smart-home/service-bg-office.jpg');"></div>
+          <div class="relative bg-gradient-to-r from-black/60 via-black/30 to-transparent text-white p-8 md:p-12">
+            <h2 id="ofis-heading" class="text-2xl md:text-3xl font-extrabold">Ofis Binaları Çözümleri</h2>
+            <p class="mt-3 max-w-3xl text-white/90">Kurumsal güvenlik, ziyaretçi ve erişim süreçleri için modern bir altyapı. Lobi ve turnike geçişleri, asansör yetkilendirmeleri, kapı önü görüntülü görüşme ve kayıt yetenekleri tek platformda.</p>
+          </div>
+        </div>
+        <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+          <article class="prose prose-lg max-w-none prose-p:text-gray-700">
+            <p>Personel ve ziyaretçi girişleri için kart/QR/biometrik seçenekler; toplantı odaları için rezervasyon ve erişim kurguları; acil durum senaryoları ve alarm entegrasyonları ile uçtan uca güvenli bir ofis deneyimi. Raporlama ve kayıt yönetimi ile denetim süreçlerini kolaylaştırın.</p>
+            <p>IP kamera, interkom, yangın algılama ve çevresel sensör verilerini bir araya getiren merkezi bir kontrol paneli ile işletme verimliliği ve güvenliği birlikte ele alınır.</p>
+          </article>
+          <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
+            <img src="../assets/images/solutions/commercial.jpg" alt="Ofis binaları ve ticari alanlar için çözümler" class="w-full h-full object-cover" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- 4) Endüstriyel Çözümler -->
+      <section id="endustriyel" class="mb-8 md:mb-16 scroll-mt-24" aria-labelledby="endustriyel-heading">
+        <div class="relative rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('../assets/images/smart-home/service-bg-industrial.jpg');"></div>
+          <div class="relative bg-gradient-to-r from-black/60 via-black/30 to-transparent text-white p-8 md:p-12">
+            <h2 id="endustriyel-heading" class="text-2xl md:text-3xl font-extrabold">Endüstriyel Çözümler</h2>
+            <p class="mt-3 max-w-3xl text-white/90">Otel ve hastaneler dâhil, büyük ölçekli yapılarda oda ve alan yönetimi, erişim yetkilendirmesi ve enerji verimliliğini birleştiren çözümler. GRMS entegrasyonu, alarm ve bildirim altyapılarıyla güvenli ve kesintisiz bir deneyim.</p>
+          </div>
+        </div>
+        <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+          <article class="prose prose-lg max-w-none prose-p:text-gray-700">
+            <p>Konuk ve personel profilleri üzerinden esnek yetkilendirme, oda sahneleri ve enerji tüketim optimizasyonu. Hastane senaryolarında hemşire çağrı, erişim kontrol ve kayıt sistemleriyle entegre çalışarak süreç verimliliğini artırın.</p>
+            <p>GRMS ve BMS sistemleri ile iki yönlü entegrasyon, modüler kurulum, sahada kolay genişleme ve merkezi izleme/raporlama ile endüstriyel yapılarda sürdürülebilir bir altyapı kurun.</p>
+          </article>
+          <div class="grid gap-6">
+            <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
+              <img src="../assets/images/solutions/endüstriyel.jpg" alt="Endüstriyel tesislerde akıllı çözüm uygulamaları" class="w-full h-full object-cover" />
+            </figure>
+            <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
+              <img src="../assets/images/solutions/hospital.jpg" alt="Hastane ve sağlık tesisleri için akıllı oda ve erişim çözümleri" class="w-full h-full object-cover" />
+            </figure>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
