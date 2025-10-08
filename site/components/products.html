@@ -13,6 +13,7 @@
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
   </script>
+  <script src="../assets/js/productData.js"></script>
 </head>
 <body class="bg-white text-gray-800">
   <!-- Page Loading Overlay (used for transitions too) -->
@@ -170,6 +171,11 @@
         <div>
           <h4 id="modal-name" class="text-xl font-bold mb-2">Ürün Adı</h4>
           <p id="modal-desc" class="text-gray-600 mb-4">Ürün açıklaması.</p>
+          <div id="modal-datasheet" class="mb-4 hidden">
+            <a id="datasheet-link" href="#" target="_blank" class="inline-flex items-center gap-2 text-brand-primary underline">
+              <span>Teknik Döküman (PDF)</span>
+            </a>
+          </div>
           <div class="flex gap-2">
             <button id="modal-add" class="btn-primary text-white px-4 py-2 rounded-lg">Sepete Ekle</button>
             <button id="modal-close-2" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg">Kapat</button>
@@ -208,7 +214,7 @@
       { id:'e121-00307', cat:'twire', name:'E121', desc:'2 Kablolu IP Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/e121-00307.jpg'] },
       { id:'ns1-05948', cat:'twire', name:'NS1', desc:'2 Kablolu IP Ağ Anahtarı', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/ns1-05948.jpg'] },
       { id:'ns2-05937', cat:'twire', name:'NS2', desc:'2 Kablolu IP Ağ Anahtarı', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/ns2-05937.jpg'] },
-      { id:'r20_11-05504', cat:'twire', name:'R20_11', desc:'2 Kablolu IP Kapı Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/r20_11-05504.png'] },
+      { id:'Villa Tipi - Akuvox R20A-2', cat:'twire', name:'R20A-2', desc:'2 Kablolu IP Kapı Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/r20_11-05504.png'] },
       { id:'r20k-04803-05251', cat:'twire', name:'R20K', desc:'2 Kablolu SIP Kapı Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/r20k-04803-05251.jpg'] },
       { id:'untitled-44-05734', cat:'twire', name:'Untitled', desc:'2 Kablolu IP Panel', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/2wireintercom/untitled-44-05734.png'] },
       // Access Kontrol
@@ -244,17 +250,17 @@
       { id:'Smartpanel', cat:'hypanel', name:'Smartpanel', desc:'Akubela Smartpanel', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/Smartpanel.png'] },
       { id:'smartpanelpro', cat:'hypanel', name:'Smartpanel Pro', desc:'Akubela Smartpanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/smartpanelpro.png'] },
       // Kapı Önü Ziller
-      { id:'2021070811575313-62640', cat:'door', name:'Kapı Zili', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/2021070811575313-62640.png'] },
+      { id:'VillaTipi-AkuvoxE12', cat:'door', name:'Villa Tipi - Akuvox E12', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/VillaTipi-AkuvoxE12.png'] },
       { id:'db01-10421', cat:'door', name:'DB01', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/db01-10421.png'] },
       { id:'e161-04401', cat:'door', name:'E161', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e161-04401.png'] },
       { id:'e18-03827', cat:'door', name:'E18', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e18-03827.png'] },
       { id:'e20-05454', cat:'door', name:'E20', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e20-05454.png'] },
       { id:'e21-05617', cat:'door', name:'E21', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/e21-05617.png'] },
-      { id:'r20_1', cat:'door', name:'R20_1', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r20_1.png'] },
+      { id:'Villa Tipi - Akuvox R20A', cat:'door', name:'R20A', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r20_1.png'] },
       { id:'r25a-10647', cat:'door', name:'R25A', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r25a-10647.png'] },
-      { id:'r27', cat:'door', name:'R27', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r27.png'] },
-      { id:'r28', cat:'door', name:'R28', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r28.png'] },
-      { id:'r29', cat:'door', name:'R29', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r29.png'] },
+      { id:'r27a', cat:'door', name:'R27A', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r27a.png'] },
+      { id:'r28a', cat:'door', name:'R28A', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r28a.png'] },
+      { id:'r29s', cat:'door', name:'R29S', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r29s.png'] },
       { id:'s532', cat:'door', name:'S532', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s532.png'] },
       { id:'s535', cat:'door', name:'S535', desc:'Kapı Önü Zili', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s535.png'],
         details:`<div class='mb-2'>Akuvox S535, modüler yapısı ve çoklu geçiş kontrol seçenekleriyle apartman, site ve ticari binalar için yüksek güvenlik ve esneklik sunan bir IP interkom panelidir.</div>
@@ -348,12 +354,42 @@
     const modalImg = document.getElementById('modal-image');
     const modalName = document.getElementById('modal-name');
     const modalDesc = document.getElementById('modal-desc');
-    const modalPrev = document.getElementById('modal-prev');
+  const modalPrev = document.getElementById('modal-prev');
     const modalNext = document.getElementById('modal-next');
     const modalAdd = document.getElementById('modal-add');
     const modalClose = document.getElementById('modal-close');
     const modalClose2 = document.getElementById('modal-close-2');
+  const modalDatasheetWrap = document.getElementById('modal-datasheet');
+  const modalDatasheetLink = document.getElementById('datasheet-link');
 
+    function normalizeModel(str){
+      return (str||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+    }
+    function extractModelFromId(id){
+      // Examples: 'r25a-10647' -> 'R25A', 'x915' -> 'X915'
+      const up = (id||'').toUpperCase();
+      const m = up.match(/[A-Z]+\d+[A-Z]?/);
+      return m ? m[0] : normalizeModel(id);
+    }
+    function findProductData(p){
+      if (typeof productData === 'undefined') return null;
+      const keys = Object.keys(productData || {});
+      const nameKey = normalizeModel(p.name);
+      const idKey = extractModelFromId(p.id);
+      // 1) exact
+      if (productData[nameKey]) return productData[nameKey];
+      if (productData[idKey]) return productData[idKey];
+      // 2) prefix matches (prefer longest key)
+      const candidates = keys.filter(k => k.startsWith(nameKey) || k.startsWith(idKey) || nameKey.startsWith(k) || idKey.startsWith(k));
+      if (candidates.length){
+        const best = candidates.sort((a,b)=>b.length-a.length)[0];
+        return productData[best];
+      }
+      // 3) contains
+      const contains = keys.find(k => k.includes(nameKey) || k.includes(idKey));
+      if (contains) return productData[contains];
+      return null;
+    }
     function renderGrid(){
       // Sorting
       let sorted = filtered.slice();
@@ -525,6 +561,25 @@
                               .replace(/<ul([^>]*)>/g, '<ul$1 style="margin-bottom:1em;">')
                               .replace(/<li([^>]*)>/g, '<li$1 style="margin-bottom:0.5em;">');
     descHtml += detailsHtml;
+  }
+  // Inject dynamic info from productData (if available)
+  const pd = findProductData(p);
+  if (pd) {
+    // Prefer external name/description if present
+    if (pd.name) modalName.textContent = pd.name;
+    if (pd.description && !p.details) {
+      descHtml = `<div style="margin-bottom:1em;">${pd.description}</div>` + descHtml;
+    }
+    if (pd.datasheet) {
+      modalDatasheetLink.href = pd.datasheet;
+        modalDatasheetLink.target = '_blank';
+        modalDatasheetLink.rel = 'noopener noreferrer';
+      modalDatasheetWrap.classList.remove('hidden');
+    } else {
+      modalDatasheetWrap.classList.add('hidden');
+    }
+  } else {
+    modalDatasheetWrap.classList.add('hidden');
   }
   modalDesc.innerHTML = descHtml;
   modalImg.src = p.images[0] || '../assets/images/logo.png';
