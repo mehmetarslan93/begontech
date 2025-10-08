@@ -89,8 +89,8 @@ const productData = {
     "description": "Ürünün ayrıntılı teknik özellikleri için teknik dökümanı inceleyin.",
     "datasheet": "https://www.akuvoxinterkom.com/dosyalar/52526-e13s.pdf"
   },
-  "E12W": {
-    "name": "Akuvox E12W",
+  "E12": {
+    "name": "Akuvox E12",
     "description": "Ürünün ayrıntılı teknik özellikleri için teknik dökümanı inceleyin.",
     "datasheet": "https://www.akuvoxinterkom.com/dosyalar/akuvox-e12w-datasheet.pdf"
   },
