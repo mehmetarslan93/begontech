@@ -488,7 +488,7 @@
         <section class="xl:col-span-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <!-- Controls: Görüntüle, grid/list, sort -->
           <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="flex flex-col md:flex-row md:flex-wrap md:items-center gap-4">
               <!-- View Count Controls -->
               <div class="flex items-center gap-3">
                 <span class="text-sm font-semibold text-gray-700 flex items-center gap-2">
@@ -496,7 +496,6 @@
                   Görüntüle:
                 </span>
                 <div class="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
-                  <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="4">4</button>
                   <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="8">8</button>
                   <button class="view-count-btn px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-primary hover:bg-white rounded-lg transition-all duration-300" data-count="12">12</button>
                   <button class="view-count-btn active px-3 py-2 text-sm font-medium font-bold text-white bg-gradient-to-r from-brand-primary to-brand-accent rounded-lg shadow-lg" data-count="16">16</button>
@@ -522,10 +521,10 @@
               </div>
               
               <!-- Sort Dropdown -->
-              <div class="relative">
+              <div class="relative md:min-w-[220px] md:self-end w-full">
                 <label class="text-sm font-semibold text-gray-700 block mb-2">Sıralama:</label>
                 <div class="relative">
-                  <select id="sort-method" class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent min-w-[200px]">
+                  <select id="sort-method" class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent w-full md:min-w-[200px]">
                     <option value="default">Varsayılan Sıralama</option>
                     <option value="name-asc">İsim (A-Z)</option>
                     <option value="name-desc">İsim (Z-A)</option>
@@ -1950,29 +1949,56 @@
       if (countElement) {
         countElement.textContent = `${filteredProducts.length} / ${totalProducts} ürün gösteriliyor`;
       }
-      
-      // Update category counts
+
+      // Kategori sayıları: aktif filtreye göre
       const categoryCounts = {};
-      PRODUCTS.forEach(product => {
+      filteredProducts.forEach(product => {
         const cat = product.cat || 'other';
         categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
       });
-      
+      // Tümü: filtrelenmemiş ürün sayısı
+      const countAllEl = document.getElementById('count-all');
+      if (countAllEl) countAllEl.textContent = filteredProducts.length;
       Object.keys(categoryCounts).forEach(cat => {
         const countEl = document.getElementById(`count-${cat}`);
         if (countEl) countEl.textContent = categoryCounts[cat];
       });
-      
-      // Update brand counts
-      const brandCounts = { all: totalProducts };
-      PRODUCTS.forEach(product => {
-        const brand = product.brand?.toLowerCase() || 'other';
-        brandCounts[brand] = (brandCounts[brand] || 0) + 1;
+
+      // Marka sayıları: aktif filtreye göre
+      // Marka sayıları: aktif filtreye göre (ör: Akubela sadece ekranda görünenler)
+      const brandCounts = { all: filteredProducts.length };
+      filteredProducts.forEach(product => {
+        // Marka id'si HTML'de küçük harfli, Akubela/Akuvox vs. için normalize et
+        const brandKey = (product.brand || '').toLowerCase();
+        brandCounts[brandKey] = (brandCounts[brandKey] || 0) + 1;
       });
-      
+      const brandAllEl = document.getElementById('brand-count-all');
+      if (brandAllEl) brandAllEl.textContent = filteredProducts.length;
+      // Akubela/Akuvox gibi markalar için doğru sayım
+      ['akuvox','akubela'].forEach(brand => {
+        const countEl = document.getElementById(`brand-count-${brand}`);
+        if (countEl) countEl.textContent = brandCounts[brand] || 0;
+      });
+      // Diğer markalar için de güncelle
       Object.keys(brandCounts).forEach(brand => {
         const countEl = document.getElementById(`brand-count-${brand}`);
         if (countEl) countEl.textContent = brandCounts[brand];
+      });
+
+      // Bağlantı sayıları: aktif filtreye göre
+      const connCounts = { all: filteredProducts.length };
+      filteredProducts.forEach(product => {
+        if (product.conn && Array.isArray(product.conn)) {
+          product.conn.forEach(conn => {
+            connCounts[conn] = (connCounts[conn] || 0) + 1;
+          });
+        }
+      });
+      const connAllEl = document.querySelector('.conn-btn[data-conn="all"] .bg-gray-100');
+      if (connAllEl) connAllEl.textContent = filteredProducts.length;
+      Object.keys(connCounts).forEach(conn => {
+        const countEl = document.getElementById(`count-${conn.toLowerCase()}`);
+        if (countEl) countEl.textContent = connCounts[conn];
       });
     }
 
