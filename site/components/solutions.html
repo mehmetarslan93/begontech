@@ -13,6 +13,24 @@
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: { primary:'#1e40af', secondary:'#0891b2', accent:'#3b82f6', dark:'#1e293b', light:'#f8fafc' } } } } }
   </script>
+  <style>
+    /* Mobile-only responsive fix for solution images */
+    .solution-img { cursor: zoom-in; }
+    @media (max-width: 768px) {
+      .solution-img {
+        display: block;
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important;
+      }
+    }
+
+    /* Lightbox base styling (uses Tailwind utility classes too) */
+    #lightboxOverlay { opacity: 0; transition: opacity 200ms ease; }
+    #lightboxOverlay.active { opacity: 1; }
+    #lightboxImage { transform: scale(0.97); opacity: 0.98; transition: transform 200ms ease, opacity 200ms ease; }
+    #lightboxOverlay.active #lightboxImage { transform: scale(1); opacity: 1; }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
   <!-- Shared Header Placeholder -->
@@ -58,7 +76,7 @@
             </ul>
           </div>
           <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
-            <img src="../assets/images/solutions/müstakilevler.jpg" alt="Müstakil evler için akıllı ev çözümleri" class="w-full h-full object-cover" />
+            <img src="../assets/images/solutions/müstakilevler.jpg" alt="Müstakil evler için akıllı ev çözümleri" class="solution-img w-full h-full object-cover" />
           </figure>
         </div>
       </section>
@@ -83,11 +101,11 @@
               <li class="flex items-start gap-3"><i class="fa fa-check-circle-o text-brand-primary mt-1" aria-hidden="true"></i><span><strong>Çoklu kapı</strong> ve <strong>asansör yetkilendirme</strong> senaryoları.</span></li>
             </ul>
             <figure class="rounded-2xl overflow-hidden shadow border border-gray-100 self-start">
-              <img src="../assets/images/solutions/residental.png" alt="Konut odaklı apartman/site çözümleri" class="w-full h-full object-cover" />
+              <img src="../assets/images/solutions/residental.png" alt="Konut odaklı apartman/site çözümleri" class="solution-img w-full h-full object-cover" />
             </figure>
           </div>
           <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
-            <img src="../assets/images/solutions/community.jpg" alt="Topluluk ve site yönetimi çözümleri" class="w-full h-full object-cover" />
+            <img src="../assets/images/solutions/community.jpg" alt="Topluluk ve site yönetimi çözümleri" class="solution-img w-full h-full object-cover" />
           </figure>
         </div>
       </section>
@@ -113,7 +131,7 @@
             </ul>
           </div>
           <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
-            <img src="../assets/images/solutions/commercial.jpg" alt="Ofis binaları ve ticari alanlar için çözümler" class="w-full h-full object-cover" />
+            <img src="../assets/images/solutions/commercial.jpg" alt="Ofis binaları ve ticari alanlar için çözümler" class="solution-img w-full h-full object-cover" />
           </figure>
         </div>
       </section>
@@ -138,11 +156,11 @@
               <li class="flex items-start gap-3"><i class="fa fa-check-circle-o text-brand-primary mt-1" aria-hidden="true"></i><span><strong>Merkezî izleme</strong> ve detaylı raporlama.</span></li>
             </ul>
             <figure class="rounded-2xl overflow-hidden shadow border border-gray-100 self-start">
-              <img src="../assets/images/solutions/hospital.jpg" alt="Hastane ve sağlık tesisleri için akıllı oda ve erişim çözümleri" class="w-full h-full object-cover" />
+              <img src="../assets/images/solutions/hospital.jpg" alt="Hastane ve sağlık tesisleri için akıllı oda ve erişim çözümleri" class="solution-img w-full h-full object-cover" />
             </figure>
           </div>
           <figure class="rounded-2xl overflow-hidden shadow border border-gray-100">
-            <img src="../assets/images/solutions/endüstriyel.jpg" alt="Endüstriyel tesislerde akıllı çözüm uygulamaları" class="w-full h-full object-cover" />
+            <img src="../assets/images/solutions/endüstriyel.jpg" alt="Endüstriyel tesislerde akıllı çözüm uygulamaları" class="solution-img w-full h-full object-cover" />
           </figure>
         </div>
       </section>
@@ -154,6 +172,76 @@
 
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/includes.js"></script>
+
+  <!-- Simple Image Lightbox -->
+  <div id="lightboxOverlay" class="fixed inset-0 z-[9999] items-center justify-center bg-black/80 p-4 hidden" role="dialog" aria-modal="true" aria-label="Görüntü Önizleme">
+    <div class="absolute inset-0" data-backdrop></div>
+    <div class="relative mx-auto flex h-full w-full items-center justify-center">
+      <img id="lightboxImage" src="" alt="" class="max-h-[90vh] max-w-[90vw] w-auto h-auto rounded-lg shadow-2xl" />
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var overlay = document.getElementById('lightboxOverlay');
+      var imageEl = document.getElementById('lightboxImage');
+      var imgs = document.querySelectorAll('.solution-img');
+
+      function openLightbox(src, alt) {
+        imageEl.src = src;
+        imageEl.alt = alt || '';
+        // Show overlay first (no opacity), then in next frame activate to animate in
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+        requestAnimationFrame(function() {
+          overlay.classList.add('active');
+        });
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        if (!overlay.classList.contains('active')) {
+          // Already closing or closed
+          overlay.classList.add('hidden');
+          overlay.classList.remove('flex');
+          imageEl.src = '';
+          document.body.style.overflow = '';
+          return;
+        }
+        // Start fade/scale-out
+        overlay.classList.remove('active');
+        // After transition ends, fully hide and cleanup
+        var onEnd = function(e) {
+          if (e && e.target !== overlay) return; // ensure overlay's transition
+          overlay.removeEventListener('transitionend', onEnd);
+          overlay.classList.add('hidden');
+          overlay.classList.remove('flex');
+          imageEl.src = '';
+          document.body.style.overflow = '';
+        };
+        overlay.addEventListener('transitionend', onEnd);
+      }
+
+      imgs.forEach(function(img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function() {
+          openLightbox(img.currentSrc || img.src, img.alt);
+        });
+      });
+
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay || e.target.hasAttribute('data-backdrop')) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
 
   <!-- Google Fonts -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
