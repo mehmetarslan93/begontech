@@ -30,6 +30,27 @@
     #lightboxOverlay.active { opacity: 1; }
     #lightboxImage { transform: scale(0.97); opacity: 0.98; transition: transform 200ms ease, opacity 200ms ease; }
     #lightboxOverlay.active #lightboxImage { transform: scale(1); opacity: 1; }
+    /* Close button for lightbox */
+    #lightboxClose {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10010;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: 0;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 150ms ease, transform 120ms ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    #lightboxClose:hover { background: rgba(0,0,0,0.8); transform: translateY(-1px); }
+    #lightboxClose:focus { outline: 2px solid rgba(59,130,246,0.9); outline-offset: 2px; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -176,7 +197,8 @@
   <!-- Simple Image Lightbox -->
   <div id="lightboxOverlay" class="fixed inset-0 z-[9999] items-center justify-center bg-black/80 p-4 hidden" role="dialog" aria-modal="true" aria-label="Görüntü Önizleme">
     <div class="absolute inset-0" data-backdrop></div>
-    <div class="relative mx-auto flex h-full w-full items-center justify-center">
+    <button id="lightboxClose" aria-label="Kapat" title="Kapat">&times;</button>
+    <div id="lightboxContent" class="relative mx-auto flex h-full w-full items-center justify-center">
       <img id="lightboxImage" src="" alt="" class="max-h-[90vh] max-w-[90vw] w-auto h-auto rounded-lg shadow-2xl" />
     </div>
   </div>
@@ -185,6 +207,7 @@
     (function() {
       var overlay = document.getElementById('lightboxOverlay');
       var imageEl = document.getElementById('lightboxImage');
+  var closeBtn = document.getElementById('lightboxClose');
       var imgs = document.querySelectorAll('.solution-img');
 
       function openLightbox(src, alt) {
@@ -196,6 +219,10 @@
         requestAnimationFrame(function() {
           overlay.classList.add('active');
         });
+        // Focus the close button for easy access
+        if (closeBtn) {
+          closeBtn.focus({ preventScroll: true });
+        }
         document.body.style.overflow = 'hidden';
       }
 
@@ -230,10 +257,25 @@
       });
 
       overlay.addEventListener('click', function(e) {
-        if (e.target === overlay || e.target.hasAttribute('data-backdrop')) {
+        // Close when clicking anywhere except directly on the image itself.
+        // The close button handler stops propagation so clicking it won't fall
+        // through to this handler.
+        if (e.target === imageEl) {
+          return; // clicked the image itself - do nothing
+        }
+        // clicking backdrop/overlay or any area around the image closes
+        if (e.target === overlay || e.target.hasAttribute('data-backdrop') || e.target !== imageEl) {
           closeLightbox();
         }
       });
+
+      // Close button handler
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+      }
 
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {

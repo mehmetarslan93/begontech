@@ -68,6 +68,31 @@ html {
     box-shadow: 0 10px 25px -3px rgba(30, 64, 175, 0.25);
 }
 
+/* Small utility used for popup buttons to match site button sizing */
+.btn-popup {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* Outline variation that matches other page outline buttons */
+.btn-outline {
+    background: #ffffff;
+    border: 2px solid var(--brand-primary);
+    color: var(--brand-primary);
+    transition: all 0.25s ease;
+}
+.btn-outline:hover {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -3px rgba(30, 64, 175, 0.18);
+}
+
 /* Premium gradient backgrounds */
 .gradient-bg {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);

@@ -2358,6 +2358,22 @@
     });
 
     // Use delegated handlers so buttons work even if DOM is updated by partial loader
+
+    // If this page is opened with a hash (e.g. components/products.html#s539), open that product's modal
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const idFromHash = (window.location.hash || '').replace('#', '').trim();
+        if (idFromHash) {
+          // Try to open modal for that id after a short delay to allow PRODUCT list to render
+          setTimeout(() => {
+            try { openModal(idFromHash); } catch(_) {}
+            // also scroll to the product card if present
+            const card = document.querySelector(`.product-card[data-id="${idFromHash}"]`);
+            if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 250);
+        }
+      } catch (_) {}
+    });
     document.addEventListener('click', (e) => {
       const clearBtn = e.target.closest('#clear-basket');
       if (clearBtn) {

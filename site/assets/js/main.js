@@ -95,11 +95,49 @@ document.addEventListener('DOMContentLoaded', function() {
     const hotspots = document.querySelectorAll('.hotspot');
     const popup = document.getElementById('devicePopup');
     if (hotspots.length && popup) {
+        // Small timeout so user can move cursor from hotspot to popup without it closing
+        let hideTimeout = null;
+        const HIDE_DELAY = 250; // ms
+
         hotspots.forEach(dot => {
             dot.addEventListener('mouseenter', function(e) {
                 const device = dot.getAttribute('data-device');
                 const detail = dot.getAttribute('data-detail');
-                popup.innerHTML = `<strong>${device}</strong><br><span>${detail}</span>`;
+                const image = dot.getAttribute('data-image');
+                const usage = dot.getAttribute('data-usage');
+                // Allow per-hotspot override for preview image width via data-image-width (e.g. "160px" or "160")
+                let imageWidth = dot.getAttribute('data-image-width') || dot.getAttribute('data-image-size') || '220px';
+                if (/^\d+$/.test(imageWidth)) imageWidth = imageWidth + 'px';
+                // Build popup content, include image and usage if provided
+                let content = `<div style="max-width:320px;"><strong>${device}</strong><br><span>${detail}</span>`;
+                if (image) {
+                    // centered preview image for hotspot popup; width can be overridden per-hotspot
+                    content += `<div style="margin-top:12px;display:flex;align-items:center;justify-content:center"><img src="${image}" alt="${device}" style="width:${imageWidth};max-width:80%;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 6px 16px rgba(0,0,0,0.12);"/></div>`;
+                }
+                if (usage) {
+                    content += `<div style="margin-top:8px;color:#374151;font-size:14px;">${usage}</div>`;
+                }
+
+                // Add action buttons if product id or detail url provided
+                const prodId = dot.getAttribute('data-id');
+                const detailUrl = dot.getAttribute('data-detail-url');
+                if (prodId || detailUrl) {
+                    content += `<div style="margin-top:10px;display:flex;gap:8px;justify-content:center">`;
+                    if (prodId) {
+                        // Primary action button matching site primary gradient
+                        content += `<button id="add-to-cart-btn" data-prod-id="${prodId}" class="btn-popup btn-primary" style="color:white;border:none;cursor:pointer">Sepete Ekle</button>`;
+                    }
+                    if (detailUrl) {
+                        // Outline / secondary button matching site outline style
+                        content += `<a id="view-details-btn" href="${detailUrl}" class="btn-popup btn-outline">Ürünü Görüntüle</a>`;
+                    }
+                    content += `</div>`;
+                }
+
+                content += `</div>`;
+                popup.innerHTML = content;
+                // Clear any pending hide request and show popup
+                if (hideTimeout) { clearTimeout(hideTimeout); hideTimeout = null; }
                 popup.style.display = 'block';
                 popup.style.position = 'fixed';
                 // Position popup near the dot
@@ -129,13 +167,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 0);
             });
             dot.addEventListener('mouseleave', function(e) {
-                popup.style.display = 'none';
+                // Delay hiding so the user can move pointer to the popup
+                hideTimeout = setTimeout(() => { popup.style.display = 'none'; hideTimeout = null; }, HIDE_DELAY);
             });
+        });
+        // Keep popup visible while hovering over it
+        popup.addEventListener('mouseenter', () => {
+            if (hideTimeout) { clearTimeout(hideTimeout); hideTimeout = null; }
+        });
+        popup.addEventListener('mouseleave', () => {
+            // When leaving the popup, hide after the same delay
+            hideTimeout = setTimeout(() => { popup.style.display = 'none'; hideTimeout = null; }, HIDE_DELAY);
         });
         // Hide popup on scroll or click elsewhere
         window.addEventListener('scroll', () => { popup.style.display = 'none'; });
         document.body.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('hotspot')) popup.style.display = 'none';
+            // If click is not on a hotspot and not inside the popup, hide it
+            const clickedHotspot = e.target.closest && e.target.closest('.hotspot');
+            if (!clickedHotspot && !popup.contains(e.target)) popup.style.display = 'none';
+        });
+        // Delegated handler for Add to Cart button inside popup
+        popup.addEventListener('click', function(e) {
+            const addBtn = e.target.closest('#add-to-cart-btn');
+            if (addBtn) {
+                const pid = addBtn.getAttribute('data-prod-id');
+                if (!pid) return;
+                // read product metadata if present
+                const pname = addBtn.getAttribute('data-prod-name') || addBtn.closest('[data-prod-name]')?.getAttribute('data-prod-name') || addBtn.closest('.hotspot')?.getAttribute('data-name') || pid;
+                const pprice = addBtn.getAttribute('data-prod-price') || addBtn.closest('[data-prod-price]')?.getAttribute('data-prod-price') || addBtn.closest('.hotspot')?.getAttribute('data-price') || null;
+                // Read basket from localStorage using the products page key
+                let basket = [];
+                try {
+                    basket = JSON.parse(localStorage.getItem('begon_basket') || '[]');
+                } catch (err) { basket = []; }
+                const existing = basket.find(i => i.id === pid);
+                if (existing) existing.qty += 1;
+                else basket.push({ id: pid, name: pname, price: pprice, qty: 1 });
+                localStorage.setItem('begon_basket', JSON.stringify(basket));
+                // Update simple badges if present
+                try {
+                    const total = basket.reduce((s, i) => s + (i.qty||0), 0);
+                    const basketCountElNow = document.getElementById('basket-count');
+                    const mobileBasketCountNow = document.getElementById('mobile-basket-count');
+                    const headerCount = document.getElementById('header-basket-count') || document.querySelector('[data-basket-count]');
+                    if (basketCountElNow) basketCountElNow.textContent = String(total);
+                    if (mobileBasketCountNow) mobileBasketCountNow.textContent = String(total);
+                    if (headerCount) headerCount.textContent = String(total);
+                } catch (_) {}
+                // Show a transient confirmation inside popup
+                const confirmEl = document.createElement('div');
+                confirmEl.style.marginTop = '8px';
+                confirmEl.style.textAlign = 'center';
+                confirmEl.style.color = '#065f46';
+                confirmEl.style.fontWeight = '600';
+                confirmEl.innerText = 'Sepete eklendi. Ürünler sayfasından sepete erişebilirsiniz. ✔';
+                popup.appendChild(confirmEl);
+                setTimeout(() => { if (confirmEl && confirmEl.parentNode) confirmEl.parentNode.removeChild(confirmEl); }, 2000);
+            }
         });
     }
     

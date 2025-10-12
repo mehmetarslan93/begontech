@@ -60,11 +60,23 @@
             <div class="relative mx-auto w-full max-w-3xl mb-8" style="background:none;">
                 <img src="assets/images/smart-home/homeplan.png" alt="Akıllı Ev Planı" class="w-full rounded-xl shadow-none" style="background:none;" />
                 <!-- Smart device dots (hotspots) -->
-                <div class="hotspot" style="top: 30%; left: 25%;" data-device="Akıllı Termostat" data-detail="Ev sıcaklığını ve iklimlendirmeyi kontrol edin."></div>
-                <div class="hotspot" style="top: 60%; left: 50%;" data-device="Akıllı Ampul" data-detail="Enerji tasarruflu aydınlatma ve uzaktan kontrol."></div>
-                <div class="hotspot" style="top: 40%; left: 75%;" data-device="Güvenlik Kamerası" data-detail="Ev güvenliğini anlık izleyin."></div>
-                <div class="hotspot" style="top: 75%; left: 35%;" data-device="Akıllı Priz" data-detail="Elektrikli cihazları uzaktan aç/kapat."></div>
-                <div class="hotspot" style="top: 20%; left: 60%;" data-device="Akıllı Kilit" data-detail="Kapı kilidini mobil uygulama ile yönetin."></div>
+                <!-- Positions updated to match annotated blue points on homeplan.png -->
+                <div class="hotspot" style="top:47%; left:10%;" data-device="Akuvox S539" data-id="s539" data-name="Akuvox S539" data-price="" data-detail-url="components/products.html#s539" data-detail="S539 Görüntülü Kapı Zili" data-image="assets/images/products/doorbell/s539.png" data-image-width="160px" data-usage="S539: Dış kapıya monte görüntülü kapı zili. 2-yönlü ses, hareket algılama ve mobil bildirim özellikleriyle ziyaretçileri görüntüleyip konuşabilirsiniz."></div>
+                <div class="hotspot" style="top:50%; left:32%;" data-device="SL60 Akıllı Kilit" data-id="sl60" data-name="SL60 Akıllı Kilit" data-price="" data-detail-url="components/products.html#sl60" data-detail="SL60 Akıllı Kilit" data-image="assets/images/products/akubela/sl60_smartlock.png" data-usage="SL60: Akıllı kapı kilidi; uzaktan açma/kapama, kullanıcı tanımlama ve mobil entegrasyon sağlar."></div>
+                <div class="hotspot" style="top:59%; left:37%;" data-device="HyPanel Ultra" data-id="hypanel_ultra" data-name="HyPanel Ultra" data-price="" data-detail-url="components/products.html#hypanel_ultra" data-detail="HyPanel Ultra Görüntülü Panel" data-image="assets/images/products/akubela/hypanel_ultra.avif" data-usage="HyPanel Ultra: Duvara monte görüntülü kontrol paneli; dahili interkom, erişim kontrolü ve akıllı ev entegrasyonu."></div>
+                <div class="hotspot" style="top:50%; left:63%;" data-device="HyPanel Lite" data-id="hypanel_lite" data-name="HyPanel Lite" data-price="" data-detail-url="components/products.html#hypanel_lite" data-detail="HyPanel Lite Görüntülü Panel" data-image="assets/images/products/akubela/hypanel_lite.avif" data-usage="HyPanel Lite: Duvara monte görüntülü kontrol paneli; dahili interkom, erişim kontrolü ve akıllı ev entegrasyonu."></div>
+                <div class="hotspot" style="top:38%; left:53%;" data-device="HyPanel Lux Ring" data-id="hypanel_lux_ring" data-name="HyPanel Lux Ring" data-price="" data-detail-url="components/products.html#hypanel_lux_ring" data-detail="HyPanel Lux Ring Görüntülü Panel" data-image="assets/images/products/akubela/hypanel_lux_ring.avif" data-usage="HyPanel Lux RingBanyo / Merkez"></div>
+                <div class="hotspot" style="top:14%; left:77%;" data-device="Panjur modülü" data-detail="Sağ üst oda içi"></div>
+                <div class="hotspot" style="top:38%; left:84%;" data-device="Panjur modülü" data-detail="Sağ orta oda"></div>
+                <div class="hotspot" style="top:81%; left:84%;" data-device="Panjur modülü" data-detail="Sağ alt köşe"></div>
+                <div class="hotspot" style="top:88%; left:66%;" data-device="Panjur modülü" data-detail="Alt orta giriş"></div>
+                <div class="hotspot" style="top:88%; left:21%;" data-device="Panjur modülü" data-detail="Alt sol pencere"></div>
+                <div class="hotspot" style="top:62%; left:15%;" data-device="Panjur modülü" data-detail="Sol oturma alanı"></div>
+                <div class="hotspot" style="top:14%; left:52%;" data-device="Panjur modülü" data-detail="Üst oda içi 2"></div>
+                <div class="hotspot" style="top:69%; left:50%;" data-device="Aydınlatma Modülü" data-detail="Mutfak / Yemek alanı"></div>
+                <div class="hotspot" style="top:44%; left:48%;" data-device="Su Sensörü" data-detail="Banyo / Merkez"></div>
+                
+                
             </div>
             <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                 <!-- Brief description -->
@@ -82,15 +94,16 @@
             </div>
             <!-- Smart Home Plan Section -->
             <!-- Popup for device details -->
-            <div id="devicePopup" class="fixed z-50 hidden bg-white border border-brand-primary rounded-lg shadow-lg p-4" style="min-width:220px; max-width:300px;"></div>
+            <div id="devicePopup" class="fixed z-50 hidden bg-white border border-brand-primary rounded-lg shadow-lg p-4" style="min-width:240px; max-width:380px;"></div>
         </div>
     </section>
 
     <!-- Services Preview: Three main service cards -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="flex justify-center mb-12">
-                <h2 class="solutions-title text-3xl font-bold text-brand-dark transition-all duration-500">Çözümlerimiz</h2>
+            <div class="flex flex-col justify-center items-center mb-12">
+                <h2 class="solutions-title text-3xl font-bold text-brand-dark transition-all duration-500"><span class="text-brand-primary">Çözümlerimiz</span></h2>
+                <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-8 justify-center">
                 <!-- First row: 3 cards -->
@@ -137,6 +150,32 @@
                         <p class="text-gray-600">Güvenli ve ölçeklenebilir endüstriyel çözümler.</p>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Footer Placeholder: loaded via JS -->
+    <!-- Markalarımız / Our Brands -->
+    <section id="markalarimiz" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center mb-8">
+                <h2 class="text-3xl font-bold text-brand-dark"><span class="text-brand-primary">Markalarımız</span></h2>
+                <div class="mx-auto my-4 w-32 h-1 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+                <p class="text-gray-600 mt-2 max-w-2xl text-center">
+                    Satışını ve entegrasyonunu gerçekleştirdiğimiz güvenilir markalar.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-6">
+                <!-- Akuvox -->
+                <a href="#" aria-label="Akuvox" class="w-72 md:w-96 h-40 md:h-56 flex items-center justify-center bg-white rounded-xl shadow-sm hover:shadow-md transform hover:-translate-y-1 transition duration-300 p-4">
+                    <img src="assets/images/Akuvox.png" alt="Akuvox" title="Akuvox" class="max-h-32 md:max-h-48 object-contain mx-auto" loading="lazy" />
+                </a>
+
+                <!-- Akubela -->
+                <a href="#" aria-label="Akubela" class="w-72 md:w-96 h-40 md:h-56 flex items-center justify-center bg-white rounded-xl shadow-sm hover:shadow-md transform hover:-translate-y-1 transition duration-300 p-4">
+                    <img src="assets/images/Akubela.png" alt="Akubela" title="Akubela" class="max-h-32 md:max-h-48 object-contain mx-auto" loading="lazy" />
+                </a>
             </div>
         </div>
     </section>
