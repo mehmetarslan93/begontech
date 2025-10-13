@@ -957,7 +957,7 @@
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
           <li>Kullanıcı ve kart yönetimi, geçici yetkiler</li>
           <li>Alarmlar: kapı açık kaldı, zorlama, sabotaj</li>
-          <li>Geçiş logları ve raporlar (yazılıma bağlı)</li>
+          <li>Geçiş logları ve raporlar (yönetim yazılımı ile)</li>
         </ul>
         <div class='mb-1 font-semibold'>Ağ ve Entegrasyon</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc'>
@@ -1092,8 +1092,46 @@
         </ul>`
       },
       // Akıllı Ev Ürünleri (Akubela)
-      { id:'c6_smartlock', cat:'kilit', name:'C6 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/c6_smartlock.png'] },
-      { id:'f2_smartlock', cat:'kilit', name:'F2 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/f2_smartlock.png'] },
+      { id:'c6_smartlock', cat:'kilit', name:'C6 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/c6_smartlock.png'],
+        details:`<div class='mb-2'>Akubela C6; parmak izi, şifre, kart ve mobil uygulama ile çoklu doğrulama sunan akıllı kilittir. İç/dış kapılar için modern tasarım ve güvenli kullanım sağlar.</div>
+        <div class='mb-2'><a href='https://www.akubelatr.com/_files/ugd/de7bb9_3d3246ba7024460a813e934fd3f9a726.pdf' target='_blank' class='text-brand-primary underline font-semibold'>C6 Smartlock Datasheet (PDF)</a></div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Çoklu kilit açma: Parmak izi, PIN, RFID/Kart, Mobil Uygulama</li>
+          <li>Misafir/geçici şifre, zamanlanmış yetkilendirme</li>
+          <li>Anti-tamper uyarıları ve güvenlik kilidi</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Bağlantı ve Entegrasyon</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Zigbee ile akıllı ev senaryolarına entegrasyon</li>
+          <li>Uygulama üzerinden uzaktan yönetim ve bildirimler</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Standart kapı yapılarıyla uyumlu; profesyonel montaj önerilir</li>
+          <li>Pil ile çalışma; düşük pil uyarısı ve acil güç seçenekleri</li>
+        </ul>`
+      },
+      { id:'f2_smartlock', cat:'kilit', name:'F2 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/f2_smartlock.png'],
+        details:`<div class='mb-2'>Akubela F2; kapınızda tasarım ve güvenliği bir araya getiren, çoklu doğrulama destekli akıllı kilittir. Aile üyeleri ve misafirler için esnek yetki yönetimi sunar.</div>
+        <div class='mb-2'><a href='https://www.akubelatr.com/_files/ugd/de7bb9_f4e4815fb2974332bdaefa0edee24dad.pdf' target='_blank' class='text-brand-primary underline font-semibold'>F2 Smartlock Datasheet (PDF)</a></div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Parmak izi, PIN, Kart ve Mobil uygulama ile erişim</li>
+          <li>Geçici/tek seferlik kodlar, günlük/haftalık planlama</li>
+          <li>Yerleşik güvenlik uyarıları ve yetkisiz erişim algılama</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Bağlantı ve Entegrasyon</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Zigbee ağı ile sahneler ve otomasyonlara dahil olma</li>
+          <li>Uygulama üzerinden durum takibi ve uzaktan yönetim</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Standart kapı uyumu; uzman montaj tavsiye edilir</li>
+          <li>Pil ile çalışma; düşük pil ve acil güç desteği</li>
+        </ul>`
+      },
       { id:'HyPanel KeyPlus-Front', cat:'hypanel', name:'HyPanel KeyPlus', desc:'Akubela HyPanel KeyPlus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel KeyPlus-Front.avif'],
         details:`<div class='mb-2'>4” dokunmatik ekran + 6 fiziksel tuşu birleştiren akıllı panel. Aydınlatma, iklimlendirme, sahneler ve görüntülü interkomu tek noktadan yönetir.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
@@ -1113,20 +1151,248 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa (iç mekân)</li>
         </ul>`
       },
-      { id:'HyPanel Pro-Front', cat:'hypanel', name:'HyPanel Pro', desc:'Akubela HyPanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel Pro-Front.avif'] },
-      { id:'hypanel_elite7', cat:'hypanel', name:'HyPanel Elite7', desc:'Akubela HyPanel Elite7', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_elite7.avif'] },
-      { id:'hypanel_lite', cat:'hypanel', name:'HyPanel Lite', desc:'Akubela HyPanel Lite', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lite.avif'] },
-      { id:'hypanel_lux', cat:'hypanel', name:'HyPanel Lux', desc:'Akubela HyPanel Lux', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux.avif'] },
-      { id:'hypanel_lux-1', cat:'hypanel', name:'HyPanel Lux', desc:'Akubela HyPanel Lux', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux (1).avif'] },
-      { id:'hypanel_lux_ring', cat:'hypanel', name:'HyPanel Lux Ring', desc:'Akubela HyPanel Lux Ring', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux_ring.avif'] },
-      { id:'hypanel_plus', cat:'hypanel', name:'HyPanel Plus', desc:'Akubela HyPanel Plus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_plus.avif'] },
-      { id:'hypanel_supreme', cat:'hypanel', name:'HyPanel Supreme', desc:'Akubela HyPanel Supreme', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_supreme.avif'] },
-      { id:'hypanel_ultra', cat:'hypanel', name:'HyPanel Ultra', desc:'Akubela HyPanel Ultra', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_ultra.avif'] },
-      { id:'HyPanel-F', cat:'hypanel', name:'HyPanel F', desc:'Akubela HyPanel F', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel-F.avif'] },
-      { id:'sl50_smartlock', cat:'kilit', name:'SL50 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/sl50_smartlock.png'] },
-      { id:'sl60_smartlock', cat:'kilit', name:'SL60 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/sl60_smartlock.png'] },
-      { id:'Smartpanel', cat:'hypanel', name:'Smartpanel', desc:'Akubela Smartpanel', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/Smartpanel.png'] },
-      { id:'smartpanelpro', cat:'hypanel', name:'Smartpanel Pro', desc:'Akubela Smartpanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/smartpanelpro.png'] },
+      { id:'HyPanel Pro-Front', cat:'hypanel', name:'HyPanel Pro', desc:'Akubela HyPanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel Pro-Front.avif'],
+        details:`<div class='mb-2'>8” dokunmatik ekranı ve metal gövdesiyle HyPanel Pro, akıllı evinizin komuta merkezi olarak tüm cihazları tek noktadan yönetir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>5MP gizlilik kapaklı kamera, ultra ince çerçeve ve şık metal tasarım</li>
+          <li>Modüler arka modül desteği: farklı elektrik kutularına uyumlu</li>
+          <li>Entegre güç ölçer ve sıcaklık/nem sensörü ile enerji yönetimi</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android 10 arayüz; sahneler, zamanlayıcılar, grup/bireysel cihaz kontrolü</li>
+          <li>Wi‑Fi (2.4/5GHz), Bluetooth 4.2, Ethernet, Zigbee 3.0, KNX entegrasyonu</li>
+          <li>IR ile geleneksel cihazları akıllı ekosisteme dahil etme</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya 180–260VAC, 50Hz</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa (iç mekân)</li>
+        </ul>`
+      },
+      { id:'hypanel_elite7', cat:'hypanel', name:'HyPanel Elite7', desc:'Akubela HyPanel Elite7', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_elite7.avif'],
+        details:`<div class='mb-2'>7” dokunmatik ekranı ve plastik gövdesiyle HyPanel Elite7, akıllı evinizin cihazlarını merkezi olarak yönetir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>8 dijital giriş, 1 zil girişi, 1 röle çıkışı</li>
+          <li>ZigBee, WiFi ve Ethernet ile geniş ağ desteği</li>
+          <li>1024x600 piksel çözünürlükte 7” ekran</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Akıllı sahne ve cihaz kontrolü; grup/bireysel yönetim</li>
+          <li>Duvar montajı ile kolay kurulum</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: IEEE802.3af PoE veya 12VDC</li>
+          <li>Çalışma sıcaklığı: -10 ~ 45°C</li>
+        </ul>`
+      },
+      { id:'hypanel_lite', cat:'hypanel', name:'HyPanel Lite', desc:'Akubela HyPanel Lite', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lite.avif'],
+        details:`<div class='mb-2'>3,27” dokunmatik ekran ve 4 metal tuşuyla HyPanel Lite, geleneksel his ile dokunmatiği birleştirir; odanızdaki temel kontrolleri şık bir arayüzle sunar.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Isıtma/soğutma ve aydınlatma için pratik kontrol</li>
+          <li>Güvenli görüntülü iletişim ile kapı yanıtlama</li>
+          <li>Enerji verimliliği için sıcaklık/nem bazlı senaryolar</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Linux tabanlı arayüz; favori sahneler ve zamanlayıcılar</li>
+          <li>Wi‑Fi (2.4/5GHz), Bluetooth 4.2, Ethernet, Zigbee 3.0</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya 180–260VAC, 50Hz</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'hypanel_lux', cat:'hypanel', name:'HyPanel Lux Piano', desc:'Akubela HyPanel Lux Piano', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux.avif'],
+        details:`<div class='mb-2'>HyPanel Lux Piano; 2,1” dokunmatik ekran ve 4 cam butonla lüks tasarımı akıllı kontrollerle buluşturur.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Cam dokunmatik butonlar ile sahne ve cihaz kontrolü</li>
+          <li>Estetik ve kompakt yapı; farklı renk seçenekleri</li>
+          <li>Görüntülü interkom uyumluluğu</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android tabanlı kullanım; sahneler ve zamanlayıcılar</li>
+          <li>Wi‑Fi (2.4/5GHz), Bluetooth 4.2, Ethernet, Zigbee 3.0</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya 180–260VAC, 50Hz</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'hypanel_lux-1', cat:'hypanel', name:'HyPanel Lux Vase', desc:'Akubela HyPanel Lux Vase', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel Lux Vase.png'],
+        details:`<div class='mb-2'>HyPanel Lux Vase; sanat ve akıllı yaşamı birleştiren vazo formunda tasarım anlayışıyla, sahneler ve cihazları zarafetle kontrol etmenizi sağlar.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Lüks estetik: dekoratif tasarım ve premium malzeme</li>
+          <li>Dokunma/dönme/tuş etkileşimleriyle sezgisel kontrol</li>
+          <li>Görüntülü interkom ve akıllı ev fonksiyonlarıyla uyumluluk</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Akıllı sahneler, rutinler ve favoriler</li>
+          <li>Wi‑Fi, Ethernet ve Zigbee 3.0 ile geniş entegrasyon</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya AC (proje gereksinimine göre)</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'hypanel_lux_ring', cat:'hypanel', name:'HyPanel Lux Ring', desc:'Akubela HyPanel Lux Ring', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux_ring.avif'],
+        details:`<div class='mb-2'>HyPanel Lux Ring; 360° elmas fasetli halka ve dinamik ışık efektiyle sanat ile akıllı ev kontrolünü bir arada sunar.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Tek/çift/uzun basış ve döndürme ile kişiselleştirilebilir kontrol</li>
+          <li>Görüntülü interkom ile kapı çağrılarını yanıtlama ve kapı açma</li>
+          <li>Farklı renk seçenekleriyle dekoratif uyum</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android tabanlı arayüz; sahneler ve favoriler</li>
+          <li>Wi‑Fi, Ethernet, Zigbee 3.0 ile entegrasyon</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya 180–260VAC, 50Hz</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'hypanel_plus', cat:'hypanel', name:'HyPanel Plus', desc:'Akubela HyPanel Plus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_plus.avif'],
+        details:`<div class='mb-2'>HyPanel Plus; 4” ekran + 2 dokunmatik butonla hepsi-bir-arada akıllı ev deneyimini kompakt formda sunar.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Interkom, otomasyon, Zigbee ağ geçidi ve güvenlik tek cihazda</li>
+          <li>Butonlara sahne/cihaz kısayolları atama</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android tabanlı kullanım; sahneler ve zamanlayıcılar</li>
+          <li>Wi‑Fi (2.4/5GHz), Bluetooth 4.2, Ethernet, Zigbee 3.0</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya 180–260VAC, 50Hz</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'hypanel_supreme', cat:'hypanel', name:'HyPanel Supreme', desc:'Akubela HyPanel Supreme', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_supreme.avif'],
+        details:`<div class='mb-2'>12” sınıfı geniş ekranı ve yüksek performanslı platformuyla HyPanel Supreme; otomasyon, interkom ve görselliği tek noktada birleştirir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>2.5K sınıfı yüksek çözünürlük, şık metalik tasarım</li>
+          <li>Gizlilik kapaklı 5MP kamera ile güvenli görüntülü iletişim</li>
+          <li>Çok yönlü arayüzler ve güçlü işlemci mimarisi</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android 12 tabanlı arayüz; gelişmiş uygulama uyumluluğu</li>
+          <li>Wi‑Fi 6, Bluetooth, Ethernet, Zigbee 3.0 ve KNX entegrasyonu</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: 12–24V DC</li>
+          <li>Montaj: Sıva altı kasa</li>
+        </ul>`
+      },
+      { id:'hypanel_ultra', cat:'hypanel', name:'HyPanel Ultra', desc:'Akubela HyPanel Ultra', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_ultra.avif'],
+        details:`<div class='mb-2'>10” sınıfı ekranı ve yüksek çözünürlüklü paneliyle HyPanel Ultra; otomasyon ve interkomu gelişmiş görsellikle birleştirir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>2K sınıfı netlik ve yüksek parlaklık</li>
+          <li>Gizlilik odaklı kamera ve güvenli iletişim</li>
+          <li>Çok yönlü arayüzler ve güçlü donanım</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android 12 tabanlı arayüz; akıcı deneyim</li>
+          <li>Wi‑Fi 6, Bluetooth, Ethernet, Zigbee 3.0 ve KNX entegrasyonu</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: 12–24V DC</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'HyPanel-F', cat:'hypanel', name:'HyPanel Std', desc:'Akubela HyPanel Standart (PS51)', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel-F.avif'],
+        details:`<div class='mb-2'>HyPanel Std (PS51); 4” ekranlı, hepsi-bir-arada akıllı ev panelidir. İnterkom, otomasyon ve Zigbee ağ geçidini bir arada sunar.</div>
+        <div class='mb-2'><a href='https://www.akubelatr.com/_files/ugd/de7bb9_57f3e540187d43a5a7821e6e3c2e70a0.pdf' target='_blank' class='text-brand-primary underline font-semibold'>HyPanel PS51 Datasheet (PDF)</a> · <a href='https://www.akubelatr.com/_files/ugd/de7bb9_01df41bbd8c543df855bd2d8e19ba592.pdf' target='_blank' class='text-brand-primary underline font-semibold'>HyPanel PS51-KNX Datasheet (PDF)</a></div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>4” dokunmatik ekran; sahne ve cihaz kısayolları</li>
+          <li>Interkom, güvenlik ve otomasyon bir arada</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android 10 tabanlı kullanım</li>
+          <li>Wi‑Fi, Bluetooth 4.2, Ethernet, Zigbee 3.0, KNX desteği</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Kurulum</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Güç: PoE veya 180–260VAC, 50Hz</li>
+          <li>Montaj: Sıva altı EU yuvarlak kasa</li>
+        </ul>`
+      },
+      { id:'sl50_smartlock', cat:'kilit', name:'SL50 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/sl50_smartlock.png'],
+        details:`<div class='mb-2'>SL50, konut kapıları için şık ve güvenli bir akıllı kilit çözümüdür. Parmak izi/şifre/kart/uygulama ile esnek erişim sağlar.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Geçici kodlar ve zamanlanmış yetkiler</li>
+          <li>Anti-tamper ve kapı durum uyarıları</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Bağlantı ve Entegrasyon</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Zigbee ile sahne/otomasyon entegrasyonu</li>
+          <li>Uygulama üzerinden uzaktan yönetim</li>
+        </ul>`
+      },
+      { id:'sl60_smartlock', cat:'kilit', name:'SL60 Smartlock', desc:'Akubela Akıllı Kilit', brand:'Akubela', conn:['Zigbee'], images:['../assets/images/products/akubela/sl60_smartlock.png'],
+        details:`<div class='mb-2'>SL60, gelişmiş güvenlik ve zarif tasarımı bir araya getiren üst seviye bir akıllı kilittir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Çoklu doğrulama: parmak izi, PIN, kart, uygulama</li>
+          <li>Yetkisiz giriş uyarıları ve günlük kayıtları</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Bağlantı ve Entegrasyon</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Zigbee ağında sahneler ve otomasyon</li>
+          <li>Uzaktan erişim ve bildirimler</li>
+        </ul>`
+      },
+      { id:'Smartpanel', cat:'hypanel', name:'Smartpanel', desc:'Akubela Smartpanel', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/Smartpanel.png'],
+        details:`<div class='mb-2'>Smartpanel; kompakt formda akıllı ev kontrolü ve interkomu bir araya getirir. Günlük sahneler ve temel cihazlar için pratik bir merkezdir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Dokunmatik arayüz ile sahne/cihaz kontrolü</li>
+          <li>Görüntülü interkom ile kapı yanıtlama</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android tabanlı kullanım</li>
+          <li>Wi‑Fi/Ethernet bağlantısı ve Zigbee 3.0 entegrasyonu</li>
+        </ul>`
+      },
+      { id:'smartpanelpro', cat:'hypanel', name:'Smartpanel Pro', desc:'Akubela Smartpanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/smartpanelpro.png'],
+        details:`<div class='mb-2'>Smartpanel Pro; daha büyük ekran, güçlü donanım ve genişleyen entegrasyonlarla akıllı evinizin gelişmiş kontrol merkezidir.</div>
+        <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Akıcı arayüz ve gelişmiş interkom deneyimi</li>
+          <li>Modüler entegrasyonlara uygun mimari</li>
+        </ul>
+        <div class='mb-1 font-semibold'>Yazılım ve Ağ</div>
+        <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
+          <li>Android tabanlı kullanım ve uygulama uyumluluğu</li>
+          <li>Wi‑Fi/Ethernet bağlantısı, Zigbee 3.0 ve KNX entegrasyonu</li>
+        </ul>`
+      },
       // Kapı Önü Ziller
   { id:'e12', cat:'door', name:'E12', desc:'2MP Kamera, IP65, PoE, ONVIF, SIP, Linux, RFID, BLE, Kompakt Tasarım', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/VillaTipi-AkuvoxE12.png'],
         details:`<div class='mb-2'>Akuvox E12, villalar ve apartman daireleri gibi çeşitli iç kapı uygulamaları için tasarlanmış, tek tuşlu kompakt bir IP kapı panelidir. İnce gövdesine rağmen şık ve dikkat çekici tasarımıyla estetikten ödün vermeden güvenli iletişim sağlar.</div>
@@ -1302,7 +1568,7 @@
           <li><b>Ses:</b> G.711a, G.711μ, G.729</li>
         </ul>`
       },
-      { id:'r29s', cat:'door', name:'R29S-C', desc:'7” Dokunmatik Ekran, 3MP Kamera, Yüz Tanıma, IP65, IK06, PoE, ONVIF, SIP, Android', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r29s.png'],
+      { id:'r29s', cat:'door', name:'R29S-C', desc:'7” Dokunmatik Ekran, 3MP Kamera, Yüz Tanıma, IP65, IK06, PoE, ONVIF, SIP, Android, 1080p, NFC, RFID, QR Kod, Yüz Tanıma, Metaverse', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/r29s.png'],
         details:`<div class='mb-2'>Akuvox R29S-C, gelişmiş yüz tanıma teknolojisi ve çoklu geçiş seçenekleriyle modern binalar için üst düzey güvenlik ve erişim kontrolü sunan bir IP interkom panelidir.</div>
         <div class='mb-2'><a href='https://www.akuvoxinterkom.com/dosyalar/akuvox-x29s-datasheet.pdf' target='_blank' class='text-brand-primary underline font-semibold'>Akuvox X29S Datasheet (PDF)</a></div>
         <div class='mb-2'><a href='https://www.akuvoxinterkom.com/dosyalar/akuvox-r29c-datasheet.pdf' target='_blank' class='text-brand-primary underline font-semibold'>Akuvox R29C Datasheet (PDF)</a></div>
@@ -1361,7 +1627,7 @@
           <li><b>Video:</b> 1920x1080p’ye kadar, H.264, HDR, 30fps</li>
         </ul>`
       },
-  { id:'s539', cat:'door', name:'S539', desc:'10” IPS LCD, 5MP Kamera, Starlight, IP66, IK08, BLE, HDR, PoE, ONVIF, SIP, Android 12, 1080p, NFC, RFID, QR Kod, Yüz Tanıma, Metaverse', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s539.png'],
+  { id:'s539', cat:'door', name:'S539', desc:'10” IPS LCD, 5MP Kamera, Starlight, IP66, IK08, BLE, HDR, PoE, ONVIF, SIP, Android, 1080p, RFID, QR Kod, Yüz Tanıma, Metaverse', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/doorbell/s539.png'],
         details:`<div class='mb-2'>Akuvox S539, sektörde ilk Metaverse özellikli Android tabanlı bina tipi interkom panelidir. 10” IPS dokunmatik ekranı, yüksek çözünürlüklü ve starlight destekli kamerası ile modern binalar için üst düzey güvenlik ve etkileşim sunar. Kart, şifre, yüz tanıma, QR kod ve BLE gibi çoklu geçiş kontrol seçenekleriyle donatılmıştır.</div>
   <div class='mb-2'><a href='https://www.akuvoxinterkom.com/dosyalar/akuvox-s539-datasheet-v1.0.pdf' target='_blank' class='text-brand-primary underline font-semibold'>Teknik döküman (PDF)</a></div>
          <ul class='text-sm text-gray-700 pl-4 list-disc'>
@@ -1614,7 +1880,6 @@
           <li><b>Depolama Sıcaklığı:</b> -20°C ~ +70°C</li>
         </ul>`
       },
-      // ...existing code...
       { id:'x933-64601', cat:'indoor', name:'X933', desc:'10” Dokunmatik Ekran, Android, PoE, Modern Tasarım', brand:'Akuvox', conn:['WiFi'], images:['../assets/images/products/interior_panel/x933-64601.png'],
         details:`<div class='mb-2'>Akuvox X933, 10” dokunmatik ekranı, Android tabanlı işletim sistemi ve gelişmiş bağlantı seçenekleriyle modern daire içi panel ihtiyaçlarını karşılar. Akıllı ev entegrasyonu ve güvenli iletişim için ideal bir üründür.</div>
         <div class='mb-2'><a href='https://www.akuvoxinterkom.com/dosyalar/akuvox-x933w-datasheet.pdf' target='_blank' class='text-brand-primary underline font-semibold'>Teknik döküman (PDF)</a></div>
@@ -2091,7 +2356,7 @@
 
     function updateHeaderBasketBadge(total){
       try{
-        const hdr = document.getElementById('header-basket-count') || document.querySelector('[data-basket-count]');
+        const hdr = document.getElementById('header-basket-count') || document.querySelector('[data-basket_count]');
         if(hdr) hdr.textContent = String(total);
       }catch(_){/* no-op */}
     }
