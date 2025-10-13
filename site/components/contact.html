@@ -19,7 +19,7 @@
   <div id="__header"></div>
 
   <main class="py-10">
-    <div class="container mx-auto px-4 max-w-5xl">
+  <div class="container mx-auto px-6 max-w-7xl">
       <h1 class="text-3xl md:text-4xl font-bold text-brand-dark text-center">İletişim</h1>
       <div class="flex justify-center my-6">
         <span class="inline-block w-16 h-1 rounded bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></span>
@@ -52,7 +52,7 @@
             <input type="email" name="email" placeholder="E-posta" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required />
             <textarea name="mesaj" placeholder="Mesajınız" rows="3" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary" required></textarea>
             <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full font-semibold">Gönder</button>
-            <input type="hidden" name="_replyto" value="bilgi@begontec.com" />
+            <input type="hidden" name="_replyto" value="bilgi@begontech.com" />
             <input type="hidden" name="_subject" value="BegonTech İletişim Formu Mesajı" />
           </form>
           <div id="formspree-success" class="hidden mt-4 text-green-600 font-semibold text-center">Mesajınız başarıyla gönderildi!</div>
@@ -64,11 +64,14 @@
           <div class="flex flex-col items-center gap-2">
             <span class="mb-2 text-brand-primary font-semibold text-base">Bize doğrudan ulaşın</span>
             <div class="flex flex-col sm:flex-row gap-2 w-full justify-center">
-              <a href="mailto:bilgi@begontec.com" class="btn-primary text-white px-5 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center">
-                <i class="fa fa-envelope"></i> bilgi@begontec.com
+              <!-- Make buttons share available space on small screens and keep stable min-width on larger screens -->
+              <a href="mailto:bilgi@begontech.com" class="btn-primary text-white px-5 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center w-full sm:w-auto sm:flex-1 min-w-0">
+                <i class="fa fa-envelope"></i>
+                <span class="truncate">bilgi@begontech.com</span>
               </a>
-              <a href="https://wa.me/905062691778" target="_blank" class="btn-primary text-white px-5 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center">
-                <i class="fa fa-whatsapp"></i> +90 506 269 1778
+              <a href="https://wa.me/905062691778" target="_blank" class="btn-primary text-white px-5 py-2 rounded-lg font-semibold shadow-brand hover:shadow-brand-lg transition-all flex items-center gap-2 justify-center w-full sm:w-auto sm:flex-1 min-w-0">
+                <i class="fa fa-whatsapp"></i>
+                <span class="truncate">+90 506 269 1778</span>
               </a>
             </div>
           </div>
