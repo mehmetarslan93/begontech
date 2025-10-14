@@ -496,13 +496,22 @@
                 <i class="fa fa-wifi text-blue-500"></i>
                 WiFi
               </button>
-              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="KNX">KNX</button>
-              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="Zigbee">Zigbee</button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm flex items-center gap-2" data-conn="KNX">
+                <img src="../assets/images/KNX_logo.png" alt="KNX" class="w-5 h-5 object-contain" />
+                KNX
+              </button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm flex items-center gap-2" data-conn="Zigbee">
+                <img src="../assets/images/zigbee.png" alt="Zigbee" class="w-5 h-5 object-contain" />
+                Zigbee
+              </button>
               <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm flex items-center gap-1" data-conn="Bluetooth">
                 <i class="fa fa-bluetooth text-blue-600"></i>
                 BT
               </button>
-              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm" data-conn="IR">IR</button>
+              <button class="filter-btn conn-btn px-3 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-brand-accent font-medium transition-all duration-300 text-sm flex items-center gap-2" data-conn="IR">
+                <img src="../assets/images/IR.png" alt="IR" class="w-5 h-5 object-contain" />
+                IR
+              </button>
             </div>
             <div class="border-t border-gray-200 my-6"></div>
 
@@ -1158,7 +1167,7 @@
           <li>Pil ile çalışma; düşük pil ve acil güç desteği</li>
         </ul>`
       },
-      { id:'HyPanel KeyPlus-Front', cat:'hypanel', name:'HyPanel KeyPlus', desc:'Akubela HyPanel KeyPlus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel KeyPlus-Front.avif'],
+      { id:'HyPanel KeyPlus-Front', cat:'hypanel', name:'HyPanel KeyPlus', desc:'Akubela HyPanel KeyPlus', brand:'Akubela', conn:['Wi-Fi', 'Bluetooth','Zigbee'], images:['../assets/images/products/akubela/HyPanel KeyPlus-Front.avif'],
         details:`<div class='mb-2'>4” dokunmatik ekran + 6 fiziksel tuşu birleştiren akıllı panel. Aydınlatma, iklimlendirme, sahneler ve görüntülü interkomu tek noktadan yönetir.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1177,7 +1186,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa (iç mekân)</li>
         </ul>`
       },
-      { id:'HyPanel Pro-Front', cat:'hypanel', name:'HyPanel Pro', desc:'Akubela HyPanel Pro', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel Pro-Front.avif'],
+      { id:'HyPanel Pro-Front', cat:'hypanel', name:'HyPanel Pro', desc:'Akubela HyPanel Pro', brand:'Akubela', conn:['Wi-Fi', 'Bluetooth','Zigbee', 'IR'], images:['../assets/images/products/akubela/HyPanel Pro-Front.avif'],
         details:`<div class='mb-2'>8” dokunmatik ekranı ve metal gövdesiyle HyPanel Pro, akıllı evinizin komuta merkezi olarak tüm cihazları tek noktadan yönetir.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1197,7 +1206,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa (iç mekân)</li>
         </ul>`
       },
-      { id:'hypanel_elite7', cat:'hypanel', name:'HyPanel Elite7', desc:'Akubela HyPanel Elite7', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_elite7.avif'],
+      { id:'hypanel_elite7', cat:'hypanel', name:'HyPanel Elite7', desc:'Akubela HyPanel Elite7', brand:'Akubela', conn:['Wifi','Zigbee', 'IR'], images:['../assets/images/products/akubela/hypanel_elite7.avif'],
         details:`<div class='mb-2'>7” dokunmatik ekranı ve plastik gövdesiyle HyPanel Elite7, akıllı evinizin cihazlarını merkezi olarak yönetir.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1216,7 +1225,7 @@
           <li>Çalışma sıcaklığı: -10 ~ 45°C</li>
         </ul>`
       },
-      { id:'hypanel_lite', cat:'hypanel', name:'HyPanel Lite', desc:'Akubela HyPanel Lite', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lite.avif'],
+      { id:'hypanel_lite', cat:'hypanel', name:'HyPanel Lite', desc:'Akubela HyPanel Lite', brand:'Akubela', conn:['Wifi', 'Bluetooth','Zigbee'], images:['../assets/images/products/akubela/hypanel_lite.avif'],
         details:`<div class='mb-2'>3,27” dokunmatik ekran ve 4 metal tuşuyla HyPanel Lite, geleneksel his ile dokunmatiği birleştirir; odanızdaki temel kontrolleri şık bir arayüzle sunar.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1235,7 +1244,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa</li>
         </ul>`
       },
-      { id:'hypanel_lux', cat:'hypanel', name:'HyPanel Lux Piano', desc:'Akubela HyPanel Lux Piano', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux.avif'],
+      { id:'hypanel_lux', cat:'hypanel', name:'HyPanel Lux Piano', desc:'Akubela HyPanel Lux Piano', brand:'Akubela', conn:['Wifi','Bluetooth','Zigbee','IR'], images:['../assets/images/products/akubela/hypanel_lux.avif'],
         details:`<div class='mb-2'>HyPanel Lux Piano; 2,1” dokunmatik ekran ve 4 cam butonla lüks tasarımı akıllı kontrollerle buluşturur.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1254,7 +1263,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa</li>
         </ul>`
       },
-      { id:'hypanel_lux-1', cat:'hypanel', name:'HyPanel Lux Vase', desc:'Akubela HyPanel Lux Vase', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel Lux Vase.png'],
+      { id:'hypanel_lux-1', cat:'hypanel', name:'HyPanel Lux Vase', desc:'Akubela HyPanel Lux Vase', brand:'Akubela', conn:['Wifi','Zigbee','IR'], images:['../assets/images/products/akubela/HyPanel Lux Vase.png'],
         details:`<div class='mb-2'>HyPanel Lux Vase; sanat ve akıllı yaşamı birleştiren vazo formunda tasarım anlayışıyla, sahneler ve cihazları zarafetle kontrol etmenizi sağlar.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1273,7 +1282,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa</li>
         </ul>`
       },
-      { id:'hypanel_lux_ring', cat:'hypanel', name:'HyPanel Lux Ring', desc:'Akubela HyPanel Lux Ring', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux_ring.avif'],
+      { id:'hypanel_lux_ring', cat:'hypanel', name:'HyPanel Lux Ring', desc:'Akubela HyPanel Lux Ring', brand:'Akubela', conn:['Wifi','Zigbee'], images:['../assets/images/products/akubela/hypanel_lux_ring.avif'],
         details:`<div class='mb-2'>HyPanel Lux Ring; 360° elmas fasetli halka ve dinamik ışık efektiyle sanat ile akıllı ev kontrolünü bir arada sunar.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1292,7 +1301,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa</li>
         </ul>`
       },
-      { id:'hypanel_plus', cat:'hypanel', name:'HyPanel Plus', desc:'Akubela HyPanel Plus', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_plus.avif'],
+      { id:'hypanel_plus', cat:'hypanel', name:'HyPanel Plus', desc:'Akubela HyPanel Plus', brand:'Akubela', conn:['Wifi','Bluetooth','Zigbee'], images:['../assets/images/products/akubela/hypanel_plus.avif'],
         details:`<div class='mb-2'>HyPanel Plus; 4” ekran + 2 dokunmatik butonla hepsi-bir-arada akıllı ev deneyimini kompakt formda sunar.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1310,7 +1319,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa</li>
         </ul>`
       },
-      { id:'hypanel_supreme', cat:'hypanel', name:'HyPanel Supreme', desc:'Akubela HyPanel Supreme', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_supreme.avif'],
+      { id:'hypanel_supreme', cat:'hypanel', name:'HyPanel Supreme', desc:'Akubela HyPanel Supreme', brand:'Akubela', conn:['Wifi','Bluetooth','Zigbee'], images:['../assets/images/products/akubela/hypanel_supreme.avif'],
         details:`<div class='mb-2'>12” sınıfı geniş ekranı ve yüksek performanslı platformuyla HyPanel Supreme; otomasyon, interkom ve görselliği tek noktada birleştirir.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1329,7 +1338,7 @@
           <li>Montaj: Sıva altı kasa</li>
         </ul>`
       },
-      { id:'hypanel_ultra', cat:'hypanel', name:'HyPanel Ultra', desc:'Akubela HyPanel Ultra', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/hypanel_ultra.avif'],
+      { id:'hypanel_ultra', cat:'hypanel', name:'HyPanel Ultra', desc:'Akubela HyPanel Ultra', brand:'Akubela', conn:['Wifi','Bluetooth','Zigbee'], images:['../assets/images/products/akubela/hypanel_ultra.avif'],
         details:`<div class='mb-2'>10” sınıfı ekranı ve yüksek çözünürlüklü paneliyle HyPanel Ultra; otomasyon ve interkomu gelişmiş görsellikle birleştirir.</div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
         <ul class='text-sm text-gray-700 pl-4 list-disc mb-2'>
@@ -1348,7 +1357,7 @@
           <li>Montaj: Sıva altı EU yuvarlak kasa</li>
         </ul>`
       },
-      { id:'HyPanel-F', cat:'hypanel', name:'HyPanel Std', desc:'Akubela HyPanel Standart (PS51)', brand:'Akubela', conn:['KNX','Zigbee'], images:['../assets/images/products/akubela/HyPanel-F.avif'],
+      { id:'HyPanel-F', cat:'hypanel', name:'HyPanel Std', desc:'Akubela HyPanel Standart (PS51)', brand:'Akubela', conn:['Wifi','Bluetooth','Zigbee'], images:['../assets/images/products/akubela/HyPanel-F.avif'],
         details:`<div class='mb-2'>HyPanel Std (PS51); 4” ekranlı, hepsi-bir-arada akıllı ev panelidir. İnterkom, otomasyon ve Zigbee ağ geçidini bir arada sunar.</div>
         <div class='mb-2'><a href='https://www.akubelatr.com/_files/ugd/de7bb9_57f3e540187d43a5a7821e6e3c2e70a0.pdf' target='_blank' class='text-brand-primary underline font-semibold'>HyPanel PS51 Datasheet (PDF)</a> · <a href='https://www.akubelatr.com/_files/ugd/de7bb9_01df41bbd8c543df855bd2d8e19ba592.pdf' target='_blank' class='text-brand-primary underline font-semibold'>HyPanel PS51-KNX Datasheet (PDF)</a></div>
         <div class='mb-1 font-semibold'>Öne Çıkanlar</div>
@@ -2217,6 +2226,30 @@
       return names[cat] || 'Diğer';
     }
 
+    // Helper to render connection icons (uses local assets for KNX and Zigbee)
+    function getConnIcons(conns) {
+      if (!conns || !Array.isArray(conns)) return '';
+      return conns.map(c => {
+        const key = (c || '').toLowerCase();
+        if (key === 'knx') {
+          return `<span class="flex items-center gap-1"><img src="../assets/images/KNX_logo.png" alt="KNX" class="w-5 h-5 object-contain" /><span class="text-sm text-gray-700">KNX</span></span>`;
+        }
+        if (key === 'zigbee') {
+          return `<span class="flex items-center gap-1"><img src="../assets/images/zigbee.png" alt="Zigbee" class="w-5 h-5 object-contain" /><span class="text-sm text-gray-700">Zigbee</span></span>`;
+        }
+        if (key === 'wifi' || key === 'wi-fi') {
+          return `<span class="flex items-center gap-1"><i class="fa fa-wifi text-brand-accent"></i><span class="text-sm text-gray-700">WiFi</span></span>`;
+        }
+        if (key === 'bluetooth' || key === 'bt') {
+          return `<span class="flex items-center gap-1"><i class="fa fa-bluetooth text-blue-600"></i><span class="text-sm text-gray-700">BT</span></span>`;
+        }
+        if (key === 'ir') {
+          return `<span class="flex items-center gap-1"><img src="../assets/images/IR.png" alt="IR" class="w-4 h-4 object-contain" /><span class="text-sm text-gray-700">IR</span></span>`;
+        }
+        return `<span class="text-sm text-gray-700">${c}</span>`;
+      }).join(' ');
+    }
+
     function renderGrid(){
       // Check if no results
       if (filtered.length === 0) {
@@ -2258,16 +2291,7 @@
                   <span class="capitalize">${getCategoryName(p.cat)}</span>
                 </div>
               </div>
-              <p class="text-gray-600 mb-4 line-clamp-2">${p.desc}</p>
-              <div class="flex items-center gap-4 mb-4">
-                <div class="flex items-center gap-2">
-                  <div class="w-3 h-3 bg-${brandColor}-500 rounded-full"></div>
-                  <span class="text-sm font-medium text-gray-700">${p.brand}</span>
-                </div>
-                <div class="text-gray-300">•</div>
-                <div class="flex items-center gap-1 text-sm text-gray-600">
-                  <i class="fa fa-wifi text-brand-accent"></i>
-                  <span>${p.conn.join(', ')}</span>
+                  ${getConnIcons(p.conn)}
                 </div>
               </div>
               <div class="flex gap-3">
@@ -2310,11 +2334,9 @@
               <div class="flex items-center ${isGridDense ? 'justify-center' : 'justify-between'} ${descSize}">
                 <div class="flex items-center gap-1">
                   <div class="w-2 h-2 bg-${brandColor}-500 rounded-full"></div>
-                  <span class="font-medium text-gray-700 ${isGridDense ? 'text-xs' : ''}">${p.brand}</span>
                 </div>
                 ${!isGridDense ? `<div class="flex items-center gap-1 text-gray-600">
-                  <i class="fa fa-wifi text-brand-accent"></i>
-                  <span>${p.conn.join(', ')}</span>
+                  ${getConnIcons(p.conn)}
                 </div>` : ''}
               </div>
               
@@ -3284,8 +3306,8 @@
 
   <!-- Floating WhatsApp Button -->
   <div class="whats-float">
-    <a href="https://wa.me/905062691778" target="_blank">
-      <i class="fa fa-whatsapp"></i><span>WhatsApp<br><small>+90 506 269 1778</small></span>
+    <a href="https://wa.me/905368969929" target="_blank">
+      <i class="fa fa-whatsapp"></i><span>WhatsApp<br><small>+90 536 896 9929</small></span>
     </a>
   </div>
 </body>
