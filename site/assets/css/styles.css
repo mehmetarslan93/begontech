@@ -119,6 +119,27 @@ html {
 .brand-begon { color: #0097b2; }
 .brand-tech  { color: #002b64; }
 
+/* Responsive header helpers to prevent brand & nav overlap on smaller screens */
+.logo-container { display: inline-flex; align-items: center; gap: 0.5rem; }
+.brand-wordmark { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Allow brand to shrink slightly on tablet widths and ensure nav items wrap/align properly */
+@media (max-width: 1024px) {
+    .logo-container img { height: 48px; }
+    .brand-wordmark { font-size: 1rem; }
+    /* Ensure nav container doesn't push over the logo */
+    nav .flex-1 { flex: 1 1 auto; }
+    nav a { white-space: nowrap; }
+}
+
+/* On smaller than typical tablet, make brand compact and allow nav to hide behind mobile menu */
+@media (max-width: 768px) {
+    .logo-container img { height: 40px; }
+    .brand-wordmark { font-size: 0.95rem; }
+    /* Hide desktop nav on smaller screens (should already be hidden by md:hidden), but add extra safety */
+    .md\:flex { display: none; }
+}
+
 /* Subtle wordmark hover shimmer */
 .logo-container:hover .brand-wordmark {
     animation: brandHover 1200ms ease-in-out 1;
