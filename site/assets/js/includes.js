@@ -88,7 +88,7 @@
   document.addEventListener('DOMContentLoaded', async ()=>{
       const base = getSiteBase();
       const loader = document.getElementById('pageLoader');
-      const minLoaderTime = 1700; // Minimum loader display time in ms
+      const minLoaderTime = 1000; // Minimum loader display time in ms
       // Hide main content initially
       const mainContent = document.querySelector('main, .main-content, .container');
       if(mainContent){
