@@ -1,0 +1,9 @@
+{
+  "liveServer.settings.mount": [["/", "./site"]],
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.scss",
+    "**/*.ts"
+  ]
+}

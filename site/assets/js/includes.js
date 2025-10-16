@@ -1,15 +1,10 @@
 // Lightweight HTML partial loader & nav highlighter
 (function(){
-  // Resolve absolute path to /site/ directory so partials load from any subfolder
+  // Resolve absolute path so partials load from web root regardless of current page path
   function getSiteBase(){
-    try{
-      const path = location.pathname.replace(/\\/g,'/');
-      const idx = path.toLowerCase().lastIndexOf('/site/');
-      if(idx !== -1){
-        return path.slice(0, idx + 6); // include trailing '/site/'
-      }
-    }catch(_){}
-    return '/site/';
+    // Always use web root. With Live Server mount ["/", "./site"],
+    // '/partials/header.html' maps to 'site/partials/header.html'.
+    return '/';
   }
 
   async function loadPartial(selector, url){
